@@ -112,7 +112,7 @@ def _finding_section(rank: int, item: RiskItem) -> list[str]:
     if vuln.start_line:
         location = f"{location}:{vuln.start_line}"
 
-    lines = [f"### [{rank}] {item.tier.value} — score: {item.final_score} — `{vuln.category}`", ""]
+    lines = [f"### [{rank}] {item.tier.value} — score: {item.final_score} — `{vuln.category.value}`", ""]
 
     location_parts = [f"`{location}`"]
     if vuln.function:

@@ -2,6 +2,15 @@ import argparse
 import sys
 from pathlib import Path
 
+from constraintguard.analyzers.scan_build_runner import (
+    AnalyzerError,
+    ScanBuildConfig,
+    run_scan_build,
+)
+from constraintguard.pipeline import run_score_pipeline
+
+_DEFAULT_TOP_K = 10
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -24,10 +33,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--config", type=Path, required=True, help="Path to .constraintguard.yml"
     )
     run_parser.add_argument(
+        "--linker-script", type=Path, default=None, help="Path to linker script (.ld)"
+    )
+    run_parser.add_argument(
         "--out", type=Path, required=True, help="Output directory for reports"
     )
     run_parser.add_argument(
-        "--enrich", type=str, default=None, help="Enable enrichment (e.g., topK=10)"
+        "--top-k", type=int, default=_DEFAULT_TOP_K, help="Number of top findings to display (default: 10)"
     )
 
     score_parser = subparsers.add_parser(
@@ -35,36 +47,93 @@ def build_parser() -> argparse.ArgumentParser:
         help="Score existing SARIF findings without running analyzer",
     )
     score_parser.add_argument(
-        "--sarif", type=Path, required=True, help="Path to SARIF file"
+        "--sarif", type=Path, required=True, nargs="+", help="Path(s) to SARIF file(s)"
     )
     score_parser.add_argument(
         "--config", type=Path, required=True, help="Path to .constraintguard.yml"
     )
     score_parser.add_argument(
+        "--linker-script", type=Path, default=None, help="Path to linker script (.ld)"
+    )
+    score_parser.add_argument(
         "--out", type=Path, required=True, help="Output directory for reports"
+    )
+    score_parser.add_argument(
+        "--top-k", type=int, default=_DEFAULT_TOP_K, help="Number of top findings to display (default: 10)"
     )
 
     return parser
 
 
+def _validate_paths_exist(*paths: Path | None) -> None:
+    for path in paths:
+        if path is not None and not path.exists():
+            raise FileNotFoundError(f"Path does not exist: {path}")
+
+
+def _build_command_string(args: argparse.Namespace) -> str:
+    parts = ["constraintguard", args.command]
+    for key, value in vars(args).items():
+        if key == "command" or value is None:
+            continue
+        flag = f"--{key.replace('_', '-')}"
+        if isinstance(value, bool):
+            if value:
+                parts.append(flag)
+        elif isinstance(value, list):
+            for item in value:
+                parts.extend([flag, str(item)])
+        else:
+            parts.extend([flag, str(value)])
+    return " ".join(parts)
+
+
 def handle_run(args: argparse.Namespace) -> int:
-    print("ConstraintGuard run")
-    print(f"  Source:    {args.source}")
-    print(f"  Build:    {args.build_cmd}")
-    print(f"  Config:   {args.config}")
-    print(f"  Output:   {args.out}")
-    if args.enrich:
-        print(f"  Enrich:   {args.enrich}")
-    print("Pipeline not yet implemented. See docs/tasks/TASKS.md for status.")
+    _validate_paths_exist(args.source, args.config, args.linker_script)
+
+    if not args.source.is_dir():
+        print(f"Error: --source must be a directory: {args.source}")
+        return 1
+
+    try:
+        scan_config = ScanBuildConfig(
+            source_path=args.source,
+            build_command=args.build_cmd,
+            output_dir=args.out,
+        )
+        scan_result = run_scan_build(scan_config)
+    except AnalyzerError as exc:
+        print(f"Analyzer error: {exc}")
+        return 1
+
+    if not scan_result.sarif_paths:
+        print("Warning: scan-build produced no SARIF files.")
+        return 1
+
+    run_score_pipeline(
+        sarif_paths=scan_result.sarif_paths,
+        config_path=args.config,
+        linker_script_path=args.linker_script,
+        out_dir=args.out,
+        top_k=args.top_k,
+        command=_build_command_string(args),
+        source_path=str(args.source),
+    )
     return 0
 
 
 def handle_score(args: argparse.Namespace) -> int:
-    print("ConstraintGuard score")
-    print(f"  SARIF:    {args.sarif}")
-    print(f"  Config:   {args.config}")
-    print(f"  Output:   {args.out}")
-    print("Pipeline not yet implemented. See docs/tasks/TASKS.md for status.")
+    sarif_paths: list[Path] = args.sarif
+    _validate_paths_exist(args.config, args.linker_script, *sarif_paths)
+
+    run_score_pipeline(
+        sarif_paths=sarif_paths,
+        config_path=args.config,
+        linker_script_path=args.linker_script,
+        out_dir=args.out,
+        top_k=args.top_k,
+        command=_build_command_string(args),
+    )
     return 0
 
 
@@ -72,11 +141,18 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    match args.command:
-        case "run":
-            return handle_run(args)
-        case "score":
-            return handle_score(args)
+    try:
+        match args.command:
+            case "run":
+                return handle_run(args)
+            case "score":
+                return handle_score(args)
+    except FileNotFoundError as exc:
+        print(f"Error: {exc}")
+        return 1
+    except ValueError as exc:
+        print(f"Configuration error: {exc}")
+        return 1
 
     return 0
 

@@ -1,59 +1,60 @@
+from constraintguard.models.enums import VulnerabilityCategory
 from constraintguard.models.hardware_spec import HardwareSpec
 from constraintguard.models.risk_report import RuleFiring
 from constraintguard.models.vulnerability import Vulnerability
 from constraintguard.reporting.formatting import format_bytes, format_us
 
-_CATEGORY_PLAIN_NAMES: dict[str, str] = {
-    "buffer_overflow": "buffer overflow",
-    "null_deref": "null pointer dereference",
-    "leak": "memory leak",
-    "use_after_free": "use-after-free",
-    "integer_overflow": "integer overflow",
-    "format_string": "format string vulnerability",
-    "divide_by_zero": "division by zero",
-    "uninitialized": "uninitialized memory read",
-    "deadlock": "potential deadlock",
-    "unknown": "static analysis finding",
+_CATEGORY_PLAIN_NAMES: dict[VulnerabilityCategory, str] = {
+    VulnerabilityCategory.BUFFER_OVERFLOW: "buffer overflow",
+    VulnerabilityCategory.NULL_DEREF: "null pointer dereference",
+    VulnerabilityCategory.LEAK: "memory leak",
+    VulnerabilityCategory.USE_AFTER_FREE: "use-after-free",
+    VulnerabilityCategory.INTEGER_OVERFLOW: "integer overflow",
+    VulnerabilityCategory.FORMAT_STRING: "format string vulnerability",
+    VulnerabilityCategory.DIVIDE_BY_ZERO: "division by zero",
+    VulnerabilityCategory.UNINITIALIZED: "uninitialized memory read",
+    VulnerabilityCategory.DEADLOCK: "potential deadlock",
+    VulnerabilityCategory.UNKNOWN: "static analysis finding",
 }
 
-_CATEGORY_EMBEDDED_CONSEQUENCE: dict[str, str] = {
-    "buffer_overflow": (
+_CATEGORY_EMBEDDED_CONSEQUENCE: dict[VulnerabilityCategory, str] = {
+    VulnerabilityCategory.BUFFER_OVERFLOW: (
         "corrupts adjacent memory, potentially overwriting stack frames, return addresses, "
         "or global state — on a resource-constrained embedded target, recovery may require a full device reset"
     ),
-    "null_deref": (
+    VulnerabilityCategory.NULL_DEREF: (
         "triggers a processor fault (e.g., ARM HardFault) that halts execution immediately "
         "— on bare-metal or RTOS targets there is typically no OS-level exception handler to recover from this"
     ),
-    "leak": (
+    VulnerabilityCategory.LEAK: (
         "permanently consumes heap or pool memory on each call path that reaches it "
         "— on embedded targets with kilobytes of RAM, repeated leaks exhaust available memory rapidly"
     ),
-    "use_after_free": (
+    VulnerabilityCategory.USE_AFTER_FREE: (
         "accesses freed memory that may have been reallocated, introducing non-deterministic behaviour "
         "— on embedded targets without full memory protection, this can silently corrupt live data structures"
     ),
-    "integer_overflow": (
+    VulnerabilityCategory.INTEGER_OVERFLOW: (
         "silently wraps arithmetic results, producing incorrect values that propagate through "
         "control, sensor, or actuator calculations without any runtime indication"
     ),
-    "format_string": (
+    VulnerabilityCategory.FORMAT_STRING: (
         "allows arbitrary memory reads and writes via format specifiers if user input reaches the format argument "
         "— on embedded targets, this can compromise the entire firmware image"
     ),
-    "divide_by_zero": (
+    VulnerabilityCategory.DIVIDE_BY_ZERO: (
         "triggers a processor divide-by-zero fault that halts execution "
         "unless an explicit trap handler is installed and tested"
     ),
-    "uninitialized": (
+    VulnerabilityCategory.UNINITIALIZED: (
         "reads indeterminate stack or register values, producing device-specific non-deterministic behaviour "
         "that is difficult to reproduce and may differ between debug and release builds"
     ),
-    "deadlock": (
+    VulnerabilityCategory.DEADLOCK: (
         "permanently blocks one or more tasks from running "
         "— on an RTOS or bare-metal scheduler, this starves all dependent tasks and interrupts indefinitely"
     ),
-    "unknown": (
+    VulnerabilityCategory.UNKNOWN: (
         "produces undefined behaviour whose exact impact depends on the execution context and runtime state"
     ),
 }
@@ -113,11 +114,11 @@ def build_explanation(
     final_score: int,
     firings: list[RuleFiring],
 ) -> str:
-    plain_name = _CATEGORY_PLAIN_NAMES.get(vuln.category, vuln.category)
+    plain_name = _CATEGORY_PLAIN_NAMES.get(vuln.category, vuln.category.value)
     location = _location_phrase(vuln)
     profile = _profile_descriptor(spec)
     consequence = _CATEGORY_EMBEDDED_CONSEQUENCE.get(
-        vuln.category, _CATEGORY_EMBEDDED_CONSEQUENCE["unknown"]
+        vuln.category, _CATEGORY_EMBEDDED_CONSEQUENCE[VulnerabilityCategory.UNKNOWN]
     )
 
     opening = f"A {plain_name} was detected {location}."
