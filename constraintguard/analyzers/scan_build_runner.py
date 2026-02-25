@@ -60,8 +60,7 @@ def _build_scan_build_command(sarif_dir: Path, build_command: str) -> list[str]:
     return [
         "scan-build",
         "-o", str(sarif_dir),
-        "-Xanalyzer", "-analyzer-output",
-        "-Xanalyzer", "sarif",
+        "-sarif",
         *build_parts,
     ]
 

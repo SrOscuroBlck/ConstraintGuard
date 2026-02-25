@@ -1,0 +1,35 @@
+# ConstraintGuard — Self-test
+#
+# Runs on the ConstraintGuard repo itself using the bundled example SARIF.
+# Validates that the action works end-to-end on every PR.
+
+name: ConstraintGuard (self-test)
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  self-test:
+    name: Self-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run ConstraintGuard (tight profile)
+        uses: ./
+        with:
+          mode: score
+          sarif-path: "examples/vuln_demo/findings.sarif"
+          config-path: "examples/configs/tight.yml"
+          fail-on: ""
+          top-k: "5"
+          comment-on-pr: "true"

@@ -1,0 +1,238 @@
+name: "ConstraintGuard"
+description: "Constraint-aware security prioritization for embedded C/C++ projects"
+branding:
+  icon: "shield"
+  color: "blue"
+
+inputs:
+  mode:
+    description: "Operation mode: 'score' (parse existing SARIF) or 'run' (execute scan-build + score)"
+    required: false
+    default: "score"
+  sarif-path:
+    description: "Path(s) to SARIF file(s), space-separated. Required when mode=score."
+    required: false
+    default: ""
+  config-path:
+    description: "Path to .constraintguard.yml"
+    required: true
+  linker-script:
+    description: "Path to linker script (.ld) for memory constraint extraction"
+    required: false
+    default: ""
+  source-path:
+    description: "Path to source directory. Required when mode=run."
+    required: false
+    default: "."
+  build-cmd:
+    description: "Build command (e.g. 'make'). Required when mode=run."
+    required: false
+    default: ""
+  fail-on:
+    description: "Fail the step if any finding reaches this tier or above (critical, high, medium, low). Leave empty to never fail."
+    required: false
+    default: ""
+  top-k:
+    description: "Number of top findings to show in the PR comment (default: 5)"
+    required: false
+    default: "5"
+  comment-on-pr:
+    description: "Post a summary comment on the PR (true/false)"
+    required: false
+    default: "true"
+  python-version:
+    description: "Python version to use"
+    required: false
+    default: "3.12"
+
+outputs:
+  report-json:
+    description: "Path to the generated JSON report"
+    value: ${{ steps.score.outputs.report-json }}
+  report-md:
+    description: "Path to the generated Markdown report"
+    value: ${{ steps.score.outputs.report-md }}
+  exit-code:
+    description: "Exit code from constraintguard (0=pass, 2=threshold exceeded)"
+    value: ${{ steps.score.outputs.exit-code }}
+  total-findings:
+    description: "Total number of findings"
+    value: ${{ steps.score.outputs.total-findings }}
+  critical-count:
+    description: "Number of CRITICAL findings"
+    value: ${{ steps.score.outputs.critical-count }}
+  high-count:
+    description: "Number of HIGH findings"
+    value: ${{ steps.score.outputs.high-count }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install ConstraintGuard
+      shell: bash
+      run: pip install "${{ github.action_path }}"
+
+    - name: Run ConstraintGuard
+      id: score
+      shell: bash
+      env:
+        CG_MODE: ${{ inputs.mode }}
+        CG_SARIF: ${{ inputs.sarif-path }}
+        CG_CONFIG: ${{ inputs.config-path }}
+        CG_LINKER: ${{ inputs.linker-script }}
+        CG_SOURCE: ${{ inputs.source-path }}
+        CG_BUILD_CMD: ${{ inputs.build-cmd }}
+        CG_FAIL_ON: ${{ inputs.fail-on }}
+        CG_TOP_K: ${{ inputs.top-k }}
+      run: |
+        set +e
+
+        OUT_DIR="${RUNNER_TEMP}/constraintguard-report"
+        mkdir -p "$OUT_DIR"
+
+        CMD_ARGS=()
+
+        if [[ "$CG_MODE" == "run" ]]; then
+          CMD_ARGS+=(run --source "$CG_SOURCE" --build-cmd "$CG_BUILD_CMD")
+        else
+          CMD_ARGS+=(score --sarif $CG_SARIF)
+        fi
+
+        CMD_ARGS+=(--config "$CG_CONFIG" --out "$OUT_DIR" --top-k "$CG_TOP_K")
+
+        if [[ -n "$CG_LINKER" ]]; then
+          CMD_ARGS+=(--linker-script "$CG_LINKER")
+        fi
+
+        if [[ -n "$CG_FAIL_ON" ]]; then
+          CMD_ARGS+=(--fail-on "$CG_FAIL_ON")
+        fi
+
+        constraintguard "${CMD_ARGS[@]}"
+        CG_EXIT=$?
+
+        echo "exit-code=$CG_EXIT" >> "$GITHUB_OUTPUT"
+        echo "report-json=$OUT_DIR/report.json" >> "$GITHUB_OUTPUT"
+        echo "report-md=$OUT_DIR/report.md" >> "$GITHUB_OUTPUT"
+
+        if [[ -f "$OUT_DIR/report.json" ]]; then
+          TOTAL=$(python3 -c "import json; r=json.load(open('$OUT_DIR/report.json')); print(r['summary']['total_findings'])")
+          CRIT=$(python3 -c "import json; r=json.load(open('$OUT_DIR/report.json')); print(r['summary']['tier_counts']['critical'])")
+          HIGH=$(python3 -c "import json; r=json.load(open('$OUT_DIR/report.json')); print(r['summary']['tier_counts']['high'])")
+          echo "total-findings=$TOTAL" >> "$GITHUB_OUTPUT"
+          echo "critical-count=$CRIT" >> "$GITHUB_OUTPUT"
+          echo "high-count=$HIGH" >> "$GITHUB_OUTPUT"
+        fi
+
+        exit $CG_EXIT
+
+    - name: Upload report artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: constraintguard-report
+        path: |
+          ${{ steps.score.outputs.report-json }}
+          ${{ steps.score.outputs.report-md }}
+
+    - name: Post PR comment
+      if: always() && inputs.comment-on-pr == 'true' && github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      env:
+        REPORT_MD: ${{ steps.score.outputs.report-md }}
+        REPORT_JSON: ${{ steps.score.outputs.report-json }}
+        CG_EXIT: ${{ steps.score.outputs.exit-code }}
+        TOP_K: ${{ inputs.top-k }}
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+
+          const reportJson = JSON.parse(fs.readFileSync(process.env.REPORT_JSON, 'utf8'));
+          const summary = reportJson.summary;
+          const tierCounts = summary.tier_counts;
+          const spec = reportJson.hardware_spec;
+          const items = reportJson.items;
+          const topK = parseInt(process.env.TOP_K) || 5;
+          const exitCode = process.env.CG_EXIT;
+
+          const statusIcon = exitCode === '0' ? '✅' : '🚨';
+          const statusLabel = exitCode === '0' ? 'Passed' : 'Policy Violation';
+
+          const platformLabel = spec.platform || 'unknown';
+          const safetyLabel = spec.safety_level || 'none';
+
+          // Build severity bars
+          function bar(count, max, char = '█') {
+            const width = max > 0 ? Math.round((count / max) * 10) : 0;
+            return char.repeat(width) + '░'.repeat(10 - width);
+          }
+          const maxCount = Math.max(tierCounts.critical, tierCounts.high, tierCounts.medium, tierCounts.low, 1);
+
+          let body = `## ${statusIcon} ConstraintGuard — ${statusLabel}\n\n`;
+          body += `**Target:** ${platformLabel} · ${safetyLabel}\n\n`;
+          body += `| Tier | Count | |\n`;
+          body += `|:-----|------:|:--|\n`;
+          body += `| 🔴 CRITICAL | ${tierCounts.critical} | \`${bar(tierCounts.critical, maxCount)}\` |\n`;
+          body += `| 🟠 HIGH | ${tierCounts.high} | \`${bar(tierCounts.high, maxCount)}\` |\n`;
+          body += `| 🟡 MEDIUM | ${tierCounts.medium} | \`${bar(tierCounts.medium, maxCount)}\` |\n`;
+          body += `| 🟢 LOW | ${tierCounts.low} | \`${bar(tierCounts.low, maxCount)}\` |\n`;
+          body += `| **Total** | **${summary.total_findings}** | |\n\n`;
+
+          // Top findings
+          const topItems = items.slice(0, topK);
+          if (topItems.length > 0) {
+            body += `### Top ${topItems.length} Finding(s)\n\n`;
+            for (let i = 0; i < topItems.length; i++) {
+              const item = topItems[i];
+              const v = item.vulnerability;
+              const tierEmoji = {'CRITICAL': '🔴', 'HIGH': '🟠', 'MEDIUM': '🟡', 'LOW': '🟢'}[item.tier] || '⚪';
+              const location = v.start_line ? `${v.path}:${v.start_line}` : v.path;
+              const fn = v.function ? ` in \`${v.function}\`` : '';
+              body += `**${i + 1}. ${tierEmoji} ${item.tier}** (score: ${item.final_score}) — \`${v.category}\`\n`;
+              body += `\`${location}\`${fn} · \`${v.rule_id}\`\n`;
+
+              if (item.rule_firings && item.rule_firings.length > 0) {
+                const rules = item.rule_firings.map(r => `${r.rule_id}(${r.delta >= 0 ? '+' : ''}${r.delta})`).join(', ');
+                body += `Rules: ${rules}\n`;
+              }
+              body += '\n';
+            }
+          }
+
+          body += `<details><summary>📄 Full report</summary>\n\n`;
+          body += `Download the full report from the **constraintguard-report** workflow artifact.\n\n`;
+          body += `</details>\n\n`;
+          body += `---\n*Generated by [ConstraintGuard](https://github.com/your-org/ConstraintGuard) · constraint-aware security prioritization for embedded systems*`;
+
+          // Find and update existing comment or create new one
+          const { data: comments } = await github.rest.issues.listComments({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+          });
+
+          const botComment = comments.find(c =>
+            c.body && c.body.includes('ConstraintGuard') && c.user.type === 'Bot'
+          );
+
+          if (botComment) {
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: botComment.id,
+              body: body,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body,
+            });
+          }

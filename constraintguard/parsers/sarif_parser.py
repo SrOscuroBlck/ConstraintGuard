@@ -1,6 +1,7 @@
 import json
 import logging
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 from constraintguard.models.vulnerability import Vulnerability
 from constraintguard.parsers.sarif_rule_map import (
@@ -12,6 +13,13 @@ from constraintguard.parsers.sarif_rule_map import (
 logger = logging.getLogger(__name__)
 
 _CWE_TAG_PREFIX = "CWE-"
+
+
+def _normalize_file_path(raw_path: str) -> str:
+    if raw_path.startswith("file:///"):
+        parsed = urlparse(raw_path)
+        return unquote(parsed.path)
+    return unquote(raw_path)
 
 
 def parse_sarif(sarif_path: Path) -> list[Vulnerability]:
@@ -197,7 +205,8 @@ def _extract_physical_location(
         return "unknown", None, None
 
     artifact = physical.get("artifactLocation", {})
-    path = artifact.get("uri", "unknown") if isinstance(artifact, dict) else "unknown"
+    raw_path = artifact.get("uri", "unknown") if isinstance(artifact, dict) else "unknown"
+    path = _normalize_file_path(raw_path)
 
     region = physical.get("region", {})
     if not isinstance(region, dict):

@@ -7,9 +7,15 @@ from constraintguard.analyzers.scan_build_runner import (
     ScanBuildConfig,
     run_scan_build,
 )
+from constraintguard.models.enums import SeverityTier
+from constraintguard.models.risk_report import RiskReport
 from constraintguard.pipeline import run_score_pipeline
 
 _DEFAULT_TOP_K = 10
+
+_FAIL_ON_CHOICES = [tier.value.lower() for tier in SeverityTier]
+
+_EXIT_CODE_THRESHOLD_EXCEEDED = 2
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -41,6 +47,10 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument(
         "--top-k", type=int, default=_DEFAULT_TOP_K, help="Number of top findings to display (default: 10)"
     )
+    run_parser.add_argument(
+        "--fail-on", type=str, choices=_FAIL_ON_CHOICES, default=None,
+        help="Exit with code 2 if any finding meets or exceeds this tier (critical, high, medium, low)",
+    )
 
     score_parser = subparsers.add_parser(
         "score",
@@ -61,6 +71,10 @@ def build_parser() -> argparse.ArgumentParser:
     score_parser.add_argument(
         "--top-k", type=int, default=_DEFAULT_TOP_K, help="Number of top findings to display (default: 10)"
     )
+    score_parser.add_argument(
+        "--fail-on", type=str, choices=_FAIL_ON_CHOICES, default=None,
+        help="Exit with code 2 if any finding meets or exceeds this tier (critical, high, medium, low)",
+    )
 
     return parser
 
@@ -69,6 +83,26 @@ def _validate_paths_exist(*paths: Path | None) -> None:
     for path in paths:
         if path is not None and not path.exists():
             raise FileNotFoundError(f"Path does not exist: {path}")
+
+
+def _check_threshold(report: RiskReport, fail_on: str | None) -> int:
+    if not fail_on:
+        return 0
+
+    threshold_tier = SeverityTier(fail_on.upper())
+    tier_rank = {SeverityTier.CRITICAL: 4, SeverityTier.HIGH: 3, SeverityTier.MEDIUM: 2, SeverityTier.LOW: 1}
+    threshold_rank = tier_rank[threshold_tier]
+
+    for item in report.items:
+        if tier_rank.get(item.tier, 0) >= threshold_rank:
+            count = sum(1 for i in report.items if tier_rank.get(i.tier, 0) >= threshold_rank)
+            print(
+                f"\nPolicy violation: {count} finding(s) at {threshold_tier.value} or above "
+                f"(--fail-on {fail_on})"
+            )
+            return _EXIT_CODE_THRESHOLD_EXCEEDED
+
+    return 0
 
 
 def _build_command_string(args: argparse.Namespace) -> str:
@@ -110,7 +144,7 @@ def handle_run(args: argparse.Namespace) -> int:
         print("Warning: scan-build produced no SARIF files.")
         return 1
 
-    run_score_pipeline(
+    report = run_score_pipeline(
         sarif_paths=scan_result.sarif_paths,
         config_path=args.config,
         linker_script_path=args.linker_script,
@@ -119,14 +153,14 @@ def handle_run(args: argparse.Namespace) -> int:
         command=_build_command_string(args),
         source_path=str(args.source),
     )
-    return 0
+    return _check_threshold(report, args.fail_on)
 
 
 def handle_score(args: argparse.Namespace) -> int:
     sarif_paths: list[Path] = args.sarif
     _validate_paths_exist(args.config, args.linker_script, *sarif_paths)
 
-    run_score_pipeline(
+    report = run_score_pipeline(
         sarif_paths=sarif_paths,
         config_path=args.config,
         linker_script_path=args.linker_script,
@@ -134,7 +168,7 @@ def handle_score(args: argparse.Namespace) -> int:
         top_k=args.top_k,
         command=_build_command_string(args),
     )
-    return 0
+    return _check_threshold(report, args.fail_on)
 
 
 def main(argv: list[str] | None = None) -> int:
