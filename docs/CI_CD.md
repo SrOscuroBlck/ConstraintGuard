@@ -47,15 +47,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: your-org/ConstraintGuard@main
+      - uses: SrOscuroBlck/ConstraintGuard@main
         with:
           mode: score
           sarif-path: "path/to/results.sarif"
           config-path: ".constraintguard.yml"
           fail-on: "critical"
 ```
-
-Replace `your-org/ConstraintGuard@main` with the actual path to this repository.
 
 ### 3. Push a PR
 
@@ -75,7 +73,7 @@ The action will:
 Works with SARIF output from any analyzer — Clang SA, CodeQL, Semgrep, Coverity, etc.
 
 ```yaml
-- uses: your-org/ConstraintGuard@main
+- uses: SrOscuroBlck/ConstraintGuard@main
   with:
     mode: score
     sarif-path: "results.sarif"
@@ -93,7 +91,7 @@ sarif-path: "scan1.sarif scan2.sarif"
 Runs Clang Static Analyzer via `scan-build`, captures SARIF, and scores — all in one step.
 
 ```yaml
-- uses: your-org/ConstraintGuard@main
+- uses: SrOscuroBlck/ConstraintGuard@main
   with:
     mode: run
     source-path: "."
@@ -131,7 +129,7 @@ jobs:
         with:
           output: codeql-results
 
-      - uses: your-org/ConstraintGuard@main
+      - uses: SrOscuroBlck/ConstraintGuard@main
         with:
           mode: score
           sarif-path: "codeql-results/cpp.sarif"
@@ -195,7 +193,7 @@ The comment is updated in-place on subsequent pushes (no duplicate comments).
 ## Example: fail on CRITICAL in tight-constraint embedded projects
 
 ```yaml
-- uses: your-org/ConstraintGuard@main
+- uses: SrOscuroBlck/ConstraintGuard@main
   with:
     mode: score
     sarif-path: "build/analysis.sarif"

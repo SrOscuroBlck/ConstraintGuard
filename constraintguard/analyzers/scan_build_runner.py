@@ -30,7 +30,7 @@ def run_scan_build(config: ScanBuildConfig) -> ScanBuildResult:
     _require_scan_build_on_path()
     sarif_dir = _prepare_sarif_output_dir(config.output_dir)
     command = _build_scan_build_command(sarif_dir, config.build_command)
-    exit_code = _execute_command(command)
+    exit_code = _execute_command(command, cwd=config.source_path)
     sarif_paths = _collect_sarif_files(sarif_dir)
     return ScanBuildResult(
         sarif_paths=sarif_paths,
@@ -65,8 +65,8 @@ def _build_scan_build_command(sarif_dir: Path, build_command: str) -> list[str]:
     ]
 
 
-def _execute_command(command: list[str]) -> int:
-    result = subprocess.run(command)
+def _execute_command(command: list[str], cwd: Path | None = None) -> int:
+    result = subprocess.run(command, cwd=cwd)
     if result.returncode != 0:
         raise AnalyzerError(
             f"scan-build exited with non-zero code {result.returncode}. "
