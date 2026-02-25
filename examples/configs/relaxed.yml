@@ -1,0 +1,11 @@
+platform: "cortex-a53"
+
+ram_size: "512MB"
+flash_size: "4GB"
+stack_size: "8MB"
+heap_size: "64MB"
+max_interrupt_latency: "1ms"
+
+safety_level: "IEC62443-SL1"
+critical_functions:
+  - "auth_handler"
