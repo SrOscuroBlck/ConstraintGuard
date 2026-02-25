@@ -1,7 +1,11 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
-from constraintguard.reporting import print_report_to_console
+from constraintguard.reporting import (
+    print_report_to_console,
+    write_json_report,
+    write_markdown_report,
+)
 from constraintguard.models import (
     ConstraintProvenance,
     ConstraintSourceType,
@@ -265,6 +269,8 @@ def generate_mock_report() -> RiskReport:
 if __name__ == "__main__":
     report = generate_mock_report()
     print_report_to_console(report)
-    output_path = Path(__file__).parent / "sample_report.json"
-    output_path.write_text(report.model_dump_json(indent=2))
-    print(f"Sample report written to {output_path}")
+    output_dir = Path(__file__).parent
+    json_path = write_json_report(report, output_dir)
+    md_path = write_markdown_report(report, output_dir)
+    print(f"JSON report written to {json_path}")
+    print(f"Markdown report written to {md_path}")
