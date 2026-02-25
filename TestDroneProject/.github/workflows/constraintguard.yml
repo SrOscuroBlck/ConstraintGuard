@@ -1,16 +1,9 @@
-# ConstraintGuard — Full pipeline with scan-build
-#
-# This workflow runs Clang Static Analyzer (scan-build) on your C/C++ project,
-# captures SARIF output, scores findings with ConstraintGuard, and posts PR comments.
-#
-# Requirements:
-#   - Your project must build with the command specified in build-cmd.
-#   - Clang/LLVM will be installed by the workflow.
-
-name: ConstraintGuard (scan-build)
+name: ConstraintGuard Analysis
 
 on:
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 
 permissions:
@@ -35,8 +28,8 @@ jobs:
         uses: SrOscuroBlck/ConstraintGuard@main
         with:
           mode: run
-          source-path: "."                          # <-- path to your C/C++ source
-          build-cmd: "make"                         # <-- your build command
+          source-path: "."
+          build-cmd: "make"
           config-path: ".constraintguard.yml"
           fail-on: "critical"
           top-k: "5"
