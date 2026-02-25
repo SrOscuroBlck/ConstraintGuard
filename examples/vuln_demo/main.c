@@ -69,6 +69,21 @@ static int compute_checksum(int mode)
     return result;
 }
 
+/* CWE-120: Buffer overflow in UART interrupt handler (isr_ prefix triggers ISR scoring rules) */
+static void isr_uart(const char *rx_data)
+{
+    char rx_buf[8];
+    strcpy(rx_buf, rx_data);
+    printf("uart: %s\n", rx_buf);
+}
+
+/* CWE-476: Null dereference in safety-critical control loop (matches critical_functions in tight.yml) */
+static int control_loop(int *setpoint, int *measured)
+{
+    int error = *setpoint - *measured;
+    return error;
+}
+
 int main(int argc, char *argv[])
 {
     if (argc > 1) {
@@ -97,6 +112,18 @@ int main(int argc, char *argv[])
 
     int checksum = compute_checksum(argc);
     printf("checksum: %d\n", checksum);
+
+    if (argc > 3) {
+        isr_uart(argv[3]);
+    }
+
+    int setpoint = 100;
+    int *measured_ptr = NULL;
+    if (argc > 4) {
+        int measured = 90;
+        measured_ptr = &measured;
+    }
+    printf("error: %d\n", control_loop(&setpoint, measured_ptr));
 
     return 0;
 }
