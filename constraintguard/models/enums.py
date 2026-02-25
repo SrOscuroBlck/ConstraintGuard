@@ -19,6 +19,19 @@ class ConstraintSourceType(Enum):
     UNKNOWN = "unknown"
 
 
+class VulnerabilityCategory(Enum):
+    BUFFER_OVERFLOW = "buffer_overflow"
+    NULL_DEREF = "null_deref"
+    LEAK = "leak"
+    USE_AFTER_FREE = "use_after_free"
+    INTEGER_OVERFLOW = "integer_overflow"
+    FORMAT_STRING = "format_string"
+    DIVIDE_BY_ZERO = "divide_by_zero"
+    UNINITIALIZED = "uninitialized"
+    DEADLOCK = "deadlock"
+    UNKNOWN = "unknown"
+
+
 def score_to_tier(score: int) -> SeverityTier:
     if score >= CRITICAL_THRESHOLD:
         return SeverityTier.CRITICAL

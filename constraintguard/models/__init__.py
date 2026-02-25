@@ -4,6 +4,7 @@ from constraintguard.models.enums import (
     MEDIUM_THRESHOLD,
     ConstraintSourceType,
     SeverityTier,
+    VulnerabilityCategory,
     score_to_tier,
 )
 from constraintguard.models.hardware_spec import (
@@ -37,5 +38,6 @@ __all__ = [
     "SeverityTier",
     "TierCounts",
     "Vulnerability",
+    "VulnerabilityCategory",
     "score_to_tier",
 ]
