@@ -9,6 +9,7 @@ description = "Constraint-aware security prioritization for embedded C/C++ proje
 requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.0",
+    "pyyaml>=6.0",
 ]
 
 [project.scripts]
