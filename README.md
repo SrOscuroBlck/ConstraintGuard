@@ -1,82 +1,72 @@
 # ConstraintGuard
 
-ConstraintGuard is a **constraint-aware vulnerability prioritization** tool for embedded C/C++ projects. It keeps **detection tool-based** (e.g., Clang Static Analyzer) and makes **prioritization deterministic and reproducible** via an expert-system score that incorporates realistic embedded constraints (RAM/Flash, stack/heap, interrupt latency budgets, safety-critical context).
+ConstraintGuard is a **constraint-aware security prioritization** tool for embedded C/C++ projects. It consumes static analysis findings (initially **Clang Static Analyzer** exported as **SARIF**) and re-ranks them using a **target constraint profile** (e.g., RAM/Flash limits, stack/heap budgets, interrupt latency budgets, and safety-critical context). The goal is to reduce *low-actionability* alert noise and surface findings that are genuinely high-risk **for the specific embedded target**.
 
-The project is built in two phases:
+ConstraintGuard is designed around a strict separation of responsibilities:
 
-- **Phase 1 (Demo): Deterministic Expert System** — a manually runnable CLI that:
-  - parses constraints from `.constraintguard.yml` and/or linker scripts (`.ld`),
-  - runs (or ingests) Clang Static Analyzer SARIF findings,
-  - scores findings deterministically with rule traces,
-  - produces ranked reports (console + JSON + Markdown).
+- **Detection is tool-based** (e.g., Clang Static Analyzer). ConstraintGuard does not attempt to replace analyzers.
+- **Prioritization is deterministic by default** via an expert system, enabling reproducibility and auditability.
+- **Agentic Evidence Enrichment is optional** and bounded (e.g., top-K findings) to improve explanations and context tags without turning into expensive “scan the whole repo” automation.
 
-- **Phase 2 (Post-Demo): Agentic Evidence Enrichment (Optional)** — a bounded, tool-grounded augmentation layer that enriches **top-K** findings (or findings in changed files) with evidence bundles, context tags, and higher-quality explanations. It does **not** replace static analysis and does **not** override deterministic scoring by default.
+## What ConstraintGuard does
 
-## Why this exists
+- Runs (or ingests) static analysis and loads findings from SARIF.
+- Extracts a structured constraint profile (**HardwareSpec**) from:
+  - an optional YAML file (project intent and safety context), and
+  - a linker script (authoritative memory regions when available).
+- Applies deterministic scoring rules (expert system) to produce:
+  - a numeric score (0–100),
+  - a severity tier,
+  - a rule trace (why the score changed under the constraints).
+- Generates human- and machine-friendly reports:
+  - console summary,
+  - JSON report,
+  - Markdown report.
 
-Static analysis severity is typically hardware-agnostic. In embedded systems, the same bug can be trivial on a device with abundant resources and catastrophic on a microcontroller with kilobytes of stack, tight interrupt budgets, or safety-critical execution paths. ConstraintGuard encodes that reality explicitly.
+## What ConstraintGuard intentionally does **not** do
 
-## Repository layout (recommended)
+- It does **not** claim to find all vulnerabilities in a codebase.
+- It does **not** replace compilers, sanitizers, static analyzers, or SAST platforms.
+- It does **not** require LLM access to produce its core ranking.
+- It does **not** perform “comprehensive LLM scanning” of the entire repository.
 
-```
-constraintguard/
-  __init__.py
-  cli.py
-  models/
-    hardware_spec.py
-    vulnerability.py
-    report.py
-  parsing/
-    yaml_constraints.py
-    linker_script.py
-    normalize.py
-    sarif.py
-  analysis/
-    clang_runner.py
-  scoring/
-    base_scores.py
-    rules.py
-    engine.py
-    explain.py
-  reporting/
-    json_report.py
-    md_report.py
-    console.py
-examples/
-  demo_project/
-docs/
-  Architecture.md
-  GettingStarted.md
-  QuickReference.md
-  DeveloperGuide.md
-```
+## Core concepts
 
-This layout is a guide; the demo can start smaller and grow into the structure above.
+**HardwareSpec**  
+A normalized profile of constraints and context for the target platform (units normalized, provenance tracked). Example fields include RAM/Flash size, stack/heap budgets, interrupt latency budgets, safety level, and critical functions.
 
-## Core inputs/outputs
+**Vulnerability**  
+A normalized representation of a SARIF finding (rule ID, message, location, optional logical location).
 
-### Inputs
-- Embedded codebase (C/C++)
-- Build command (for running Clang analyzer), e.g. `make`, `cmake --build .`, `ninja`
-- Constraints, via:
-  - `.constraintguard.yml` (recommended for explicit intent), and/or
-  - linker script (`.ld`) (authoritative memory regions / symbols)
+**Expert system scoring**  
+A deterministic rule registry. Each finding receives a base score from its category and is adjusted by rule firings conditioned on HardwareSpec. Each firing contributes an auditable explanation fragment.
 
-### Outputs
-- **Console summary**: severity distribution, top findings
-- **JSON report**: full run metadata, constraints + provenance, findings, scores, fired rules
-- **Markdown report**: human-friendly prioritized list and constraint summary
+**Agentic Evidence Enrichment (optional)**  
+A bounded, tool-grounded enrichment step that:
+- collects local evidence bundles (code slices, symbol references, relevant config excerpts),
+- generates context tags and richer explanations with citations back to evidence,
+- does not alter deterministic scores by default.
 
-## Status and roadmap
+## Repository layout (planned)
 
-- ✅ Demo phase targets a deterministic expert system end-to-end pipeline.
-- ⏭️ Post-demo adds optional agentic evidence enrichment and CI integration (GitHub Action).
+- `constraintguard/`
+  - `cli/` – CLI entry points and argument parsing
+  - `models/` – typed models (HardwareSpec, Vulnerability, RiskReport)
+  - `parsers/` – YAML, linker script, SARIF ingestion
+  - `analyzers/` – runner wrappers (scan-build / clang)
+  - `scoring/` – expert system rules and scoring engine
+  - `reporting/` – JSON/Markdown/console outputs
+  - `enrichment/` – optional evidence bundle builder and agent adapters
+- `examples/` – demo projects and sample configs
+- `docs/` – documentation files listed below
 
-See:
-- `docs/GettingStarted.md` for the demo run flow
-- `docs/Architecture.md` for system design
-- `docs/QuickReference.md` for CLI + config snippets
-- `docs/DeveloperGuide.md` for implementation details and module contracts
+## Documentation
+
+- **ARCHITECTURE.md** – system architecture, data flow, module responsibilities, and interfaces.
+- **GETTING_STARTED.md** – installation and local manual-run instructions.
+- **QUICK_REFERENCE.md** – CLI and configuration cheat sheet.
+- **TECHNICAL_DETAILS.md** – implementation details, schemas, rule design, SARIF mapping, determinism and evidence contracts.
 
 ## License
-Choose a license before publishing publicly (MIT/Apache-2.0 are common for research tooling).
+
+Add your chosen license here (e.g., MIT/Apache-2.0). Until specified, treat this repository as “all rights reserved” for external distribution.

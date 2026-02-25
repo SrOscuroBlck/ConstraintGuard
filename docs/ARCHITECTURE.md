@@ -1,144 +1,133 @@
-# Architecture
+# ConstraintGuard Architecture
 
-This document describes ConstraintGuard’s architecture with an emphasis on the **Phase 1 Demo (Deterministic Expert System)**. Phase 2 introduces optional agentic enrichment that is bounded and evidence-grounded.
+This document describes ConstraintGuard’s architecture at the component and interface level. The system is built to keep detection and prioritization separate, providing a reproducible deterministic baseline and an optional bounded AI enrichment layer.
 
-## Design principles
+## Architectural principles
 
-1. **Detection is tool-based**  
-   ConstraintGuard does not attempt to “discover vulnerabilities” by LLM reasoning. It consumes findings from established tools (initially Clang Static Analyzer via SARIF).
+1. **Detection is external; prioritization is internal.**  
+   ConstraintGuard consumes analyzer outputs and focuses on re-ranking findings under target constraints.
 
-2. **Prioritization is constraint-aware**  
-   Risk is conditioned on embedded constraints (memory envelope, interrupt latency budgets, safety-critical context).
+2. **Determinism by default.**  
+   The expert system scorer must be reproducible. Given identical inputs, it produces identical scores and rule traces.
 
-3. **Determinism first**  
-   The demo’s prioritization is a reproducible expert system: same inputs → same outputs. This supports research defensibility and reliable CI behavior.
+3. **Constraint provenance is first-class.**  
+   For each constraint field, the system records where it came from (YAML, linker script, defaults, or unknown).
 
-4. **Optional augmentation is bounded and grounded** (post-demo)  
-   Agentic enrichment operates only on a limited subset (top-K or changed files). It must cite concrete evidence (file + line ranges) gathered by deterministic tooling.
+4. **Optional AI is bounded and tool-grounded.**  
+   Agentic Evidence Enrichment, when enabled, operates on a limited set of findings and must cite local evidence. It does not replace analyzers and does not silently override deterministic scoring.
 
-## Pipeline overview (Phase 1 Demo)
+## High-level data flow
 
-### 1) Constraint ingestion
-Inputs:
-- `.constraintguard.yml` (explicit intent; recommended)
-- `.ld` linker script (authoritative memory regions/symbols)
+1. **Constraint ingestion**
+   - Input: optional `.constraintguard.yml` and/or linker script `.ld`
+   - Output: `HardwareSpec` + `ConstraintProvenance`
 
+2. **Static analysis**
+   - Input: source repository + build command (or pre-generated SARIF)
+   - Output: SARIF file(s)
+
+3. **Finding ingestion**
+   - Input: SARIF
+   - Output: list of `Vulnerability` objects + category/CWE mapping
+
+4. **Deterministic prioritization**
+   - Input: `HardwareSpec` + `Vulnerability[]`
+   - Output: `RiskReport` (ranked findings) with rule traces
+
+5. **(Optional) Agentic Evidence Enrichment**
+   - Input: selected findings + local repository context + `HardwareSpec` + rule traces
+   - Output: evidence bundles + context tags + enriched explanations (with citations)
+
+6. **Reporting**
+   - Output: console summary + JSON report + Markdown report
+
+## Core modules
+
+### 1) CLI (`constraintguard/cli`)
+Responsibilities:
+- Parse CLI arguments and validate required inputs.
+- Orchestrate the run: parse constraints → run/ingest SARIF → score → report.
+- Enforce determinism defaults (no enrichment unless explicitly enabled).
+
+Key interfaces:
+- `constraintguard run --source <path> --build-cmd "<cmd>" --config <yml> --out <dir>`
+- `constraintguard score --sarif <path> --config <yml> --out <dir>` (optional)
+
+### 2) Models (`constraintguard/models`)
+Primary models:
+- `HardwareSpec`: normalized constraints + context (bytes, microseconds).
+- `ConstraintProvenance`: per-field origin metadata.
+- `Vulnerability`: normalized SARIF finding representation.
+- `RuleFiring`: rule id, weight/delta, rationale, referenced constraints.
+- `RiskItem`: vulnerability + score + tier + rule trace + explanation.
+- `RiskReport`: run metadata + constraints summary + ranked list + aggregates.
+
+### 3) Constraint parsers (`constraintguard/parsers`)
+- YAML parser:
+  - captures “intent” fields: safety level, critical functions, platform metadata.
+  - allows explicit overrides for memory/timing budgets when known.
+- Linker script parser:
+  - extracts memory regions for RAM/FLASH when feasible.
+  - extracts stack/heap sizes if symbols are present.
+- Normalization layer:
+  - converts sizes to bytes, times to microseconds.
+  - validates ranges and records “unknown” where not derivable.
+
+### 4) Analyzer runner (`constraintguard/analyzers`)
+- Wraps `scan-build` to produce SARIF.
+- Handles output directories and errors.
+- Does not attempt to interpret results beyond producing SARIF files.
+
+### 5) SARIF ingestion (`constraintguard/parsers/sarif`)
+Responsibilities:
+- Parse SARIF into `Vulnerability` instances.
+- Extract locations reliably: file path, line/column, logical location when present.
+- Map tool rule IDs into coarse categories to drive scoring (e.g., overflow, leak, null deref).
+
+### 6) Scoring engine (`constraintguard/scoring`)
+- Rule registry (deterministic):
+  - each rule is a pure function of `(vulnerability, hardware_spec) → maybe RuleFiring`.
+- Scorer:
+  - base score by category,
+  - apply rule firings in a stable order,
+  - clip and tier scores,
+  - build deterministic explanations from fired rules.
+
+Rules are intentionally limited and interpretable. The system is designed so that new rules can be added without changing the core pipeline contracts.
+
+### 7) Reporting (`constraintguard/reporting`)
 Outputs:
-- `HardwareSpec` (normalized units)
-- `provenance` (where each field came from)
-- explicit missing/unknown markers (no silent assumptions)
+- Console summary: totals by tier + top-K list.
+- JSON report: complete structured output for evaluation and later tooling.
+- Markdown report: shareable summary plus key findings.
 
-### 2) Static analysis detection
-Inputs:
-- repository path
-- build command
+### 8) Enrichment (`constraintguard/enrichment`) — optional
+Agentic Evidence Enrichment is a separate module and must be explicitly enabled.
 
-Process:
-- run Clang Static Analyzer (typically via `scan-build`) and capture SARIF output
+Components:
+- Selection policy:
+  - `top-K`, `changed-files`, `score-threshold`, and time budget.
+- Evidence builder:
+  - collects local code slices, function context, call-site hints, and config excerpts.
+- Agent adapter:
+  - generates structured tags + enriched explanation with citations to evidence.
+- Cache:
+  - keyed by finding identity + code hash + constraint profile hash.
 
-Outputs:
-- one or more SARIF files
+## Interfaces and contracts
 
-Alternative:
-- ingest a pre-generated SARIF file to support environments where `scan-build` is unavailable.
+### Deterministic contract
+If enrichment is disabled:
+- identical inputs must produce identical outputs (scores, tiers, traces, report ordering).
 
-### 3) SARIF parsing
-Inputs:
-- SARIF file(s)
+### Evidence contract (enrichment)
+If enrichment is enabled:
+- any claim in enriched output must cite a local evidence artifact (file + line range or captured snippet id).
+- enrichment must not fail the entire run; failures are localized to findings.
 
-Outputs:
-- list of `Vulnerability` objects with:
-  - rule ID and message
-  - location (file/line/column when available)
-  - function name when available
-  - optional CWE/category mapping
+## Extensibility points
 
-### 4) Deterministic expert scoring
-Inputs:
-- `Vulnerability`
-- `HardwareSpec`
-
-Outputs:
-- numeric score (0–100)
-- severity tier (e.g., CRITICAL/HIGH/MEDIUM/LOW)
-- **rule trace**: which rules fired and why, referencing constraints explicitly
-
-### 5) Reporting
-Outputs:
-- console summary
-- JSON report (full fidelity)
-- Markdown report (human friendly)
-
-## Key domain objects
-
-### HardwareSpec
-Represents the target environment in normalized units.
-
-Typical fields:
-- `platform`: string identifier
-- `ram_size_bytes`, `flash_size_bytes`
-- `stack_size_bytes`, `heap_size_bytes`
-- `max_interrupt_latency_us`
-- `critical_functions`: list of identifiers
-- `safety_level`: categorical string (e.g., ISO 26262 context)
-
-### Vulnerability
-Represents a finding from an analyzer (source-agnostic).
-
-Typical fields:
-- `rule_id`
-- `message`
-- `path`, `line`, `column`
-- `function` (optional)
-- `category` (normalized bucket)
-- `cwe` (optional)
-
-### RiskItem / ReportEntry
-Represents a scored finding plus trace and explanation.
-
-Typical fields:
-- `score`
-- `tier`
-- `fired_rules`: list of `{rule_id, rationale, evidence}`
-- `explanation` (deterministic in demo phase)
-
-## Expert system scoring model
-
-The scoring layer is intentionally simple to keep it auditable and suitable for ablation experiments.
-
-- A **base score** is assigned by category (buffer overflow vs leak vs null deref, etc.).
-- **Rule adjustments** are applied based on constraint conditions and context flags.
-
-Example rule families (demo target: ~10–15 rules):
-- memory tightness: small stack/heap/RAM escalates memory bugs
-- interrupt context: ISR-related contexts escalate latency and correctness risks
-- safety criticality: marked critical functions escalate severity
-- real-time hazards: blocking operations under low interrupt budget escalates
-- lifetime exhaustion: leaks + long-running tasks under small heap escalates
-
-The expert system must emit a rule trace for each score:
-- “Rule R3 fired because stack_size_bytes < 2048 and category == overflow”
-- “Rule R7 fired because function in critical_functions”
-
-## Post-demo: Agentic Evidence Enrichment (optional)
-
-Agentic enrichment is not “comprehensive code analysis.” It is a bounded investigation loop that attaches evidence-backed context to a small set of findings.
-
-### Selection policy
-- top-K findings by deterministic score, and/or
-- findings in changed files for a PR context
-
-### Evidence bundle
-Collected deterministically from the repo:
-- local code slice around finding
-- enclosing function body (when feasible)
-- simple caller search (text-based or tags-based)
-- relevant config references
-- compilation flags (when available)
-
-### Agent outputs (strict contract)
-- structured tags (ISR-likely, heap-touching, blocking-call-present, etc.)
-- explanation that cites evidence bundle entries
-- optional remediation notes
-
-The default mode does not override deterministic scoring. If an override mode is ever added, it must be explicitly enabled and evaluated separately.
+- Add analyzers: implement additional SARIF ingestion mappings.
+- Add constraint sources: Kconfig, devicetree, RTOS config (future).
+- Add rule families: new deterministic rules tied to explicit signals.
+- Add agent capabilities: richer context tags and remediation assistance, bounded by policy.

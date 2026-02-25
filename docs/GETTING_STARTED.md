@@ -1,109 +1,104 @@
-# Getting Started
+# Getting Started (Local Manual Run)
 
-This guide targets the **Phase 1 Demo**: run ConstraintGuard locally, end-to-end, on a small example project and produce a ranked report.
+This guide helps you run ConstraintGuard locally to analyze an embedded C/C++ project and produce a ranked report.
+
+> ConstraintGuard’s core pipeline is deterministic and does not require any AI services.
 
 ## Prerequisites
 
-- Python 3.10+
-- Clang tooling with `scan-build` available (recommended for the demo runner)
-- A C/C++ build environment for your target sample project (make/cmake/ninja)
+- Python 3.10+ (recommended 3.11)
+- Clang + scan-build available on PATH
+- A C/C++ project that can be built locally
+- (Optional) a `.constraintguard.yml` file for constraints and safety context
+- (Optional) a linker script `.ld` file if you want auto-extraction of RAM/FLASH/stack/heap
 
-If you cannot install `scan-build`, you can still run the pipeline by providing a pre-generated SARIF file.
+## Installation (development mode)
 
-## Install (local dev)
-
-From the repository root (example):
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-```
-
-## Minimal demo flow
-
-You will run ConstraintGuard with:
-- a repository path (`--source`),
-- a constraint config (`--config`),
-- a build command (`--build-cmd`),
-- an output directory (`--out`).
+1. Create and activate a virtual environment.
+2. Install dependencies.
 
 Example:
 
 ```bash
-constraintguard \
-  --source examples/demo_project \
-  --config examples/demo_project/.constraintguard.yml \
-  --build-cmd "make clean && make" \
-  --out out/demo_run
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e .
 ```
 
-Expected outputs inside `out/demo_run/`:
-- `constraints.json` (normalized `HardwareSpec` + provenance)
-- `findings.sarif` (or a folder containing SARIF outputs)
-- `report.json` (full results)
-- `report.md` (human-readable ranking)
-
-## Demonstrating constraint sensitivity (key demo)
-A core demo requirement is that the **same code** produces different prioritization when constraints change.
-
-Run with a “tight” profile:
+If the repository includes a `requirements.txt`, you may also run:
 
 ```bash
-constraintguard --source examples/demo_project \
-  --config examples/demo_project/config_tight.yml \
-  --build-cmd "make clean && make" \
-  --out out/tight
+pip install -r requirements.txt
 ```
 
-Run with a “relaxed” profile:
+## Quick demo using the provided example
+
+From the repo root:
 
 ```bash
-constraintguard --source examples/demo_project \
-  --config examples/demo_project/config_relaxed.yml \
-  --build-cmd "make clean && make" \
-  --out out/relaxed
+constraintguard run \
+  --source examples/vuln_demo \
+  --build-cmd "make -C examples/vuln_demo" \
+  --config examples/configs/tight.yml \
+  --out out/demo_tight
 ```
 
-Compare:
-- severity distribution
-- top-5 ranking
-- rule traces for findings that changed tiers
+Then compare with a relaxed constraint profile:
 
-## Configuration file (.constraintguard.yml)
-
-The YAML is intended to capture both quantitative constraints and explicit intent.
-A minimal example:
-
-```yaml
-platform: cortex-m-demo
-ram_size: 20KB
-flash_size: 256KB
-stack_size: 2KB
-heap_size: 4KB
-max_interrupt_latency: 50us
-critical_functions:
-  - handle_interrupt
-  - safety_shutdown
-safety_level: ISO26262-ASILB
+```bash
+constraintguard run \
+  --source examples/vuln_demo \
+  --build-cmd "make -C examples/vuln_demo" \
+  --config examples/configs/relaxed.yml \
+  --out out/demo_relaxed
 ```
 
-Notes:
-- sizes and times are normalized (KB/MB/us/ms supported)
-- missing fields must be treated explicitly (default/unknown), never silently assumed
+You should see differences in:
+- severity distribution,
+- top findings ordering,
+- rule traces (constraints that caused escalation/demotion).
+
+## Running on your own project
+
+Minimal run (with YAML constraints):
+
+```bash
+constraintguard run \
+  --source /path/to/your/project \
+  --build-cmd "cmake --build build" \
+  --config /path/to/.constraintguard.yml \
+  --out out/your_project
+```
+
+If you already have SARIF:
+
+```bash
+constraintguard score \
+  --sarif /path/to/results.sarif \
+  --config /path/to/.constraintguard.yml \
+  --out out/your_project
+```
+
+## Outputs
+
+In the output directory you will typically find:
+
+- `report.json` – machine-readable full report
+- `report.md` – human-friendly Markdown summary
+- `run.log` – optional run log including constraint provenance
+- `sarif/` – collected SARIF files (if generated)
 
 ## Troubleshooting
 
-### No SARIF produced
-- Ensure `scan-build` is installed and in PATH.
-- Try running `scan-build --help` to confirm availability.
-- Confirm your build command succeeds without `scan-build` first.
+### scan-build not found
+Install LLVM/Clang and ensure `scan-build` is on PATH.
 
-### Too many findings / noisy results
-- The demo phase does not optimize analyzer configuration yet.
-- You can add a filter option later (ruleId allow/deny) to reduce noise.
+### Build command fails
+ConstraintGuard does not fix build systems. Verify you can build the project without ConstraintGuard first, then pass the same command via `--build-cmd`.
 
-### Constraint parsing fails
-- Start with YAML-only constraints for the demo.
-- Add linker-script parsing gradually once the YAML path is stable.
+### No findings produced
+Some projects may yield few findings depending on analyzer settings and code maturity. Use the provided example to validate your installation and pipeline first.
+
+### Constraints missing or ambiguous
+ConstraintGuard will log which constraints were derived and which were “unknown.” Provide explicit values in `.constraintguard.yml` if the build artifacts do not expose them reliably.

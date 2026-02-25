@@ -1,64 +1,94 @@
 # Quick Reference
 
-This page is a compact reference for day-to-day usage during the Demo Phase.
+A compact cheat sheet for running ConstraintGuard and configuring constraints.
 
-## CLI (proposed)
+## CLI commands
 
-### Run end-to-end analysis
+### End-to-end run (recommended)
+Runs analyzer (scan-build), parses constraints, scores findings, outputs reports.
+
 ```bash
-constraintguard \
-  --source <path-to-repo> \
-  --config <path-to-.constraintguard.yml> \
+constraintguard run \
+  --source <repo_path> \
   --build-cmd "<build command>" \
-  --out <output-dir>
+  --config <path/to/.constraintguard.yml> \
+  --out <output_dir>
 ```
 
-### Ingest existing SARIF (skip running analyzer)
+### Score existing SARIF (no analyzer execution)
 ```bash
-constraintguard \
-  --source <path-to-repo> \
-  --config <path-to-.constraintguard.yml> \
-  --sarif <path-to-findings.sarif> \
-  --out <output-dir>
+constraintguard score \
+  --sarif <path/to/results.sarif> \
+  --config <path/to/.constraintguard.yml> \
+  --out <output_dir>
 ```
 
-### Show top findings only
+### Optional enrichment (bounded)
+Enrich top-K findings with evidence bundles and enhanced explanations:
+
 ```bash
-constraintguard ... --top 10
+constraintguard run \
+  --source <repo_path> \
+  --build-cmd "<build command>" \
+  --config <path/to/.constraintguard.yml> \
+  --out <output_dir> \
+  --enrich topK=10
 ```
 
-## Output files (demo target)
+## Output artifacts
 
-- `constraints.json` — normalized constraints + provenance
-- `report.json` — full scored findings, fired rules, explanations
-- `report.md` — human-readable prioritized report
+- `report.json` – full structured output (constraints, findings, scores, traces)
+- `report.md` – readable summary
+- `sarif/*.sarif` – analyzer output (if generated)
 
-## HardwareSpec normalization
+## YAML configuration essentials
 
-Accepted size formats (examples):
-- `2048B`, `2KB`, `20KB`, `1MB`
-Accepted time formats:
-- `50us`, `1ms`, `0.1ms`
+Typical file name: `.constraintguard.yml`
 
-## Rule trace expectations (demo)
-Every scored finding should include a “fired rules” list with:
-- rule identifier (stable name)
-- rationale referencing the specific constraint value that triggered it
+Minimal example:
 
-Example (conceptual):
-- `MEM_STACK_TIGHT`: “stack_size_bytes=2048 < 4096 and category=overflow”
-- `SAFETY_CRITICAL_FN`: “function=safety_shutdown is marked critical”
+```yaml
+platform: "cortex-m4"
+ram_size: "20KB"
+flash_size: "256KB"
+stack_size: "2KB"
+heap_size: "4KB"
+max_interrupt_latency: "50us"
 
-## Severity tiers (example)
-A simple default mapping (adjustable later):
-- 85–100: CRITICAL
-- 70–84: HIGH
-- 40–69: MEDIUM
-- 0–39: LOW
+safety_level: "ISO26262-ASIL-B"
+critical_functions:
+  - "control_loop"
+  - "isr_uart"
+```
 
-## Post-demo flags (reserved)
-These flags are future-facing and can be added after the deterministic demo is stable:
-- `--enrich topK=20`
-- `--enrich changed-files`
-- `--enrich-timeout 30s`
-- `--cache-dir <path>`
+Notes:
+- Size values may be expressed as `KB`, `MB`, or raw bytes.
+- Time values may be expressed as `us`, `ms`, or `s`.
+- Any field may be omitted; omitted fields become `unknown` unless derivable from the linker script.
+
+## Severity tiers (default)
+
+ConstraintGuard converts numeric scores to tiers:
+
+- `CRITICAL`: 85–100
+- `HIGH`: 70–84
+- `MEDIUM`: 40–69
+- `LOW`: 0–39
+
+(Exact thresholds may be configurable in the future.)
+
+## Determinism policy
+
+- Expert system scoring is deterministic.
+- Enrichment is optional and off by default.
+- When enrichment is enabled, deterministic scores remain unchanged unless explicitly configured otherwise.
+
+## Common workflows
+
+Compare constraints on the same codebase:
+1) run with tight constraints → output A  
+2) run with relaxed constraints → output B  
+3) inspect differences in ordering and rule traces
+
+Use in CI later:
+- wrap `constraintguard run` in a GitHub Action and publish `report.md` to job summary.
