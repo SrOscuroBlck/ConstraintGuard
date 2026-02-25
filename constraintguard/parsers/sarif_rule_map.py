@@ -13,6 +13,8 @@ _RULE_CATEGORY_MAP: dict[str, VulnerabilityCategory] = {
     "security.insecureAPI.vsprintf": VulnerabilityCategory.BUFFER_OVERFLOW,
     "security.insecureAPI.scanf": VulnerabilityCategory.BUFFER_OVERFLOW,
     "security.insecureAPI.strncat": VulnerabilityCategory.BUFFER_OVERFLOW,
+    # --- Stack address escape ---
+    "core.StackAddressEscape": VulnerabilityCategory.USE_AFTER_FREE,
     # --- Null dereference ---
     "core.NullDereference": VulnerabilityCategory.NULL_DEREF,
     "alpha.core.CastToStruct": VulnerabilityCategory.NULL_DEREF,
@@ -62,6 +64,8 @@ _RULE_CWE_MAP: dict[str, str] = {
     "core.NullDereference": "CWE-476",
     "alpha.core.CastToStruct": "CWE-476",
     "alpha.core.NullDereference": "CWE-476",
+    # Stack address escape (returns dangling pointer)
+    "core.StackAddressEscape": "CWE-562",
     # Leaks
     "unix.Malloc": "CWE-401",
     "cplusplus.NewDeleteLeaks": "CWE-401",

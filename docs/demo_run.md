@@ -5,7 +5,7 @@ This document describes how to run a complete ConstraintGuard demo locally.
 ## Prerequisites
 
 - Python 3.10+
-- Clang + scan-build on PATH (required only for the full analyzer pipeline)
+- Clang + scan-build on PATH (required only for the `run` subcommand)
 
 ## Installation
 
@@ -17,11 +17,51 @@ pip install -e .
 
 ---
 
-## Constraint comparison demo (works today, no scan-build required)
+## Quick start: score a SARIF file (no scan-build required)
 
-This is the primary entry point for demonstrating the research contribution. The script
-scores the same 8 findings under both `tight.yml` and `relaxed.yml` using the real
-deterministic scoring engine and prints a side-by-side tier comparison.
+The `score` subcommand parses an existing SARIF file, loads constraints from a YAML
+config (and optionally a linker script), runs the deterministic scoring engine, and
+produces console output + JSON + Markdown reports.
+
+```bash
+constraintguard score \
+  --sarif examples/vuln_demo/findings.sarif \
+  --config examples/configs/tight.yml \
+  --out out/demo_tight
+```
+
+Compare with a relaxed constraint profile on the same SARIF:
+
+```bash
+constraintguard score \
+  --sarif examples/vuln_demo/findings.sarif \
+  --config examples/configs/relaxed.yml \
+  --out out/demo_relaxed
+```
+
+Inspect the outputs:
+
+```bash
+cat out/demo_tight/report.md
+cat out/demo_relaxed/report.md
+```
+
+### Expected difference
+
+Under tight constraints (cortex-m4, 2KB stack, 50µs latency, ISO26262-ASIL-B):
+- **5 CRITICAL**, 2 HIGH, 1 MEDIUM
+
+Under relaxed constraints (cortex-a53, 8MB stack, 1ms latency, IEC62443-SL1):
+- **1 CRITICAL**, 1 HIGH, 6 MEDIUM
+
+6 of 8 findings change severity tier — identical SARIF input, constraint-aware
+prioritization drives the difference.
+
+---
+
+## Constraint comparison demo (side-by-side output)
+
+For a compact side-by-side view showing both profiles at once:
 
 ```bash
 python examples/demo_comparison.py
@@ -104,16 +144,12 @@ Verifies that the C project compiles cleanly (warnings from intentional patterns
 make -C examples/vuln_demo
 ```
 
-Expected output: builds `examples/vuln_demo/vuln_demo` binary with one warning about
-the intentional uninitialized-value pattern in `compute_checksum`.
-
 ---
 
 ## Full pipeline run (requires scan-build)
 
-When the end-to-end CLI pipeline is fully wired, the comparison can be run using real
-Clang Static Analyzer output. These commands are documented here as the intended
-production workflow:
+The `run` subcommand executes `scan-build` on your project, captures SARIF output, scores
+all findings, and generates reports in a single command:
 
 ```bash
 constraintguard run \
@@ -123,6 +159,8 @@ constraintguard run \
   --out out/demo_tight
 ```
 
+Compare with a relaxed profile:
+
 ```bash
 constraintguard run \
   --source examples/vuln_demo \
@@ -131,20 +169,37 @@ constraintguard run \
   --out out/demo_relaxed
 ```
 
-Differences will be visible in severity distribution, finding ordering, and rule traces
-across `out/demo_tight/report.md` and `out/demo_relaxed/report.md`.
+---
+
+## Score your own project
+
+If you already have SARIF output from any analyzer:
+
+```bash
+constraintguard score \
+  --sarif /path/to/results.sarif \
+  --config /path/to/.constraintguard.yml \
+  --out out/my_project
+```
+
+You can also merge constraints from a linker script:
+
+```bash
+constraintguard score \
+  --sarif /path/to/results.sarif \
+  --config /path/to/.constraintguard.yml \
+  --linker-script /path/to/linker.ld \
+  --out out/my_project
+```
 
 ---
 
-## Generate a sample JSON report from mocked data
+## Output files
 
-Verifies model serialization and the console reporting layer without requiring scan-build:
+Each run produces deterministic output in the `--out` directory:
 
-```bash
-python examples/mock_pipeline.py
-```
-
-Produces `examples/sample_report.json`.
+- `report.json` — full structured report (constraints, findings, scores, rule traces)
+- `report.md` — human-friendly Markdown summary
 
 ---
 

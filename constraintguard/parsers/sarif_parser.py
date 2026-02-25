@@ -1,6 +1,7 @@
 import json
 import logging
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 from constraintguard.models.vulnerability import Vulnerability
 from constraintguard.parsers.sarif_rule_map import (
@@ -12,6 +13,13 @@ from constraintguard.parsers.sarif_rule_map import (
 logger = logging.getLogger(__name__)
 
 _CWE_TAG_PREFIX = "CWE-"
+
+
+def _normalize_file_path(raw_path: str) -> str:
+    if raw_path.startswith("file:///"):
+        parsed = urlparse(raw_path)
+        return unquote(parsed.path)
+    return unquote(raw_path)
 
 
 def parse_sarif(sarif_path: Path) -> list[Vulnerability]:
@@ -131,6 +139,7 @@ def _parse_result(
     function_name = _extract_function_name(locations)
 
     category = resolve_category(rule_id)
+    category = _refine_category_from_message(category, rule_id, message)
     cwe = _extract_cwe_from_result(result, rule_id, rule_cwe_registry, category)
 
     return Vulnerability(
@@ -142,8 +151,30 @@ def _parse_result(
         start_col=start_col,
         function=function_name,
         cwe=cwe,
-        category=category.value,
+        category=category,
     )
+
+
+_USE_AFTER_FREE_PATTERNS = ("use of memory after", "used after", "use-after-free", "after it is freed")
+_DOUBLE_FREE_PATTERNS = ("double free", "freed twice", "attempt to free released")
+
+
+def _refine_category_from_message(
+    category: VulnerabilityCategory,
+    rule_id: str,
+    message: str,
+) -> VulnerabilityCategory:
+    if rule_id not in ("unix.Malloc", "cplusplus.NewDelete", "cplusplus.NewDeleteLeaks"):
+        return category
+
+    lower_message = message.lower()
+    for pattern in _USE_AFTER_FREE_PATTERNS:
+        if pattern in lower_message:
+            return VulnerabilityCategory.USE_AFTER_FREE
+    for pattern in _DOUBLE_FREE_PATTERNS:
+        if pattern in lower_message:
+            return VulnerabilityCategory.USE_AFTER_FREE
+    return category
 
 
 def _extract_rule_id(result: dict) -> str | None:
@@ -174,7 +205,8 @@ def _extract_physical_location(
         return "unknown", None, None
 
     artifact = physical.get("artifactLocation", {})
-    path = artifact.get("uri", "unknown") if isinstance(artifact, dict) else "unknown"
+    raw_path = artifact.get("uri", "unknown") if isinstance(artifact, dict) else "unknown"
+    path = _normalize_file_path(raw_path)
 
     region = physical.get("region", {})
     if not isinstance(region, dict):

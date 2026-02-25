@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from constraintguard.models.enums import SeverityTier
+from constraintguard.models.enums import SeverityTier, VulnerabilityCategory
 from constraintguard.models.hardware_spec import HardwareSpec
 from constraintguard.models.risk_report import RiskItem
 from constraintguard.models.vulnerability import Vulnerability
@@ -22,7 +22,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=15,
         function="copy_input",
         cwe="CWE-120",
-        category="buffer_overflow",
+        category=VulnerabilityCategory.BUFFER_OVERFLOW,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -32,7 +32,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=22,
         function="read_sensor",
         cwe="CWE-476",
-        category="null_deref",
+        category=VulnerabilityCategory.NULL_DEREF,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -42,7 +42,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=35,
         function="build_packet",
         cwe="CWE-401",
-        category="leak",
+        category=VulnerabilityCategory.LEAK,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -52,7 +52,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=52,
         function="process_buffer",
         cwe="CWE-416",
-        category="use_after_free",
+        category=VulnerabilityCategory.USE_AFTER_FREE,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -62,7 +62,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=58,
         function="allocate_matrix",
         cwe="CWE-190",
-        category="integer_overflow",
+        category=VulnerabilityCategory.INTEGER_OVERFLOW,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -72,7 +72,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=69,
         function="compute_checksum",
         cwe=None,
-        category="uninitialized",
+        category=VulnerabilityCategory.UNINITIALIZED,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -82,7 +82,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=76,
         function="isr_uart",
         cwe="CWE-120",
-        category="buffer_overflow",
+        category=VulnerabilityCategory.BUFFER_OVERFLOW,
     ),
     Vulnerability(
         tool="clang-sa",
@@ -92,7 +92,7 @@ _DEMO_VULNERABILITIES: list[Vulnerability] = [
         start_line=83,
         function="control_loop",
         cwe="CWE-476",
-        category="null_deref",
+        category=VulnerabilityCategory.NULL_DEREF,
     ),
 ]
 
@@ -131,7 +131,7 @@ def _print_finding_row(
     changed = _tier_changed(tight_item.tier, relaxed_item.tier)
     change_marker = "  ← TIER CHANGED" if changed else ""
 
-    print(f"  [{rank}] {vuln.category}  [{vuln.rule_id}]")
+    print(f"  [{rank}] {vuln.category.value}  [{vuln.rule_id}]")
     print(f"      {location}{fn_label}")
     print(
         f"      Tight:   {_tier_label(tight_item.tier)}  score={tight_item.final_score:3d}"

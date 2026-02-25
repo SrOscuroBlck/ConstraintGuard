@@ -1,16 +1,32 @@
 import re
 from typing import Callable
 
+from constraintguard.models.enums import VulnerabilityCategory
 from constraintguard.models.hardware_spec import HardwareSpec
 from constraintguard.models.risk_report import RuleFiring
 from constraintguard.models.vulnerability import Vulnerability
 
 RuleFunction = Callable[[Vulnerability, HardwareSpec], RuleFiring | None]
 
-_MEMORY_SAFETY_CATEGORIES = {"buffer_overflow", "use_after_free", "null_deref"}
-_OVERFLOW_UAF_CATEGORIES = {"buffer_overflow", "use_after_free"}
-_LEAK_UAF_CATEGORIES = {"leak", "use_after_free"}
-_HIGH_IMPACT_CATEGORIES = {"buffer_overflow", "use_after_free", "null_deref", "format_string"}
+_MEMORY_SAFETY_CATEGORIES = {
+    VulnerabilityCategory.BUFFER_OVERFLOW,
+    VulnerabilityCategory.USE_AFTER_FREE,
+    VulnerabilityCategory.NULL_DEREF,
+}
+_OVERFLOW_UAF_CATEGORIES = {
+    VulnerabilityCategory.BUFFER_OVERFLOW,
+    VulnerabilityCategory.USE_AFTER_FREE,
+}
+_LEAK_UAF_CATEGORIES = {
+    VulnerabilityCategory.LEAK,
+    VulnerabilityCategory.USE_AFTER_FREE,
+}
+_HIGH_IMPACT_CATEGORIES = {
+    VulnerabilityCategory.BUFFER_OVERFLOW,
+    VulnerabilityCategory.USE_AFTER_FREE,
+    VulnerabilityCategory.NULL_DEREF,
+    VulnerabilityCategory.FORMAT_STRING,
+}
 _ASIL_HIGH_LEVELS = {"asil-b", "asil-c", "asil-d"}
 _FUNCTIONAL_SAFETY_PREFIXES = ("iso26262", "iec62443", "do-178", "iec61508", "misra")
 
@@ -63,7 +79,7 @@ def _rule_mem_stack_tight(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring
         delta=20,
         rationale=(
             f"Stack is tightly constrained at {spec.stack_size_bytes}B (≤4096B); "
-            f"{vuln.category} can overwrite stack frames and corrupt return addresses."
+            f"{vuln.category.value} can overwrite stack frames and corrupt return addresses."
         ),
         constraints_used=["stack_size_bytes"],
     )
@@ -74,7 +90,7 @@ def _rule_mem_heap_tight(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring 
         return None
     if spec.heap_size_bytes > 8192:
         return None
-    if vuln.category != "leak":
+    if vuln.category != VulnerabilityCategory.LEAK:
         return None
     return RuleFiring(
         rule_id="R-MEM-HEAP-TIGHT",
@@ -99,7 +115,7 @@ def _rule_mem_ram_tight(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring |
         delta=15,
         rationale=(
             f"Total RAM is limited to {spec.ram_size_bytes}B (≤64KB); "
-            f"{vuln.category} corrupts a significant fraction of addressable memory on this device."
+            f"{vuln.category.value} corrupts a significant fraction of addressable memory on this device."
         ),
         constraints_used=["ram_size_bytes"],
     )
@@ -115,7 +131,7 @@ def _rule_mem_no_dynamic(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring 
         delta=10,
         rationale=(
             "No heap budget is declared in the constraint profile; "
-            f"a {vuln.category} defect suggests untracked or unexpected dynamic allocation on this target."
+            f"a {vuln.category.value} defect suggests untracked or unexpected dynamic allocation on this target."
         ),
         constraints_used=["heap_size_bytes"],
     )
@@ -147,14 +163,14 @@ def _rule_isr_latency_overflow(vuln: Vulnerability, spec: HardwareSpec) -> RuleF
         delta=15,
         rationale=(
             f"Maximum interrupt latency budget is {spec.max_interrupt_latency_us}µs (≤100µs); "
-            f"a {vuln.category} in an interrupt-sensitive code path can cause a missed real-time deadline."
+            f"a {vuln.category.value} in an interrupt-sensitive code path can cause a missed real-time deadline."
         ),
         constraints_used=["max_interrupt_latency_us"],
     )
 
 
 def _rule_isr_deadlock(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring | None:
-    if vuln.category != "deadlock":
+    if vuln.category != VulnerabilityCategory.DEADLOCK:
         return None
     if not _is_isr_function(vuln.function):
         return None
@@ -198,7 +214,7 @@ def _rule_safety_asil_strict(vuln: Vulnerability, spec: HardwareSpec) -> RuleFir
         delta=15,
         rationale=(
             f"Safety integrity level '{spec.safety_level}' mandates deterministic memory-safe behaviour; "
-            f"{vuln.category} directly violates ISO 26262 ASIL freedom-from-interference requirements."
+            f"{vuln.category.value} directly violates ISO 26262 ASIL freedom-from-interference requirements."
         ),
         constraints_used=["safety_level"],
     )
@@ -237,7 +253,7 @@ def _rule_time_ultra_tight(vuln: Vulnerability, spec: HardwareSpec) -> RuleFirin
 def _rule_latency_deadlock(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring | None:
     if spec.max_interrupt_latency_us is None:
         return None
-    if vuln.category != "deadlock":
+    if vuln.category != VulnerabilityCategory.DEADLOCK:
         return None
     return RuleFiring(
         rule_id="R-LATENCY-DEADLOCK",
@@ -253,7 +269,7 @@ def _rule_latency_deadlock(vuln: Vulnerability, spec: HardwareSpec) -> RuleFirin
 def _rule_safety_int_overflow(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring | None:
     if not _is_functional_safety(spec.safety_level):
         return None
-    if vuln.category != "integer_overflow":
+    if vuln.category != VulnerabilityCategory.INTEGER_OVERFLOW:
         return None
     return RuleFiring(
         rule_id="R-SAFETY-INT-OVF",

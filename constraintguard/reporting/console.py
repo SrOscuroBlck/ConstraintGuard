@@ -81,7 +81,7 @@ def _print_finding(rank: int, item: RiskItem) -> None:
     fn_part = f"  in {item.vulnerability.function}" if item.vulnerability.function else ""
     rule_part = f"  [{item.vulnerability.rule_id}]" if item.vulnerability.rule_id else ""
 
-    print(f"{_INDENT}[{rank}] {tier_label}  score: {item.final_score}  category: {item.vulnerability.category}")
+    print(f"{_INDENT}[{rank}] {tier_label}  score: {item.final_score}  category: {item.vulnerability.category.value}")
     print(f"{_BODY_INDENT}{location}{fn_part}{rule_part}")
     print()
 
