@@ -293,6 +293,7 @@ runs:
       uses: actions/github-script@v7
       env:
         REPORT_JSON: ${{ steps.score.outputs.report-json }}
+        GITHUB_WORKSPACE_DIR: ${{ github.workspace }}
       with:
         script: |
           const fs = require('fs');
@@ -307,13 +308,31 @@ runs:
             const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
             const items = report.items || [];
 
+            const workspace = (process.env.GITHUB_WORKSPACE_DIR || '').replace(/\/$/, '');
+
+            function normalizePath(p) {
+              if (!p) return p;
+              if (workspace && p.startsWith(workspace + '/')) {
+                return p.substring(workspace.length + 1);
+              }
+              if (p.startsWith('/')) {
+                const parts = p.split('/');
+                const repoName = context.repo.repo;
+                const idx = parts.lastIndexOf(repoName);
+                if (idx !== -1) {
+                  return parts.slice(idx + 1).join('/');
+                }
+              }
+              return p;
+            }
+
             const suggestions = [];
             for (const item of items) {
               if (!item.enrichment || !item.enrichment.fix_suggestions) continue;
               const v = item.vulnerability;
               for (const fix of item.enrichment.fix_suggestions) {
                 suggestions.push({
-                  path: v.path,
+                  path: normalizePath(v.path),
                   function_name: v.function || null,
                   line: fix.line,
                   original_code: fix.original_code,
