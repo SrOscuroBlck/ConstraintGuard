@@ -109,7 +109,6 @@ def _run_enrichment(
         print("Warning: LLM environment variables not set. Falling back to expert-only mode.")
         return items, None, None, None, None
 
-    timeout = int(os.environ.get("CONSTRAINTGUARD_LLM_TIMEOUT", "120"))
     max_retries = int(os.environ.get("CONSTRAINTGUARD_LLM_MAX_RETRIES", "1"))
     reasoning_effort = os.environ.get("CONSTRAINTGUARD_LLM_EFFORT", "low")
 
@@ -118,7 +117,6 @@ def _run_enrichment(
             provider=LLMProvider(provider_str),
             model=model_str,
             api_key=api_key,
-            timeout=timeout,
             max_retries=max_retries,
             reasoning_effort=reasoning_effort,
         )
