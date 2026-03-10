@@ -17,6 +17,8 @@ _EMPTY_RESPONSE = LLMResponse()
 def _enforce_additional_properties_false(schema: dict) -> dict:
     if schema.get("type") == "object":
         schema["additionalProperties"] = False
+        if "properties" in schema:
+            schema["required"] = list(schema["properties"].keys())
     for key in ("properties", "$defs"):
         container = schema.get(key, {})
         for child in container.values():
