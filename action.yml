@@ -99,7 +99,12 @@ runs:
 
     - name: Install ConstraintGuard
       shell: bash
-      run: pip install "${{ github.action_path }}"
+      run: |
+        if [[ "${{ inputs.analysis-mode }}" == "llm" || "${{ inputs.analysis-mode }}" == "hybrid" ]]; then
+          pip install "${{ github.action_path }}[llm]"
+        else
+          pip install "${{ github.action_path }}"
+        fi
 
     - name: Run ConstraintGuard
       id: score
