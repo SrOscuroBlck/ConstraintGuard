@@ -68,6 +68,18 @@ inputs:
     description: "API key for the chosen LLM provider. Required when analysis-mode is 'llm' or 'hybrid'."
     required: false
     default: ""
+  llm-timeout:
+    description: "Timeout in seconds for each LLM request (default: 120)"
+    required: false
+    default: "120"
+  llm-max-retries:
+    description: "Max retries for failed LLM requests (default: 1)"
+    required: false
+    default: "1"
+  llm-effort:
+    description: "Reasoning effort for supported models: 'low', 'medium', or 'high' (default: low)"
+    required: false
+    default: "low"
 
 outputs:
   report-json:
@@ -124,6 +136,9 @@ runs:
         CONSTRAINTGUARD_LLM_PROVIDER: ${{ inputs.llm-provider }}
         CONSTRAINTGUARD_LLM_MODEL: ${{ inputs.llm-model }}
         CONSTRAINTGUARD_LLM_API_KEY: ${{ inputs.llm-api-key }}
+        CONSTRAINTGUARD_LLM_TIMEOUT: ${{ inputs.llm-timeout }}
+        CONSTRAINTGUARD_LLM_MAX_RETRIES: ${{ inputs.llm-max-retries }}
+        CONSTRAINTGUARD_LLM_EFFORT: ${{ inputs.llm-effort }}
       run: |
         set +e
 

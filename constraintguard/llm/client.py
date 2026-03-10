@@ -9,9 +9,30 @@ logger = logging.getLogger(__name__)
 
 _REASONING_MODEL_PREFIXES = ("o1", "o3", "o4", "gpt-5")
 
-_NON_RETRYABLE_STATUS_CODES = {401, 403, 404}
+_NON_RETRYABLE_STATUS_CODES = {400, 401, 403, 404}
 
 _EMPTY_RESPONSE = LLMResponse()
+
+
+def _enforce_additional_properties_false(schema: dict) -> dict:
+    if schema.get("type") == "object":
+        schema["additionalProperties"] = False
+        if "properties" in schema:
+            schema["required"] = list(schema["properties"].keys())
+    for key in ("properties", "$defs"):
+        container = schema.get(key, {})
+        for child in container.values():
+            if isinstance(child, dict):
+                _enforce_additional_properties_false(child)
+    for key in ("items", "allOf", "anyOf", "oneOf"):
+        value = schema.get(key)
+        if isinstance(value, dict):
+            _enforce_additional_properties_false(value)
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    _enforce_additional_properties_false(item)
+    return schema
 
 
 def _is_reasoning_model(model: str) -> bool:
@@ -89,15 +110,17 @@ class OpenAIClient(LLMClient):
         kwargs: dict = {
             "model": self._config.model,
             "input": input_messages,
-            "reasoning": {"effort": "medium"},
+            "reasoning": {"effort": self._config.reasoning_effort},
         }
 
         if request.response_schema is not None:
+            raw_schema = request.response_schema.model_json_schema()
+            schema = _enforce_additional_properties_false(raw_schema)
             kwargs["text"] = {
                 "format": {
                     "type": "json_schema",
                     "name": "analysis_output",
-                    "schema": request.response_schema.model_json_schema(),
+                    "schema": schema,
                 }
             }
         else:
@@ -133,11 +156,13 @@ class OpenAIClient(LLMClient):
         }
 
         if request.response_schema is not None:
+            raw_schema = request.response_schema.model_json_schema()
+            schema = _enforce_additional_properties_false(raw_schema)
             kwargs["response_format"] = {
                 "type": "json_schema",
                 "json_schema": {
                     "name": "analysis_output",
-                    "schema": request.response_schema.model_json_schema(),
+                    "schema": schema,
                 },
             }
         else:

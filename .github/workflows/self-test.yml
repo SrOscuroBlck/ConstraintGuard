@@ -37,3 +37,5 @@ jobs:
           llm-provider: "openai"
           llm-model: "gpt-5-mini"
           llm-api-key: ${{ secrets.LLM_API_KEY }}
+          llm-effort: "low"
+          llm-max-retries: "1"
