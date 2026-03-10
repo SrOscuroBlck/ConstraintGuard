@@ -424,44 +424,64 @@ runs:
               c.body && c.body.includes('ConstraintGuard') && c.user.type === 'Bot'
             );
 
-            if (!botComment) {
-              console.log('No summary comment found to update.');
-              return;
-            }
-
-            let appendix = '';
-
-            if (inlineSuggestions.length > 0) {
-              appendix += `\n\n**Inline suggestions:** ${inlineSuggestions.length} code fix${inlineSuggestions.length !== 1 ? 'es' : ''} posted on the diff`;
-            }
-
-            if (nonInlineSuggestions.length > 0) {
-              appendix += `\n\n### Code Fix Suggestions\n\n`;
-              appendix += `> The following fixes target files outside this PR diff and could not be posted inline.\n\n`;
-              for (let i = 0; i < nonInlineSuggestions.length; i++) {
-                const s = nonInlineSuggestions[i];
-                const fn = s.function_name ? ` in \`${s.function_name}\`` : '';
-                appendix += `**${i + 1}. [${s.tier}]** (score: ${s.score}) -- \`${s.category}\`\n`;
-                appendix += `\`${s.path}:${s.line}\`${fn}\n\n`;
-                appendix += `${s.rationale}\n\n`;
-                appendix += '```diff\n';
-                appendix += `- ${s.original_code}\n`;
-                appendix += `+ ${s.proposed_code}\n`;
-                appendix += '```\n\n';
-                if (i < nonInlineSuggestions.length - 1) {
-                  appendix += '---\n\n';
-                }
-              }
-            }
-
-            if (appendix) {
+            if (inlineSuggestions.length > 0 && botComment) {
+              const updatedBody = botComment.body + `\n\n**Inline suggestions:** ${inlineSuggestions.length} code fix${inlineSuggestions.length !== 1 ? 'es' : ''} posted on the diff`;
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
-                body: botComment.body + appendix,
+                body: updatedBody,
               });
-            } else {
+            }
+
+            if (nonInlineSuggestions.length > 0) {
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              });
+              const headSha = pr.head.sha;
+              const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`;
+
+              const grouped = new Map();
+              for (const s of nonInlineSuggestions) {
+                if (!grouped.has(s.path)) grouped.set(s.path, []);
+                grouped.get(s.path).push(s);
+              }
+
+              for (const [filePath, fileSuggestions] of grouped) {
+                const fileUrl = `${repoUrl}/blob/${headSha}/${filePath}`;
+                let body = `### ConstraintGuard -- Code Fix Suggestions\n`;
+                body += `**[${filePath}](${fileUrl})**\n\n`;
+
+                for (let i = 0; i < fileSuggestions.length; i++) {
+                  const s = fileSuggestions[i];
+                  const lineUrl = `${fileUrl}#L${s.line}`;
+                  const fn = s.function_name ? ` in \`${s.function_name}\`` : '';
+                  body += `**${i + 1}. [${s.tier}]** (score: ${s.score}) -- \`${s.category}\`\n`;
+                  body += `[Line ${s.line}](${lineUrl})${fn}\n\n`;
+                  body += `${s.rationale}\n\n`;
+                  body += '```diff\n';
+                  body += `- ${s.original_code}\n`;
+                  body += `+ ${s.proposed_code}\n`;
+                  body += '```\n\n';
+                  if (i < fileSuggestions.length - 1) {
+                    body += '---\n\n';
+                  }
+                }
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body: body,
+                });
+              }
+
+              console.log(`Posted ${grouped.size} comment(s) for ${nonInlineSuggestions.length} non-inline suggestion(s).`);
+            }
+
+            if (inlineSuggestions.length === 0 && nonInlineSuggestions.length === 0) {
               console.log('No suggestions to post.');
             }
 
