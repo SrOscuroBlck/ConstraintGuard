@@ -17,6 +17,7 @@ class LLMConfig(BaseModel):
     api_key: str
     timeout: int = 60
     max_retries: int = 3
+    reasoning_effort: str = "medium"
 
 
 class LLMRequest(BaseModel):

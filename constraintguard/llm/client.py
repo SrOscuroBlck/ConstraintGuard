@@ -89,7 +89,7 @@ class OpenAIClient(LLMClient):
         kwargs: dict = {
             "model": self._config.model,
             "input": input_messages,
-            "reasoning": {"effort": "medium"},
+            "reasoning": {"effort": self._config.reasoning_effort},
         }
 
         if request.response_schema is not None:
