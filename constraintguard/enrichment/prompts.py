@@ -23,7 +23,15 @@ SYSTEM_PROMPT = (
     "6. For fix suggestions, provide the exact original line and a corrected version "
     "with a rationale that references the hardware constraints.\n"
     "7. For new discoveries, specify the exact file path, line range, vulnerability "
-    "type, and evidence citation from the source code."
+    "type, and evidence citation from the source code.\n\n"
+    "REQUIRED JSON SCHEMA for your response:\n"
+    '{"tags": ["string"], "explanation": "string", '
+    '"fix_suggestions": [{"line": int, "original_code": "string", '
+    '"proposed_code": "string", "rationale": "string"}], '
+    '"new_discoveries": [{"type": "string", "severity_rationale": "string", '
+    '"file_path": "string", "start_line": int, "end_line": int, '
+    '"evidence_citation": "string"}]}\n'
+    "Use EXACTLY these field names. Do not rename or add fields."
 )
 
 _SNIPPET_TEMPLATE = "--- {label} ({path} L{start}-L{end}) ---\n{content}\n"

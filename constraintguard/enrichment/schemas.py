@@ -1,11 +1,11 @@
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 
 class FixSuggestionSchema(BaseModel):
-    line: int
-    original_code: str
-    proposed_code: str
-    rationale: str
+    line: int = Field(validation_alias=AliasChoices("line", "original_line", "line_number"))
+    original_code: str = Field(validation_alias=AliasChoices("original_code", "original", "before"))
+    proposed_code: str = Field(validation_alias=AliasChoices("proposed_code", "proposed", "replacement", "after"))
+    rationale: str = Field(validation_alias=AliasChoices("rationale", "reason", "explanation"))
 
 
 class NewDiscoverySchema(BaseModel):

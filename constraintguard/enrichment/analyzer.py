@@ -2,7 +2,7 @@ import json
 import logging
 
 from constraintguard.enrichment.prompts import SYSTEM_PROMPT, build_user_prompt
-from constraintguard.enrichment.schemas import LLMAnalysisSchema, LLM_OUTPUT_JSON_SCHEMA
+from constraintguard.enrichment.schemas import LLMAnalysisSchema
 from constraintguard.evidence.models import EvidenceBundle
 from constraintguard.llm.client import LLMClient
 from constraintguard.llm.cost import CostTracker
@@ -91,7 +91,7 @@ def _enrich_single_item(
     request = LLMRequest(
         system_prompt=SYSTEM_PROMPT,
         user_prompt=user_prompt,
-        response_schema=None,
+        response_schema=LLMAnalysisSchema,
     )
 
     response = client.analyze(request)
