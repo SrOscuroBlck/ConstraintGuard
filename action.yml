@@ -65,7 +65,7 @@ inputs:
     required: false
     default: ""
   llm-api-key:
-    description: "LLM API key. Pass via ${{ secrets.YOUR_SECRET }}. Required when analysis-mode is 'llm' or 'hybrid'."
+    description: "API key for the chosen LLM provider. Required when analysis-mode is 'llm' or 'hybrid'."
     required: false
     default: ""
 
