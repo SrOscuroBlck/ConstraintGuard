@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -15,6 +14,30 @@ class RuleFiring(BaseModel):
     constraints_used: list[str]
 
 
+class FixSuggestion(BaseModel):
+    line: int
+    original_code: str
+    proposed_code: str
+    rationale: str
+
+
+class EvidenceCitation(BaseModel):
+    file_path: str
+    start_line: int
+    end_line: int
+    snippet: str
+
+
+class EnrichmentOutput(BaseModel):
+    tags: list[str] = Field(default_factory=list)
+    llm_explanation: str | None = None
+    fix_suggestions: list[FixSuggestion] = Field(default_factory=list)
+    evidence_citations: list[EvidenceCitation] = Field(default_factory=list)
+    model_used: str | None = None
+    tokens_used: int = 0
+    cost: float = 0.0
+
+
 class RiskItem(BaseModel):
     vulnerability: Vulnerability
     base_score: int
@@ -23,7 +46,8 @@ class RiskItem(BaseModel):
     rule_firings: list[RuleFiring]
     explanation: str
     remediation: str
-    enrichment: dict[str, Any] | None = None
+    enrichment: EnrichmentOutput | None = None
+    source: str = "sarif"
 
 
 class TierCounts(BaseModel):
@@ -45,6 +69,11 @@ class RunMetadata(BaseModel):
     command: str | None = None
     source_path: str | None = None
     config_path: str | None = None
+    mode: str = "expert"
+    llm_model: str | None = None
+    llm_provider: str | None = None
+    llm_total_cost: float | None = None
+    llm_total_tokens: int | None = None
 
 
 class RiskReport(BaseModel):

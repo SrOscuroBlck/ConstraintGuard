@@ -51,6 +51,15 @@ def build_parser() -> argparse.ArgumentParser:
         "--fail-on", type=str, choices=_FAIL_ON_CHOICES, default=None,
         help="Exit with code 2 if any finding meets or exceeds this tier (critical, high, medium, low)",
     )
+    run_parser.add_argument(
+        "--mode", type=str, choices=["expert", "llm", "hybrid"], default="expert",
+    )
+    run_parser.add_argument(
+        "--llm-topk", type=int, default=10,
+    )
+    run_parser.add_argument(
+        "--llm-changed-files", action="store_true", default=False,
+    )
 
     score_parser = subparsers.add_parser(
         "score",
@@ -74,6 +83,15 @@ def build_parser() -> argparse.ArgumentParser:
     score_parser.add_argument(
         "--fail-on", type=str, choices=_FAIL_ON_CHOICES, default=None,
         help="Exit with code 2 if any finding meets or exceeds this tier (critical, high, medium, low)",
+    )
+    score_parser.add_argument(
+        "--mode", type=str, choices=["expert", "llm", "hybrid"], default="expert",
+    )
+    score_parser.add_argument(
+        "--llm-topk", type=int, default=10,
+    )
+    score_parser.add_argument(
+        "--llm-changed-files", action="store_true", default=False,
     )
 
     return parser
@@ -152,6 +170,9 @@ def handle_run(args: argparse.Namespace) -> int:
         top_k=args.top_k,
         command=_build_command_string(args),
         source_path=str(args.source),
+        mode=args.mode,
+        llm_topk=args.llm_topk,
+        llm_changed_files=args.llm_changed_files,
     )
     return _check_threshold(report, args.fail_on)
 
@@ -167,6 +188,9 @@ def handle_score(args: argparse.Namespace) -> int:
         out_dir=args.out,
         top_k=args.top_k,
         command=_build_command_string(args),
+        mode=args.mode,
+        llm_topk=args.llm_topk,
+        llm_changed_files=args.llm_changed_files,
     )
     return _check_threshold(report, args.fail_on)
 
