@@ -13,6 +13,12 @@ _WRAP_WIDTH = 68
 
 _TIER_LABEL_WIDTH = 10
 
+_CLR_RESET = "\033[0m"
+_CLR_CYAN = "\033[36m"
+_CLR_GREEN = "\033[32m"
+_CLR_YELLOW = "\033[33m"
+_CLR_BOLD = "\033[1m"
+
 _TIER_DISPLAY: dict[SeverityTier, str] = {
     SeverityTier.CRITICAL: "CRITICAL",
     SeverityTier.HIGH: "HIGH",
@@ -106,6 +112,12 @@ def _print_finding(rank: int, item: RiskItem) -> None:
 
     print(f"{_BODY_INDENT}Fired rules: {_fired_rules_line(item)}")
     print()
+
+    if item.enrichment is not None and item.enrichment.fix_suggestions:
+        fix = item.enrichment.fix_suggestions[0]
+        print(f"{_BODY_INDENT}{_CLR_GREEN}LLM fix: line {fix.line}: {fix.original_code} -> {fix.proposed_code}{_CLR_RESET}")
+        print()
+
     print(f"{_INDENT}{_RULE_LINE}")
 
 
@@ -125,6 +137,12 @@ def print_report_to_console(report: RiskReport, top_k: int = 10) -> None:
         print(f"{_INDENT}Source: {report.run_metadata.source_path}")
     if report.run_metadata.config_path:
         print(f"{_INDENT}Config: {report.run_metadata.config_path}")
+    if report.run_metadata.mode != "expert":
+        mode_label = report.run_metadata.mode
+        print(f"{_INDENT}{_CLR_CYAN}Mode: {mode_label} (expert + LLM){_CLR_RESET}")
+        if report.run_metadata.llm_model:
+            provider = report.run_metadata.llm_provider or "unknown"
+            print(f"{_INDENT}{_CLR_CYAN}LLM: {report.run_metadata.llm_model} via {provider}{_CLR_RESET}")
     print()
 
     _print_constraints_block(report)
@@ -141,3 +159,11 @@ def print_report_to_console(report: RiskReport, top_k: int = 10) -> None:
         _print_finding(rank, item)
 
     print()
+
+    if report.run_metadata.mode != "expert":
+        expert_count = sum(1 for i in report.items if i.source != "llm")
+        llm_count = sum(1 for i in report.items if i.source == "llm")
+        cost = report.run_metadata.llm_total_cost or 0.0
+        _print_rule_header("Analysis Summary")
+        print(f"{_INDENT}{_CLR_CYAN}Expert: {expert_count} findings | LLM: {llm_count} additional | Cost: ${cost:.2f}{_CLR_RESET}")
+        print()

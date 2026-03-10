@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from constraintguard.models.enums import SeverityTier
-from constraintguard.models.risk_report import RiskItem, RiskReport
+from constraintguard.models.risk_report import EnrichmentOutput, RiskItem, RiskReport
 from constraintguard.reporting.formatting import format_bytes, format_us
 
 _REPORT_FILENAME = "report.md"
@@ -23,6 +23,12 @@ def _header_section(report: RiskReport) -> list[str]:
         lines.append(f"**Source:** {meta.source_path}  ")
     if meta.config_path:
         lines.append(f"**Config:** {meta.config_path}  ")
+    if meta.mode != "expert":
+        lines.append(f"**Mode:** {meta.mode} (expert + LLM)  ")
+        if meta.llm_model:
+            provider = meta.llm_provider or "unknown"
+            cost = meta.llm_total_cost or 0.0
+            lines.append(f"**LLM:** {meta.llm_model} via {provider} — ${cost:.2f}  ")
     if meta.command:
         lines += ["", f"```", f"{meta.command}", "```"]
     lines += ["", "---", ""]
@@ -106,6 +112,27 @@ def _fired_rules_lines(item: RiskItem) -> list[str]:
     return lines
 
 
+def _enrichment_lines(enrichment: EnrichmentOutput) -> list[str]:
+    lines: list[str] = []
+    if enrichment.llm_explanation:
+        lines.append("**LLM Analysis:**  ")
+        lines.append(enrichment.llm_explanation)
+        lines.append("")
+    if enrichment.tags:
+        tag_labels = " ".join(f"[{tag}]" for tag in enrichment.tags)
+        lines.append(f"**Tags:** {tag_labels}  ")
+        lines.append("")
+    for fix in enrichment.fix_suggestions:
+        lines.append(f"**Suggested Fix** (line {fix.line}):")
+        lines.append("```diff")
+        lines.append(f"- {fix.original_code}")
+        lines.append(f"+ {fix.proposed_code}")
+        lines.append("```")
+        lines.append(f"_{fix.rationale}_")
+        lines.append("")
+    return lines
+
+
 def _finding_section(rank: int, item: RiskItem) -> list[str]:
     vuln = item.vulnerability
     location = vuln.path
@@ -138,6 +165,9 @@ def _finding_section(rank: int, item: RiskItem) -> list[str]:
         lines += fired_lines
         lines.append("")
 
+    if item.enrichment is not None:
+        lines += _enrichment_lines(item.enrichment)
+
     lines += ["---", ""]
     return lines
 
@@ -155,12 +185,29 @@ def build_markdown_report(report: RiskReport, top_k: int = 10) -> str:
     sections += _constraints_section(report)
     sections += _distribution_section(report)
 
-    top_items = report.items[:top_k]
+    expert_items = [i for i in report.items if i.source != "llm"]
+    llm_items = [i for i in report.items if i.source == "llm"]
+
+    top_items = expert_items[:top_k]
     if top_items:
-        heading_suffix = f" (top {len(top_items)} of {report.summary.total_findings})" if report.summary.total_findings > top_k else ""
+        total_expert = len(expert_items)
+        heading_suffix = f" (top {len(top_items)} of {total_expert})" if total_expert > top_k else ""
         sections += [f"## Findings{heading_suffix}", ""]
         for rank, item in enumerate(top_items, start=1):
             sections += _finding_section(rank, item)
+
+    if llm_items:
+        sections += ["## Additional Findings (LLM)", ""]
+        for rank, item in enumerate(llm_items, start=1):
+            sections += _finding_section(rank, item)
+
+    if report.run_metadata.mode != "expert":
+        sections += ["---", ""]
+        expert_count = len(expert_items)
+        llm_count = len(llm_items)
+        cost = report.run_metadata.llm_total_cost or 0.0
+        sections.append(f"Expert findings: {expert_count} | LLM discoveries: {llm_count} | LLM cost: ${cost:.2f}")
+        sections.append("")
 
     sections += _footer_section()
     return "\n".join(sections)
