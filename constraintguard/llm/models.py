@@ -15,7 +15,7 @@ class LLMConfig(BaseModel):
     provider: LLMProvider
     model: str
     api_key: str
-    timeout: int = 60
+    timeout: int = 300
     max_retries: int = 3
     reasoning_effort: str = "medium"
 
