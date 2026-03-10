@@ -32,7 +32,7 @@ jobs:
       # generate it here. Otherwise, point sarif-path at a checked-in file.
 
       - name: Run ConstraintGuard
-        uses: your-org/ConstraintGuard@main      # <-- replace with your fork/org
+        uses: SrOscuroBlck/ConstraintGuard@main
         with:
           mode: score
           sarif-path: "path/to/results.sarif"     # <-- adjust to your SARIF location
