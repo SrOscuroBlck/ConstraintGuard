@@ -44,6 +44,30 @@ inputs:
     description: "Python version to use"
     required: false
     default: "3.12"
+  analysis-mode:
+    description: "Analysis mode: 'expert' (default), 'llm', or 'hybrid'"
+    required: false
+    default: "expert"
+  llm-topk:
+    description: "Number of top findings to analyze with LLM (default: 10)"
+    required: false
+    default: "10"
+  llm-changed-files:
+    description: "Limit LLM analysis to files changed in PR (true/false)"
+    required: false
+    default: "false"
+  llm-provider:
+    description: "LLM provider: 'openai' or 'anthropic'. Required when analysis-mode is 'llm' or 'hybrid'."
+    required: false
+    default: ""
+  llm-model:
+    description: "LLM model name (e.g. 'gpt-4o-mini', 'claude-sonnet-4-20250514'). Required when analysis-mode is 'llm' or 'hybrid'."
+    required: false
+    default: ""
+  llm-api-key:
+    description: "LLM API key. Pass via ${{ secrets.YOUR_SECRET }}. Required when analysis-mode is 'llm' or 'hybrid'."
+    required: false
+    default: ""
 
 outputs:
   report-json:
@@ -89,6 +113,12 @@ runs:
         CG_BUILD_CMD: ${{ inputs.build-cmd }}
         CG_FAIL_ON: ${{ inputs.fail-on }}
         CG_TOP_K: ${{ inputs.top-k }}
+        CG_MODE_ANALYSIS: ${{ inputs.analysis-mode }}
+        CG_LLM_TOPK: ${{ inputs.llm-topk }}
+        CG_LLM_CHANGED_FILES: ${{ inputs.llm-changed-files }}
+        CONSTRAINTGUARD_LLM_PROVIDER: ${{ inputs.llm-provider }}
+        CONSTRAINTGUARD_LLM_MODEL: ${{ inputs.llm-model }}
+        CONSTRAINTGUARD_LLM_API_KEY: ${{ inputs.llm-api-key }}
       run: |
         set +e
 
@@ -111,6 +141,13 @@ runs:
 
         if [[ -n "$CG_FAIL_ON" ]]; then
           CMD_ARGS+=(--fail-on "$CG_FAIL_ON")
+        fi
+
+        if [[ "$CG_MODE_ANALYSIS" != "expert" && -n "$CG_MODE_ANALYSIS" ]]; then
+          CMD_ARGS+=(--mode "$CG_MODE_ANALYSIS" --llm-topk "$CG_LLM_TOPK")
+          if [[ "$CG_LLM_CHANGED_FILES" == "true" ]]; then
+            CMD_ARGS+=(--llm-changed-files)
+          fi
         fi
 
         constraintguard "${CMD_ARGS[@]}"

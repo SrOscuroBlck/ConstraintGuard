@@ -1,3 +1,4 @@
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -51,6 +52,11 @@ def build_risk_report(
     source_path: str | None = None,
     config_path: str | None = None,
     top_k: int = 10,
+    mode: str = "expert",
+    llm_model: str | None = None,
+    llm_provider: str | None = None,
+    llm_total_cost: float | None = None,
+    llm_total_tokens: int | None = None,
 ) -> RiskReport:
     tier_counts = _build_tier_counts(items)
     top_labels = _build_top_finding_labels(items, top_k)
@@ -62,6 +68,11 @@ def build_risk_report(
             command=command,
             source_path=source_path,
             config_path=config_path,
+            mode=mode,
+            llm_model=llm_model,
+            llm_provider=llm_provider,
+            llm_total_cost=llm_total_cost,
+            llm_total_tokens=llm_total_tokens,
         ),
         hardware_spec=spec,
         provenance=provenance,
@@ -74,6 +85,82 @@ def build_risk_report(
     )
 
 
+def _run_enrichment(
+    items: list[RiskItem],
+    spec: HardwareSpec,
+    source_path: str | None,
+    llm_topk: int,
+    llm_changed_files: bool,
+) -> tuple[list[RiskItem], str | None, str | None, float | None, int | None]:
+    from constraintguard.enrichment.policy import (
+        SelectionMode,
+        SelectionPolicy,
+        estimate_llm_cost,
+        get_changed_files_from_git,
+        select_for_enrichment,
+    )
+    from constraintguard.llm.models import LLMConfig, LLMProvider
+
+    provider_str = os.environ.get("CONSTRAINTGUARD_LLM_PROVIDER")
+    model_str = os.environ.get("CONSTRAINTGUARD_LLM_MODEL")
+    api_key = os.environ.get("CONSTRAINTGUARD_LLM_API_KEY")
+
+    if not provider_str or not model_str or not api_key:
+        print("Warning: LLM environment variables not set. Falling back to expert-only mode.")
+        return items, None, None, None, None
+
+    try:
+        config = LLMConfig(
+            provider=LLMProvider(provider_str),
+            model=model_str,
+            api_key=api_key,
+        )
+    except (ValueError, KeyError) as exc:
+        print(f"Warning: Invalid LLM configuration: {exc}. Falling back to expert-only mode.")
+        return items, None, None, None, None
+
+    from constraintguard.llm.client import create_llm_client
+    from constraintguard.llm.cost import CostTracker
+
+    client = create_llm_client(config)
+
+    if llm_changed_files and source_path:
+        changed = get_changed_files_from_git(Path(source_path))
+        policy = SelectionPolicy(
+            mode=SelectionMode.CHANGED_FILES,
+            top_k=llm_topk,
+            changed_files=changed,
+        )
+    else:
+        policy = SelectionPolicy(mode=SelectionMode.TOPK, top_k=llm_topk)
+
+    selection_result = select_for_enrichment(items, policy)
+    print(selection_result.reason)
+
+    if not selection_result.selected_items:
+        return items, config.model, config.provider.value, None, None
+
+    cost_estimate = estimate_llm_cost(len(selection_result.selected_items))
+    print(cost_estimate)
+
+    from constraintguard.evidence.extractor import extract_evidence_batch
+
+    source_dir = Path(source_path) if source_path else Path(".")
+    vulns = [item.vulnerability for item in selection_result.selected_items]
+    evidence_bundles = extract_evidence_batch(vulns, source_dir, spec)
+
+    from constraintguard.enrichment.analyzer import enrich_items
+
+    tracker = CostTracker()
+    enrich_items(selection_result.selected_items, evidence_bundles, spec, client, tracker)
+
+    summary = tracker.summarize()
+    llm_total_cost = float(summary.total_cost)
+    llm_total_tokens = summary.total_input_tokens + summary.total_output_tokens
+
+    return items, config.model, config.provider.value, llm_total_cost, llm_total_tokens
+
+
 def run_score_pipeline(
     sarif_paths: list[Path],
     config_path: Path | None,
@@ -82,6 +169,9 @@ def run_score_pipeline(
     top_k: int = 10,
     command: str | None = None,
     source_path: str | None = None,
+    mode: str = "expert",
+    llm_topk: int = 10,
+    llm_changed_files: bool = False,
 ) -> RiskReport:
     spec, provenance = load_constraints(config_path, linker_script_path)
 
@@ -94,6 +184,20 @@ def run_score_pipeline(
 
     items = score_all(vulnerabilities, spec)
 
+    llm_model = None
+    llm_provider = None
+    llm_total_cost = None
+    llm_total_tokens = None
+
+    if mode in ("hybrid", "llm"):
+        items, llm_model, llm_provider, llm_total_cost, llm_total_tokens = _run_enrichment(
+            items=items,
+            spec=spec,
+            source_path=source_path,
+            llm_topk=llm_topk,
+            llm_changed_files=llm_changed_files,
+        )
+
     config_label = str(config_path) if config_path else None
 
     report = build_risk_report(
@@ -104,6 +208,11 @@ def run_score_pipeline(
         source_path=source_path,
         config_path=config_label,
         top_k=top_k,
+        mode=mode,
+        llm_model=llm_model,
+        llm_provider=llm_provider,
+        llm_total_cost=llm_total_cost,
+        llm_total_tokens=llm_total_tokens,
     )
 
     json_path = write_json_report(report, out_dir)

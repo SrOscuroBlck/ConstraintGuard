@@ -32,6 +32,12 @@ class VulnerabilityCategory(Enum):
     UNKNOWN = "unknown"
 
 
+class AnalysisMode(Enum):
+    EXPERT = "expert"
+    LLM = "llm"
+    HYBRID = "hybrid"
+
+
 def score_to_tier(score: int) -> SeverityTier:
     if score >= CRITICAL_THRESHOLD:
         return SeverityTier.CRITICAL
