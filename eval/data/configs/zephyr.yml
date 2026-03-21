@@ -1,0 +1,10 @@
+platform: "esp32"
+ram_size: "520KB"
+flash_size: "4MB"
+stack_size: "8KB"
+heap_size: "256KB"
+max_interrupt_latency: "100us"
+critical_functions:
+  - "k_sleep"
+  - "k_sem_take"
+  - "k_thread_create"

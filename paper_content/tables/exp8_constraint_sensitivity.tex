@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Empirical constraint sensitivity: same benchmark findings scored under four hardware profiles. \textbf{Bold}=CRITICAL ($\geq$85); C/H/M/L = tier label.}
+\label{tab:constraint_sensitivity}
+\begin{tabular}{llrrrr}
+\toprule
+Finding & Category & Baseline & Relaxed & Safety & Tight \\
+\midrule
+copy\_input:buffer-overflow & buffer\_overflow & 60 (M) & 60 (M) & \textbf{95} (C) & \textbf{100} (C) \\
+read\_sensor:null-deref & null\_deref & 50 (M) & 50 (M) & \textbf{85} (C) & \textbf{100} (C) \\
+process\_buffer:use-after-free & use\_after\_free & 75 (H) & 65 (M) & \textbf{100} (C) & \textbf{100} (C) \\
+isr\_uart:buffer-overflow & buffer\_overflow & \textbf{85} (C) & \textbf{85} (C) & \textbf{100} (C) & \textbf{100} (C) \\
+control\_loop:null-deref & null\_deref & 50 (M) & 50 (M) & \textbf{85} (C) & \textbf{100} (C) \\
+build\_packet:leak & leak & 55 (M) & 45 (M) & 62 (M) & \textbf{87} (C) \\
+allocate\_matrix:integer-overflow & integer\_overflow & 50 (M) & 50 (M) & 67 (M) & 77 (H) \\
+compute\_checksum:uninitialized & uninitialized & 40 (M) & 40 (M) & 45 (M) & 55 (M) \\
+\bottomrule
+\end{tabular}
+\end{table}

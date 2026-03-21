@@ -283,6 +283,23 @@ def _rule_safety_int_overflow(vuln: Vulnerability, spec: HardwareSpec) -> RuleFi
     )
 
 
+def _rule_lifetime_leak_accumulate(vuln: Vulnerability, spec: HardwareSpec) -> RuleFiring | None:
+    if vuln.category != VulnerabilityCategory.LEAK:
+        return None
+    if not _is_functional_safety(spec.safety_level):
+        return None
+    return RuleFiring(
+        rule_id="R-LIFETIME-LEAK",
+        delta=12,
+        rationale=(
+            f"Memory leak in a safety-certified system ('{spec.safety_level}'); "
+            "long-running embedded devices cannot be rebooted to recover leaked memory, "
+            "creating latent resource exhaustion over operational lifetime."
+        ),
+        constraints_used=["safety_level"],
+    )
+
+
 RULE_REGISTRY: list[RuleFunction] = [
     _rule_mem_stack_tight,
     _rule_mem_heap_tight,
@@ -297,4 +314,5 @@ RULE_REGISTRY: list[RuleFunction] = [
     _rule_time_ultra_tight,
     _rule_latency_deadlock,
     _rule_safety_int_overflow,
+    _rule_lifetime_leak_accumulate,
 ]

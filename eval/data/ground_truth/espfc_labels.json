@@ -1,0 +1,117 @@
+{
+  "project": "espfc",
+  "annotator": "expert",
+  "timestamp": "2026-03-20T22:00:00Z",
+  "labels": {
+    "src/espfc/lib/Espfc/src/Model.h:6:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Input.cpp:17:bugprone-narrowing-conversions": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "int\u2192float narrowing in RC input parsing: control surface commands may be off by up to 1 LSB \u2192 SIL2 numerical accuracy requirement violated."
+    },
+    "src/espfc/lib/Espfc/src/Input.cpp:24:bugprone-narrowing-conversions": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "int\u2192float narrowing in RC input parsing: control surface commands may be off by up to 1 LSB \u2192 SIL2 numerical accuracy requirement violated."
+    },
+    "src/espfc/lib/Espfc/src/Wireless.cpp:58:bugprone-easily-swappable-parameters": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "WiFi event handler: parameter swap affects telemetry only, not flight-critical path."
+    },
+    "src/espfc/lib/Espfc/src/Hardware.cpp:35:cert-err58-cpp": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Static initializer exception risk \u2014 acceptable in embedded init context."
+    },
+    "src/espfc/lib/Espfc/src/SerialManager.cpp:7:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "UART/hardware register names \u2014 reserved identifiers by platform convention."
+    },
+    "src/espfc/lib/Espfc/src/SerialManager.cpp:11:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "UART/hardware register names \u2014 reserved identifiers by platform convention."
+    },
+    "src/espfc/lib/Espfc/src/SerialManager.cpp:15:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "UART/hardware register names \u2014 reserved identifiers by platform convention."
+    },
+    "src/espfc/lib/Espfc/src/SerialManager.cpp:57:bugprone-implicit-widening-of-multiplication-result": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "Implicit widening of multiplication in SerialManager: buffer size calculation may overflow 16-bit type \u2192 buffer overrun in serial DMA path."
+    },
+    "src/espfc/lib/Espfc/src/Debug_Espfc.h:4:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/MagDevice.h:3:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/BusSPI.cpp:16:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "SPI begin(): swapping SCK/MISO/MOSI pin params misconfigures IMU bus \u2192 gyro data lost \u2192 flight controller instability. IEC61508-SIL2 violation."
+    },
+    "src/espfc/lib/Espfc/src/Device/BusSPI.cpp:29:bugprone-narrowing-conversions": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Low-priority finding in flight controller context."
+    },
+    "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h:3:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/BusI2C.cpp:15:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "I2C begin(): swapping SDA/SCL pin params misconfigures sensor bus \u2192 all I2C sensors (baro, mag) lost. IEC61508-SIL2 violation."
+    },
+    "src/espfc/lib/Espfc/src/Device/BusSlave.cpp:1:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/BusSlave.cpp:26:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Slave bus read(): swapping address/length reads wrong sensor register \u2192 corrupted IMU readings passed to PID controller in 50\u00b5s ISR."
+    },
+    "src/espfc/lib/Espfc/src/Hal/Pgm.h:5:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/SerialDevice.h:5:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/InputEspNow.h:6:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/GyroDevice.h:3:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    },
+    "src/espfc/lib/Espfc/src/Device/InputPPM.cpp:2:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing ESP32/Arduino SDK headers \u2014 artifact of scanning without PlatformIO toolchain."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Prioritization accuracy across configurations and projects. All values in \%. Bold indicates best per column.}
+\label{tab:precision_accuracy}
+\begin{tabular}{lrrrrr}
+\toprule
+Project & Baseline P@10 & Determ.\ P@10 & Full P@10 & Demotion & Expert Agree. \\
+\midrule
+FreeRTOS & \textbf{20.0} & \textbf{20.0} & \textbf{20.0} & \textbf{100.0} & 63.3 \\
+Zephyr & \textbf{20.0} & \textbf{20.0} & \textbf{20.0} & \textbf{100.0} & \textbf{76.7} \\
+esp-fc & 0.0 & 0.0 & 0.0 & \textbf{100.0} & 72.7 \\
+\midrule
+\textbf{Average} & \textbf{13.33} & \textbf{13.33} & \textbf{13.33} & \textbf{100.00} & \textbf{70.91} \\
+\bottomrule
+\end{tabular}
+\end{table}

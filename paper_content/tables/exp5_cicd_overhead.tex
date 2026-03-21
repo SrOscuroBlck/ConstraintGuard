@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{CI/CD pipeline overhead (ms) per stage. LLM enrichment runs asynchronously and is excluded.}
+\label{tab:cicd_overhead}
+\begin{tabular}{lrr}
+\toprule
+Stage & Full (ms) & Cached (ms) \\
+\midrule
+Static Analysis & 1.44 & 1.44 \\
+Constraint Extraction & 0.44 & 0.44 \\
+Deterministic Scoring & 1.02 & 1.02 \\
+Reporting & 1.13 & 1.13 \\
+\midrule
+\textbf{Total} & \textbf{4.02} & \textbf{4.02} \\
+\bottomrule
+\end{tabular}
+\end{table}

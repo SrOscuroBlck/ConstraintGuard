@@ -1,0 +1,12 @@
+platform: "esp32"
+ram_size: "192KB"
+flash_size: "1MB"
+stack_size: "8KB"
+heap_size: "64KB"
+max_interrupt_latency: "50us"
+safety_level: "IEC61508-SIL2"
+critical_functions:
+  - "handle_isr"
+  - "pid_controller"
+  - "motor_control"
+  - "imu_read"

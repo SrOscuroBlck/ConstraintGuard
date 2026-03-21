@@ -1,0 +1,17 @@
+{
+  "freertos": {
+    "usefulness": 3.8,
+    "evidence_correctness": 78,
+    "tag_accuracy": 72
+  },
+  "zephyr": {
+    "usefulness": 3.6,
+    "evidence_correctness": 74,
+    "tag_accuracy": 71
+  },
+  "espfc": {
+    "usefulness": 4.4,
+    "evidence_correctness": 87,
+    "tag_accuracy": 83
+  }
+}

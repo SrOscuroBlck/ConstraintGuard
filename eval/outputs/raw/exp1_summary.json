@@ -1,0 +1,23 @@
+{
+  "freertos": {
+    "baseline_p10": 0.2,
+    "deterministic_p10": 0.2,
+    "full_system_p10": 0.2,
+    "demotion_rate": 1.0,
+    "expert_agreement": 0.6333333333333333
+  },
+  "zephyr": {
+    "baseline_p10": 0.2,
+    "deterministic_p10": 0.2,
+    "full_system_p10": 0.2,
+    "demotion_rate": 1.0,
+    "expert_agreement": 0.7666666666666667
+  },
+  "espfc": {
+    "baseline_p10": 0.0,
+    "deterministic_p10": 0.0,
+    "full_system_p10": 0.0,
+    "demotion_rate": 1.0,
+    "expert_agreement": 0.7272727272727273
+  }
+}

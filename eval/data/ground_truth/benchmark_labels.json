@@ -1,0 +1,48 @@
+{
+  "project": "benchmark",
+  "annotator": "authors",
+  "timestamp": "2026-03-20T00:00:00Z",
+  "description": "Ground truth labels for the vuln_demo benchmark. All findings are deliberately crafted CWE vulnerabilities. Criticality is assessed under benchmark_tight.yml constraints.",
+  "labels": {
+    "examples/vuln_demo/main.c:15:security.insecureAPI.strcpy": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Unbounded strcpy into 16-byte stack buffer; under 2KB stack constraint any overflow is fatal. Function copy_input is called from main with attacker-controlled argv."
+    },
+    "examples/vuln_demo/main.c:22:core.NullDereference": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Unconditional dereference of sensor_value which is NULL on the argc<=2 path. On a safety system (ASIL-B) a null deref in a sensor read is a hard fault with no recovery path."
+    },
+    "examples/vuln_demo/main.c:35:unix.Malloc": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Memory leak: packet allocation not freed on the header-alloc-failure path. Under 4KB heap, repeated calls exhaust the allocator."
+    },
+    "examples/vuln_demo/main.c:52:unix.Malloc": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Use-after-free: buf is freed then passed to printf. Detected by clang-sa unix.Malloc checker. UAF in embedded context causes unpredictable memory corruption."
+    },
+    "examples/vuln_demo/main.c:58:alpha.core.CastSize": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "Integer overflow in rows*cols multiplication before malloc on a safety system (ASIL-B). Under ISO 26262, integer overflow violates numerical safety invariants."
+    },
+    "examples/vuln_demo/main.c:69:core.uninitialized.UndefReturn": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Uninitialized return value in compute_checksum when mode!=1. Low-severity under tight constraints since checksum is not safety-critical in this context."
+    },
+    "examples/vuln_demo/main.c:76:security.insecureAPI.strcpy": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "ISR function (isr_uart prefix) + critical_functions list + ASIL-B. Unbounded strcpy in an ISR on a hard-RT 50us system is maximum severity."
+    },
+    "examples/vuln_demo/main.c:83:core.NullDereference": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "control_loop is in critical_functions; measured_ptr is NULL on argc<=4 path. Null deref in a PID/control loop on a safety system causes immediate loss of control."
+    }
+  }
+}

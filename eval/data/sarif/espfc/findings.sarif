@@ -1,0 +1,3916 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Clang Static Analyzer",
+          "version": "clang-tidy"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Input.cpp"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Input.cpp"
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'wifiEventConnected' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Wireless.cpp"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cert-err58-cpp",
+          "level": "warning",
+          "message": {
+            "text": "initialization of 'gyroSlaveBus' with static storage duration may throw an exception that cannot be caught"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hardware.cpp"
+                },
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_uart0', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/SerialManager.cpp"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_uart1', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/SerialManager.cpp"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_uart2', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/SerialManager.cpp"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 67
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-implicit-widening-of-multiplication-result",
+          "level": "warning",
+          "message": {
+            "text": "performing an implicit widening conversion to type 'const size_t' (aka 'const unsigned long') of a multiplication performed in type 'int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/SerialManager.cpp"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Debug_Espfc.h"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/MagDevice.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'begin' of similar type ('int8_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/BusSPI.cpp"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/BusSPI.cpp"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'begin' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/BusI2C.cpp"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 28
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/BusSlave.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'read' of similar type ('uint8_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/BusSlave.cpp"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'pgmspace.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Pgm.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/SerialDevice.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EspNowRcLink/Receiver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/InputEspNow.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'pgmspace.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Pgm.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/GyroDevice.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/InputPPM.cpp"
+                },
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'begin' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/InputPPM.cpp"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/SerialDevice.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/SerialDevice.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Gpio.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/BaseSensor.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'setState' of similar type ('Espfc::Sensor::GpsSensor::State') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/GpsSensor.cpp"
+                },
+                "region": {
+                  "startLine": 309,
+                  "startColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/BaseSensor.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/GyroSensor.cpp"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 26
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/GyroSensor.cpp"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/GyroSensor.cpp"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Sensor/BaseSensor.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Rc/Crsf.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Output/Mixer.cpp"
+                },
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "switch has 15 consecutive identical branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 210,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 214,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 261,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 309,
+                  "startColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 890,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1070,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-signed-char-misuse,cert-str34-c",
+          "level": "warning",
+          "message": {
+            "text": "'signed char' to 'short' conversion; consider casting to 'unsigned char' first."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1167,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1169,
+                  "startColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1170,
+                  "startColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1214,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Cli.cpp"
+                },
+                "region": {
+                  "startLine": 1344,
+                  "startColumn": 7
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'begin' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/StatusLed.cpp"
+                },
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Device/SerialDevice.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'pgmspace.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Pgm.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 320,
+                  "startColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 321,
+                  "startColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 347,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 366,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 374,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 452,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 453,
+                  "startColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 517,
+                  "startColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 528,
+                  "startColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 529,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 530,
+                  "startColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 549,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 557,
+                  "startColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 607,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 632,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 633,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 656,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 667,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 699,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 709,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 710,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 711,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 724,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 748,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 749,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 750,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 754,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 755,
+                  "startColumn": 47
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 784,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 818,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 819,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 820,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 822,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 823,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 825,
+                  "startColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 826,
+                  "startColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 840,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 845,
+                  "startColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 852,
+                  "startColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 889,
+                  "startColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 890,
+                  "startColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 977,
+                  "startColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 978,
+                  "startColumn": 55
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 983,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 984,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 985,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 990,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1021,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1022,
+                  "startColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1024,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1026,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1043,
+                  "startColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1090,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1091,
+                  "startColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1093,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1094,
+                  "startColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1095,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1096,
+                  "startColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1099,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1100,
+                  "startColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1108,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1109,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1110,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1111,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1112,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1116,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1117,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1118,
+                  "startColumn": 48
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1119,
+                  "startColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1120,
+                  "startColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1125,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1126,
+                  "startColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1132,
+                  "startColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1223,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1231,
+                  "startColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1236,
+                  "startColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1241,
+                  "startColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1242,
+                  "startColumn": 45
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1243,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1258,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint8_t' (aka 'unsigned char') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1262,
+                  "startColumn": 43
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1374,
+                  "startColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1375,
+                  "startColumn": 49
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint16_t' (aka 'unsigned short') to signed type 'int16_t' (aka 'short') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp"
+                },
+                "region": {
+                  "startLine": 1376,
+                  "startColumn": 53
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Connect/Msp.cpp"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'pgmspace.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Pgm.h"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Blackbox/BlackboxFlashfs.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_model_ptr', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Blackbox/BlackboxBridge.cpp"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-unused-raii",
+          "level": "warning",
+          "message": {
+            "text": "object destroyed immediately after creation; did you mean to name the object?"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-signed-char-misuse,cert-str34-c",
+          "level": "warning",
+          "message": {
+            "text": "'signed char' to 'short' conversion; consider casting to 'unsigned char' first."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'float' to 'int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 228,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 228,
+                  "startColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'float' to 'int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 234,
+                  "startColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Control/Actuator.cpp"
+                },
+                "region": {
+                  "startLine": 234,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'EscDriver.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Model.h"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'esp_attr.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/MemoryHelper.h"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/FreqAnalyzer.cpp"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 11
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'float' to 'int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/FreqAnalyzer.cpp"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/FreqAnalyzer.cpp"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/FreqAnalyzer.cpp"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'helper_3dmath.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/FilterHelper.h"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Timer.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Timer.cpp"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to 'float'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Timer.cpp"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'FilterConfig' of similar type ('int16_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Filter.cpp"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "cert-err58-cpp",
+          "level": "warning",
+          "message": {
+            "text": "initialization of 'IRAM_ATTR' with static storage duration may throw an exception that cannot be caught"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Filter.cpp"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'esp_attr.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/MemoryHelper.h"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Esp.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Target/./TargetEsp32Common.h"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'esp_attr.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/MemoryHelper.h"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Utils/Stats.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/lib/Espfc/src/Hal/Gpio.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "warning",
+          "message": {
+            "text": "'Arduino.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/espfc/src/main.cpp"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

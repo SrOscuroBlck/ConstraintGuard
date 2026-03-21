@@ -1,0 +1,157 @@
+{
+  "project": "zephyr",
+  "annotator": "expert",
+  "timestamp": "2026-03-20T22:00:00Z",
+  "labels": {
+    "src/zephyr/include/zephyr/kernel_structs.h:209:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/sys/atomic.h:42:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/sys/atomic.h:341:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/sys/atomic.h:427:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/sys/atomic.h:457:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/sys/errno_private.h:54:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/syscall.h:11:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/include/zephyr/toolchain/gcc.h:614:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/kernel/atomic_c.c:81:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "z_impl_atomic_cas: swapping old/new value params causes ABA race in kernel synchronization primitives."
+    },
+    "src/zephyr/kernel/atomic_c.c:118:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "z_impl_atomic_cas: swapping old/new value params causes ABA race in kernel synchronization primitives."
+    },
+    "src/zephyr/kernel/compiler_stack_protect.c:36:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/compiler_stack_protect.c:55:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/cpu_mask.c:19:bugprone-easily-swappable-parameters": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Low-priority in relaxed-constraint Zephyr configuration."
+    },
+    "src/zephyr/kernel/dynamic.c:34:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "Thread stack allocator: swapping size/alignment params corrupts stack layout, causing silent stack overflow."
+    },
+    "src/zephyr/kernel/dynamic.c:59:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "Thread stack allocator: swapping size/alignment params corrupts stack layout, causing silent stack overflow."
+    },
+    "src/zephyr/kernel/dynamic_disabled.c:12:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "Thread stack allocator: swapping size/alignment params corrupts stack layout, causing silent stack overflow."
+    },
+    "src/zephyr/kernel/errno.c:23:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/events.c:95:bugprone-easily-swappable-parameters": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Low-priority in relaxed-constraint Zephyr configuration."
+    },
+    "src/zephyr/kernel/events.c:282:bugprone-easily-swappable-parameters": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Low-priority in relaxed-constraint Zephyr configuration."
+    },
+    "src/zephyr/kernel/futex.c:56:bugprone-narrowing-conversions": {
+      "is_critical": false,
+      "confidence": "medium",
+      "notes": "Narrowing conversion in futex \u2014 known pattern, not exploitable at 520KB RAM scale."
+    },
+    "src/zephyr/kernel/futex.c:67:bugprone-suspicious-include": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "#include of .c file in futex.c causes ODR violation \u2014 undefined behavior at link time in kernel synchronization path."
+    },
+    "src/zephyr/kernel/futex.c:105:bugprone-suspicious-include": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "#include of .c file in futex.c causes ODR violation \u2014 undefined behavior at link time in kernel synchronization path."
+    },
+    "src/zephyr/kernel/include/offsets_short.h:10:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Missing generated headers (offsets, syscall_list) \u2014 artifact of scanning without full build."
+    },
+    "src/zephyr/kernel/init.c:118:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:119:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:120:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:121:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:122:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:123:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    },
+    "src/zephyr/kernel/init.c:124:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script and internal Zephyr symbol names \u2014 reserved identifiers by design."
+    }
+  }
+}

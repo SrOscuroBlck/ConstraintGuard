@@ -1,0 +1,4385 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Clang Static Analyzer",
+          "version": "clang-tidy",
+          "rules": []
+        }
+      },
+      "results": [
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "use of undeclared identifier 'CONFIG_MP_MAX_NUM_CPUS'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/kernel_structs.h"
+                },
+                "region": {
+                  "startLine": 209,
+                  "startColumn": 19
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "\"CONFIG_ATOMIC_OPERATIONS_* not defined\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/sys/atomic.h"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "conflicting types for 'atomic_get'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/sys/atomic.h"
+                },
+                "region": {
+                  "startLine": 341,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "conflicting types for 'atomic_or'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/sys/atomic.h"
+                },
+                "region": {
+                  "startLine": 427,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "conflicting types for 'atomic_and'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/sys/atomic.h"
+                },
+                "region": {
+                  "startLine": 457,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'zephyr/syscalls/errno_private.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/sys/errno_private.h"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'zephyr/syscall_list.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/syscall.h"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "processor architecture not supported"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/include/zephyr/toolchain/gcc.h"
+                },
+                "region": {
+                  "startLine": 614,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_atomic_cas' of similar type ('atomic_val_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/atomic_c.c"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 42
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_atomic_ptr_cas' of similar type ('atomic_ptr_val_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/atomic_c.c"
+                },
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_StackCheckHandler', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/compiler_stack_protect.c"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__stack_chk_guard', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/compiler_stack_protect.c"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'cpu_mask_mod' of similar type ('uint32_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/cpu_mask.c"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 41
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_thread_stack_alloc_pool' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/dynamic.c"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 52
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_thread_stack_alloc_dyn' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/dynamic.c"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 51
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_k_thread_stack_alloc' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/dynamic_disabled.c"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 47
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_k_neg_eagain', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/errno.c"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'are_wait_conditions_met' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/events.c"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 59
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_event_wait_internal' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/events.c"
+                },
+                "region": {
+                  "startLine": 282,
+                  "startColumn": 62
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/futex.c"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/futex.c"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/futex.c"
+                },
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'zephyr/offsets.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/include/offsets_short.h"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_EARLY_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_PRE_KERNEL_1_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_PRE_KERNEL_2_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_POST_KERNEL_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_APPLICATION_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__init_end', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/init.c"
+                },
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_mem_slab_init' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mem_slab.c"
+                },
+                "region": {
+                  "startLine": 186,
+                  "startColumn": 7
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_alloc_helper' of similar type ('size_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mempool.c"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__align', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mempool.c"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_SYSTEM_HEAP', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mempool.c"
+                },
+                "region": {
+                  "startLine": 172,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'virt_from_bitmap_offset' of similar type ('size_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mmu.c"
+                },
+                "region": {
+                  "startLine": 202,
+                  "startColumn": 49
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'virt_region_alloc' of similar type ('size_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mmu.c"
+                },
+                "region": {
+                  "startLine": 289,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'virt_region_align' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mmu.c"
+                },
+                "region": {
+                  "startLine": 878,
+                  "startColumn": 33
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_mem_region_align' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mmu.c"
+                },
+                "region": {
+                  "startLine": 1008,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_mem_region_align' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mmu.c"
+                },
+                "region": {
+                  "startLine": 1009,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/msg_q.c"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/msg_q.c"
+                },
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 3
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/msg_q.c"
+                },
+                "region": {
+                  "startLine": 206,
+                  "startColumn": 3
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/msg_q.c"
+                },
+                "region": {
+                  "startLine": 215,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-signed-char-misuse,cert-str34-c",
+          "level": "warning",
+          "message": {
+            "text": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/mutex.c"
+                },
+                "region": {
+                  "startLine": 292,
+                  "startColumn": 28
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_obj_type_init' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/obj_core.c"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 198,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 205,
+                  "startColumn": 20
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from constant value 18446744073709551605 (0xFFFFFFFFFFFFFFF5) of type 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 205,
+                  "startColumn": 30
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 243,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 248,
+                  "startColumn": 20
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from constant value 18446744073709551584 (0xFFFFFFFFFFFFFFE0) of type 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 248,
+                  "startColumn": 31
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 258,
+                  "startColumn": 21
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from constant value 18446744073709551605 (0xFFFFFFFFFFFFFFF5) of type 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/pipe.c"
+                },
+                "region": {
+                  "startLine": 258,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_poll_event_init' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/poll.c"
+                },
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 52
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "switch has 5 consecutive identical branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/poll.c"
+                },
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_priq_rb_lessthan' of similar type ('struct rbnode *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/priority_queues.c"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-signed-char-misuse,cert-str34-c",
+          "level": "warning",
+          "message": {
+            "text": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 743,
+                  "startColumn": 17
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 751,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 765,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 784,
+                  "startColumn": 24
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 787,
+                  "startColumn": 24
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'k_ticks_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/sched.c"
+                },
+                "region": {
+                  "startLine": 1189,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_FOREACH_STATIC_THREAD', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/thread.c"
+                },
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'z_init_thread_base' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/thread.c"
+                },
+                "region": {
+                  "startLine": 876,
+                  "startColumn": 59
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/thread.c"
+                },
+                "region": {
+                  "startLine": 884,
+                  "startColumn": 22
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/timeout.c"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 35
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/timeout.c"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 17
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_timer_init' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/timer.c"
+                },
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_k_timer_start' of similar type ('k_timeout_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/timer.c"
+                },
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'k_sched_time_slice_set' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/timeslicing.c"
+                },
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 625,
+                  "startColumn": 3
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 626,
+                  "startColumn": 3
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 637,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 646,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__app_shmem_regions_start', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 957,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__app_shmem_regions_end', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 958,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'handler_bad_syscall' of similar type ('uintptr_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 1012,
+                  "startColumn": 38
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace.c"
+                },
+                "region": {
+                  "startLine": 1044,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace_handler.c"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace_handler.c"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace_handler.c"
+                },
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace_handler.c"
+                },
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/userspace_handler.c"
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'zephyr/version.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/version.c"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/work.c"
+                },
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/work.c"
+                },
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 35
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'work_queue_main' of similar type ('void *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/kernel/work.c"
+                },
+                "region": {
+                  "startLine": 655,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 403,
+                  "startColumn": 23
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 21
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_ldiv5', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 704,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_ldiv10', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 738,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_get_digit', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 747,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'encode_float' of similar type ('char *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 872,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 902,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__out', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1348,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__out', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1369,
+                  "startColumn": 34
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'wchar_t' (aka 'unsigned int') to signed type 'sint_value_type' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1524,
+                  "startColumn": 20
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "switch has 3 consecutive identical branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1530,
+                  "startColumn": 4
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-signed-char-misuse,cert-str34-c",
+          "level": "warning",
+          "message": {
+            "text": "'signed char' to 'sint_value_type' (aka 'int') conversion; consider casting to 'unsigned char' first."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1552,
+                  "startColumn": 19
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "switch has 3 consecutive identical branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1573,
+                  "startColumn": 4
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1717,
+                  "startColumn": 35
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_complete.c"
+                },
+                "region": {
+                  "startLine": 1885,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'convert_value' of similar type ('unsigned int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__out', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 34
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 194,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 201,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_nano.c"
+                },
+                "region": {
+                  "startLine": 299,
+                  "startColumn": 15
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__va_list', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__stack', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__gr_top', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__vr_top', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__gr_offs', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__vr_offs', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__ap', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 20
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 226,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'cbvprintf_package' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 233,
+                  "startColumn": 39
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 17
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'cbpprintf_external' of similar type ('void *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 833,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-implicit-widening-of-multiplication-result",
+          "level": "warning",
+          "message": {
+            "text": "result of multiplication in type 'unsigned int' is used as a pointer offset after an implicit widening conversion to type 'size_t'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 851,
+                  "startColumn": 15
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/cbprintf_packaged.c"
+                },
+                "region": {
+                  "startLine": 956,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_sys_clock_nanosleep' of similar type ('int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/clock.c"
+                },
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-implicit-widening-of-multiplication-result",
+          "level": "warning",
+          "message": {
+            "text": "performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'unsigned int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/clock.c"
+                },
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 53
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-implicit-widening-of-multiplication-result",
+          "level": "warning",
+          "message": {
+            "text": "performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'unsigned int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/clock.c"
+                },
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 28
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/clock.c"
+                },
+                "region": {
+                  "startLine": 188,
+                  "startColumn": 15
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 171,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 172,
+                  "startColumn": 51
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 22
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 217,
+                  "startColumn": 52
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 224,
+                  "startColumn": 61
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 234,
+                  "startColumn": 22
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 270,
+                  "startColumn": 61
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 291,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 375,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 423,
+                  "startColumn": 51
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 460,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 461,
+                  "startColumn": 53
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 510,
+                  "startColumn": 53
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 511,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 563,
+                  "startColumn": 47
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 564,
+                  "startColumn": 24
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 571,
+                  "startColumn": 7
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 607,
+                  "startColumn": 61
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 609,
+                  "startColumn": 22
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'mpsc_pbuf_get_utilization' of similar type ('uint32_t *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mpsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 634,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mutex.c"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-include",
+          "level": "warning",
+          "message": {
+            "text": "suspicious #include of file with '.c' extension"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/mutex.c"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int32_t' (aka 'int') to signed type 'int8_t' (aka 'signed char') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/p4wq.c"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 18
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/p4wq.c"
+                },
+                "region": {
+                  "startLine": 235,
+                  "startColumn": 20
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/printk.c"
+                },
+                "region": {
+                  "startLine": 245,
+                  "startColumn": 34
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 4
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'cache_wb' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 41
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'cache_inv' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 42
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'get_len' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "conditional operator with identical true and false expressions"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 7
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "conditional operator with identical true and false expressions"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 104,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned int' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 23
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 17
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 17
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'unsigned long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/spsc_pbuf.c"
+                },
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 16
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_work_user_q_main' of similar type ('void *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/user_work.c"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 32
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'short' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 19
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'int' to signed type 'short' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 19
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_eventfd_rw_op' of similar type ('void *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 293,
+                  "startColumn": 35
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 321,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 365,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_eventfd' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 396,
+                  "startColumn": 18
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 458,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_eventfd_write' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 471,
+                  "startColumn": 24
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c"
+                },
+                "region": {
+                  "startLine": 492,
+                  "startColumn": 8
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_find_fd_entry', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '_check_fd', which is reserved in the global namespace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 364,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 414,
+                  "startColumn": 3
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_lseek_wrap' of similar type ('int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 469,
+                  "startColumn": 37
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'zvfs_lseek' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 497,
+                  "startColumn": 18
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_fcntl' of similar type ('int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 506,
+                  "startColumn": 16
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_ftruncate_wrap' of similar type ('int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 520,
+                  "startColumn": 39
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_ioctl' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c"
+                },
+                "region": {
+                  "startLine": 545,
+                  "startColumn": 16
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'off_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_write_vmeth' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 26
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'zvfs_read_vmeth' of similar type ('void *') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c"
+                },
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'z_impl_zvfs_poll' of similar type ('int') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_poll.c"
+                },
+                "region": {
+                  "startLine": 172,
+                  "startColumn": 47
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_select.c"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 36
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_select.c"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_select.c"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 26
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_select.c"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-implicit-widening-of-multiplication-result",
+          "level": "warning",
+          "message": {
+            "text": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'unsigned int'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/lib/os/zvfs/zvfs_select.c"
+                },
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "cert-err33-c",
+          "level": "warning",
+          "message": {
+            "text": "the value returned by this function should be used"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/dfu_slot.c"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'apply_rsp_sending' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/dfu_srv.c"
+                },
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 31
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-narrowing-conversions",
+          "level": "warning",
+          "message": {
+            "text": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/dfu_srv.c"
+                },
+                "region": {
+                  "startLine": 485,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'hb_publish_start_cb' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/heartbeat.c"
+                },
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 33
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'bt_mesh_hb_sub_set' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/heartbeat.c"
+                },
+                "region": {
+                  "startLine": 296,
+                  "startColumn": 42
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'bt_mesh_od_priv_proxy_cli_set' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/od_priv_proxy_cli.c"
+                },
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 53
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-suspicious-string-compare",
+          "level": "warning",
+          "message": {
+            "text": "function 'memcmp' is called without explicitly comparing result"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/proxy_cli.c"
+                },
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 6
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "switch has 2 consecutive identical branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/proxy_cli.c"
+                },
+                "region": {
+                  "startLine": 291,
+                  "startColumn": 2
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'sol_rpl_status_rsp' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/zephyr/subsys/bluetooth/mesh/sol_pdu_rpl_srv.c"
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 11
+                }
+              }
+            }
+          ],
+          "taxa": []
+        }
+      ]
+    }
+  ]
+}

@@ -216,3 +216,18 @@ __marimo__/
 .streamlit/secrets.toml
 
 docs/tasks
+
+CLAUDE.md
+
+# Evaluation harness — generated outputs (do NOT commit)
+eval/outputs/raw/*.pkl
+eval/outputs/raw/*.csv
+eval/outputs/figures/*.pdf
+eval/outputs/tables/*.tex
+
+# SARIF files are evaluation inputs — commit them once generated
+# (remove this line if you want to keep SARIF out of git)
+# eval/data/sarif/
+
+# Ground truth labels ARE committed (they are research data)
+# eval/data/ground_truth/

@@ -7,6 +7,7 @@ from constraintguard.models.vulnerability import Vulnerability
 from constraintguard.parsers.sarif_rule_map import (
     VulnerabilityCategory,
     resolve_category,
+    resolve_category_from_cwe,
     resolve_cwe,
 )
 
@@ -141,6 +142,9 @@ def _parse_result(
     category = resolve_category(rule_id)
     category = _refine_category_from_message(category, rule_id, message)
     cwe = _extract_cwe_from_result(result, rule_id, rule_cwe_registry, category)
+    # If category is still UNKNOWN but we have a CWE (e.g. from taxa field), resolve from CWE
+    if category == VulnerabilityCategory.UNKNOWN and cwe:
+        category = resolve_category_from_cwe(cwe)
 
     return Vulnerability(
         tool=tool_name,
@@ -253,6 +257,16 @@ def _extract_cwe_from_result(
     )
     if cwe_from_props:
         return cwe_from_props
+
+    # Read CWE from SARIF taxa field (e.g. [{"id": "CWE-401", "toolComponent": {"name": "CWE"}}])
+    for taxon in result.get("taxa", []):
+        if not isinstance(taxon, dict):
+            continue
+        tool_component = taxon.get("toolComponent", {})
+        if isinstance(tool_component, dict) and tool_component.get("name", "").upper() == "CWE":
+            cwe_id = taxon.get("id", "")
+            if cwe_id:
+                return cwe_id if cwe_id.upper().startswith("CWE-") else f"CWE-{cwe_id}"
 
     if rule_id in rule_cwe_registry:
         return rule_cwe_registry[rule_id]

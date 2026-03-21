@@ -1,0 +1,157 @@
+{
+  "project": "freertos",
+  "annotator": "expert",
+  "timestamp": "2026-03-20T22:00:00Z",
+  "labels": {
+    "src/freertos/event_groups.c:313:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "xEventGroupWaitBits: swapping uxBitsToWaitFor/uxBitsToSet causes wrong event mask evaluation under 50\u00b5s interrupt budget."
+    },
+    "src/freertos/event_groups.c:779:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "medium",
+      "notes": "xEventGroupWaitBits: swapping uxBitsToWaitFor/uxBitsToSet causes wrong event mask evaluation under 50\u00b5s interrupt budget."
+    },
+    "src/freertos/include/deprecated_definitions.h:161:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Compilation error from missing headers \u2014 not a real finding."
+    },
+    "src/freertos/portable/ARMv8M/non_secure/portable/GCC/ARM_CM33/portasm.c:39:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Compilation error from missing headers \u2014 not a real finding."
+    },
+    "src/freertos/portable/ARMv8M/non_secure/portable/GCC/ARM_CM33_NTZ/portasm.c:39:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Compilation error from missing headers \u2014 not a real finding."
+    },
+    "src/freertos/portable/ARMv8M/secure/context/portable/GCC/ARM_CM33/secure_context_port.c:30:clang-diagnostic-error": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Compilation error from missing headers \u2014 not a real finding."
+    },
+    "src/freertos/portable/GCC/ARM_CM33/non_secure/port.c:260:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c:81:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c:82:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c:83:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:260:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM35P/non_secure/port.c:260:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c:81:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c:82:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c:83:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM35P_NTZ/non_secure/port.c:260:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:845:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:908:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:1214:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:1736:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:1830:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c:1865:bugprone-easily-swappable-parameters": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "MPU wrapper: swapped params (e.g. uxIndexToWaitOn/xClearCountOnExit/xTicksToWait) silently pass wrong tick budget in 50\u00b5s ISR context, corrupting task scheduling."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:135:bugprone-macro-parentheses": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Macro parenthesization style issue \u2014 no runtime impact."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:299:bugprone-branch-clone": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Identical if/else branches in MPU port.c privilege check \u2014 privilege escalation path is unreachable dead code, violating MPU security invariant on Cortex-M3."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:501:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script symbol naming uses double-underscore convention by design \u2014 not a bug."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:502:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script symbol naming uses double-underscore convention by design \u2014 not a bug."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:565:bugprone-branch-clone": {
+      "is_critical": true,
+      "confidence": "high",
+      "notes": "Identical if/else branches in MPU port.c privilege check \u2014 privilege escalation path is unreachable dead code, violating MPU security invariant on Cortex-M3."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:614:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script symbol naming uses double-underscore convention by design \u2014 not a bug."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:615:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script symbol naming uses double-underscore convention by design \u2014 not a bug."
+    },
+    "src/freertos/portable/GCC/ARM_CM3_MPU/port.c:1116:bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp": {
+      "is_critical": false,
+      "confidence": "high",
+      "notes": "Linker-script symbol naming uses double-underscore convention by design \u2014 not a bug."
+    }
+  }
+}

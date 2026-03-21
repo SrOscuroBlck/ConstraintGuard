@@ -1,0 +1,257 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "clang-sa",
+          "version": "17.0.0",
+          "rules": [
+            {
+              "id": "security.insecureAPI.strcpy",
+              "shortDescription": {
+                "text": "Use of insecure API 'strcpy'"
+              },
+              "properties": {
+                "tags": ["CWE-120"]
+              }
+            },
+            {
+              "id": "core.NullDereference",
+              "shortDescription": {
+                "text": "Null pointer dereference"
+              },
+              "properties": {
+                "tags": ["CWE-476"]
+              }
+            },
+            {
+              "id": "unix.Malloc",
+              "shortDescription": {
+                "text": "Memory management error"
+              }
+            },
+            {
+              "id": "alpha.core.CastSize",
+              "shortDescription": {
+                "text": "Integer overflow in cast"
+              },
+              "properties": {
+                "tags": ["CWE-190"]
+              }
+            },
+            {
+              "id": "core.uninitialized.UndefReturn",
+              "shortDescription": {
+                "text": "Undefined value returned"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "security.insecureAPI.strcpy",
+          "message": {
+            "text": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-120."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "copy_input",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "core.NullDereference",
+          "message": {
+            "text": "Dereference of null pointer (loaded from variable 'sensor_value')"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "read_sensor",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "unix.Malloc",
+          "message": {
+            "text": "Potential memory leak: pointer to allocated memory is not freed on all execution paths"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 22
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "build_packet",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "unix.Malloc",
+          "message": {
+            "text": "Use of memory after it is freed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "process_buffer",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "alpha.core.CastSize",
+          "message": {
+            "text": "Result of 'malloc' is converted to a pointer of type 'int *', which is incompatible with sizeof operand type 'char'. Integer overflow in implicit conversion"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 18
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "allocate_matrix",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "core.uninitialized.UndefReturn",
+          "message": {
+            "text": "Undefined or garbage value returned to caller"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "compute_checksum",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "security.insecureAPI.strcpy",
+          "message": {
+            "text": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-120."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "isr_uart",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "core.NullDereference",
+          "message": {
+            "text": "Dereference of null pointer (loaded from variable 'measured')"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/vuln_demo/main.c"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 18
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "control_loop",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

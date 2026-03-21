@@ -1,0 +1,1634 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Clang Static Analyzer",
+          "version": "clang-tidy",
+          "rules": []
+        }
+      },
+      "results": [
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xEventGroupWaitBits' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/event_groups.c"
+                },
+                "region": {
+                  "startLine": 313,
+                  "startColumn": 38
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'prvTestWaitCondition' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/event_groups.c"
+                },
+                "region": {
+                  "startLine": 779,
+                  "startColumn": 45
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'../../Source/portable/GCC/ARM_CM3/portmacro.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/include/deprecated_definitions.h"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 14
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'portasm.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/ARMv8M/non_secure/portable/GCC/ARM_CM33/portasm.c"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'portasm.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/ARMv8M/non_secure/portable/GCC/ARM_CM33_NTZ/portasm.c"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "clang-diagnostic-error",
+          "level": "error",
+          "message": {
+            "text": "'secure_context.h' file not found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/ARMv8M/secure/context/portable/GCC/ARM_CM33/secure_context_port.c"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 10
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM33/non_secure/port.c"
+                },
+                "region": {
+                  "startLine": 260,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 62
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM33_NTZ/non_secure/port.c"
+                },
+                "region": {
+                  "startLine": 260,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM35P/non_secure/port.c"
+                },
+                "region": {
+                  "startLine": 260,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 62
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM35P_NTZ/non_secure/port.c"
+                },
+                "region": {
+                  "startLine": 260,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'MPU_ulTaskGenericNotifyTake' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 845,
+                  "startColumn": 47
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'MPU_ulTaskGenericNotifyValueClear' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 908,
+                  "startColumn": 53
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'MPU_xQueueAddToSet' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 1214,
+                  "startColumn": 40
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'MPU_xEventGroupSync' of similar type ('const EventBits_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 1736,
+                  "startColumn": 42
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'MPU_xStreamBufferSend' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 1830,
+                  "startColumn": 39
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'MPU_xStreamBufferReceive' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c"
+                },
+                "region": {
+                  "startLine": 1865,
+                  "startColumn": 42
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 50
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 299,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__syscalls_flash_start__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 501,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__syscalls_flash_end__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 502,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 565,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__privileged_functions_start__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 614,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__privileged_functions_end__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 615,
+                  "startColumn": 29
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__FLASH_segment_start__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1116,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__FLASH_segment_end__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1117,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__privileged_data_start__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1118,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__privileged_data_end__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1119,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__SRAM_segment_start__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1260,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp",
+          "level": "warning",
+          "message": {
+            "text": "declaration uses identifier '__SRAM_segment_end__', which is a reserved identifier"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1261,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xPortIsAuthorizedToAccessBuffer' of similar type ('uint32_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1379,
+                  "startColumn": 49
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c"
+                },
+                "region": {
+                  "startLine": 1388,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_2.c"
+                },
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 56
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_2.c"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_2.c"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_2.c"
+                },
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 22
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_2.c"
+                },
+                "region": {
+                  "startLine": 151,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_4.c"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 56
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_4.c"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_4.c"
+                },
+                "region": {
+                  "startLine": 84,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_5.c"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 56
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_5.c"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-macro-parentheses",
+          "level": "warning",
+          "message": {
+            "text": "macro argument should be enclosed in parentheses"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/portable/MemMang/heap_5.c"
+                },
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'prvInitialiseNewQueue' of similar type ('const UBaseType_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 569,
+                  "startColumn": 36
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 990,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 1230,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 3227,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xQueueRemoveFromSet' of similar type are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 3255,
+                  "startColumn": 37
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/queue.c"
+                },
+                "region": {
+                  "startLine": 3264,
+                  "startColumn": 9
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xStreamBufferGenericCreate' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 332,
+                  "startColumn": 54
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xStreamBufferGenericCreateStatic' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 428,
+                  "startColumn": 60
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xStreamBufferSend' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 810,
+                  "startColumn": 27
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xStreamBufferReceive' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 1058,
+                  "startColumn": 30
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'prvReadMessageFromBuffer' of similar type ('size_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 1281,
+                  "startColumn": 41
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "3 adjacent parameters of 'prvInitialiseNewStreamBuffer' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 1592,
+                  "startColumn": 43
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'prvInitialiseNewStreamBuffer' of similar type ('StreamBufferCallbackFunction_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/stream_buffer.c"
+                },
+                "region": {
+                  "startLine": 1595,
+                  "startColumn": 43
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 2240,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "repeated branch in conditional chain"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 2551,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 2955,
+                  "startColumn": 21
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 3177,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'vTaskPlaceOnUnorderedEventList' of similar type ('const TickType_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 5337,
+                  "startColumn": 38
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 6682,
+                  "startColumn": 21
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 6782,
+                  "startColumn": 21
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 6915,
+                  "startColumn": 25
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'ulTaskGenericNotifyTake' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 7702,
+                  "startColumn": 39
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xTaskGenericNotifyWait' of similar type ('uint32_t') are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 7805,
+                  "startColumn": 40
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xTaskGenericNotify' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 7920,
+                  "startColumn": 36
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xTaskGenericNotifyFromISR' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 8040,
+                  "startColumn": 43
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-branch-clone",
+          "level": "warning",
+          "message": {
+            "text": "if with identical then and else branches"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/tasks.c"
+                },
+                "region": {
+                  "startLine": 8609,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'prvInitialiseNewTimer' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/timers.c"
+                },
+                "region": {
+                  "startLine": 418,
+                  "startColumn": 40
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xTimerGenericCommandFromTask' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/timers.c"
+                },
+                "region": {
+                  "startLine": 449,
+                  "startColumn": 46
+                }
+              }
+            }
+          ],
+          "taxa": []
+        },
+        {
+          "ruleId": "bugprone-easily-swappable-parameters",
+          "level": "warning",
+          "message": {
+            "text": "2 adjacent parameters of 'xTimerGenericCommandFromISR' of convertible types are easily swapped by mistake"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/freertos/timers.c"
+                },
+                "region": {
+                  "startLine": 498,
+                  "startColumn": 45
+                }
+              }
+            }
+          ],
+          "taxa": []
+        }
+      ]
+    }
+  ]
+}

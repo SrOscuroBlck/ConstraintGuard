@@ -114,6 +114,27 @@ _PREFIX_CATEGORY_MAP: list[tuple[str, VulnerabilityCategory]] = [
 ]
 
 
+_CWE_CATEGORY_MAP: dict[str, VulnerabilityCategory] = {
+    "CWE-119": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-120": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-121": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-122": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-124": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-125": VulnerabilityCategory.BUFFER_OVERFLOW,
+    "CWE-476": VulnerabilityCategory.NULL_DEREF,
+    "CWE-401": VulnerabilityCategory.LEAK,
+    "CWE-416": VulnerabilityCategory.USE_AFTER_FREE,
+    "CWE-415": VulnerabilityCategory.USE_AFTER_FREE,
+    "CWE-190": VulnerabilityCategory.INTEGER_OVERFLOW,
+    "CWE-191": VulnerabilityCategory.INTEGER_OVERFLOW,
+    "CWE-134": VulnerabilityCategory.FORMAT_STRING,
+    "CWE-369": VulnerabilityCategory.DIVIDE_BY_ZERO,
+    "CWE-457": VulnerabilityCategory.UNINITIALIZED,
+    "CWE-833": VulnerabilityCategory.DEADLOCK,
+    "CWE-362": VulnerabilityCategory.DEADLOCK,
+}
+
+
 def resolve_category(rule_id: str) -> VulnerabilityCategory:
     exact = _RULE_CATEGORY_MAP.get(rule_id)
     if exact is not None:
@@ -124,6 +145,13 @@ def resolve_category(rule_id: str) -> VulnerabilityCategory:
             return category
 
     return VulnerabilityCategory.UNKNOWN
+
+
+def resolve_category_from_cwe(cwe: str | None) -> VulnerabilityCategory:
+    """Resolve category from a CWE ID string (e.g. 'CWE-401')."""
+    if not cwe:
+        return VulnerabilityCategory.UNKNOWN
+    return _CWE_CATEGORY_MAP.get(cwe.upper(), VulnerabilityCategory.UNKNOWN)
 
 
 def resolve_cwe(rule_id: str, category: VulnerabilityCategory | None = None) -> str | None:

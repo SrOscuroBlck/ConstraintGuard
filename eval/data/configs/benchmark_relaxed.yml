@@ -1,0 +1,6 @@
+platform: "linux-x86"
+ram_size: "512KB"
+flash_size: "4MB"
+stack_size: "64KB"
+heap_size: "256KB"
+max_interrupt_latency: "500us"
