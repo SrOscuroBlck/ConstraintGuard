@@ -123,7 +123,7 @@ def plot_llm_quality(
     ax.plot(labels, tag_acc, "^-", color=COLORS[2], label="Tag Accuracy (%)", linewidth=2)
     ax.set_xlabel("Project")
     ax.set_ylabel("Score / Percentage")
-    ax.set_title("Agentic AI Enrichment Quality")
+    ax.set_title("LLM Enrichment Quality")
     ax.set_ylim(0, 110)
     ax.legend()
     ax.yaxis.grid(True, linestyle="--", alpha=0.7)

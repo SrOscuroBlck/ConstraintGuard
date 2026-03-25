@@ -1,9 +1,10 @@
 \begin{table}[t]
 \centering
-\small
+\scriptsize
 \caption{Empirical constraint sensitivity: same benchmark findings scored under four hardware profiles. \textbf{Bold}=CRITICAL ($\geq$85); C/H/M/L = tier label.}
 \label{tab:constraint_sensitivity}
-\begin{tabular}{llrrrr}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{p{2.5cm}p{1.5cm}rrrr}
 \toprule
 Finding & Category & Baseline & Relaxed & Safety & Tight \\
 \midrule
@@ -16,5 +17,6 @@ build\_packet:leak & leak & 55 (M) & 45 (M) & 62 (M) & \textbf{87} (C) \\
 allocate\_matrix:integer-overflow & integer\_overflow & 50 (M) & 50 (M) & 67 (M) & 77 (H) \\
 compute\_checksum:uninitialized & uninitialized & 40 (M) & 40 (M) & 45 (M) & 55 (M) \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}

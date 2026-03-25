@@ -109,7 +109,7 @@ def table_llm_quality(
     lines = [
         r"\begin{table}[t]",
         r"\centering",
-        r"\caption{Agentic AI enrichment quality across projects.}",
+        r"\caption{LLM enrichment quality across projects.}",
         r"\label{tab:llm_quality}",
         r"\begin{tabular}{l" + "r" * (len(projects) + 1) + "}",
         r"\toprule",
