@@ -1,0 +1,23 @@
+LLM New Discovery Candidates — Concrete Examples
+==================================================
+
+Example 1: FreeRTOS — Unprotected Shared State
+Location: src/freertos/portable/GCC/ARM_CM3_MPU/port.c:274
+Vulnerability Type: unprotected shared state
+LLM Description: The variable 'xSchedulerRunning' is modified in the function 'xPortStartScheduler' without any synchronization mechanism, which can lead to race conditions if accessed from an ISR.
+Risk Score: 45 (MEDIUM)
+Why Static Analyzer Missed It: Concurrency-aware alias analysis for shared state is outside Clang SA's scope.
+
+Example 2: FreeRTOS — Incorrect Volatile
+Location: src/freertos/portable/GCC/ARM_CM3_MPU/port.c:267
+Vulnerability Type: incorrect volatile
+LLM Description: The variable 'uxCriticalNesting' is accessed in both interrupt context and task context without being declared as volatile, which can lead to optimization issues.
+Risk Score: 45 (MEDIUM)
+Why Static Analyzer Missed It: Volatile correctness for concurrent embedded patterns requires aliasing + concurrency analysis.
+
+Example 3: FreeRTOS — Blocking Call In Isr
+Location: src/freertos/portable/GCC/ARM_CM3_MPU/port.c:1069
+Vulnerability Type: blocking call in isr
+LLM Description: The function 'xTaskIncrementTick' is called within the SysTick handler, which can lead to blocking behavior if it attempts to perform a context switch.
+Risk Score: 75 (HIGH)
+Why Static Analyzer Missed It: ISR context tracking across call boundaries is not modeled by Clang SA.

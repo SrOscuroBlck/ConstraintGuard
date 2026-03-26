@@ -3,8 +3,15 @@
 # Targets ESP32 embedded firmware with IEC61508-SIL2 safety context.
 #
 # Usage (Docker):
-#   docker build -t cg-scan-espfc eval/sarif_acquisition/espfc/
-#   docker run --rm -v "$(pwd)/eval/data/sarif/espfc:/output" cg-scan-espfc
+#   docker build -t cg-scan-espfc -f eval/sarif_acquisition/espfc/Dockerfile eval/sarif_acquisition/
+#   docker run --rm \
+#     -v "$(pwd)/eval/data/sarif/espfc:/output" \
+#     -e CONSTRAINTGUARD_LLM_API_KEY \
+#     -e CONSTRAINTGUARD_LLM_MODEL \
+#     -e CONSTRAINTGUARD_LLM_PROVIDER \
+#     cg-scan-espfc
+#
+# Without LLM env vars the scan still runs; discoveries.json will be empty.
 #
 # Note: esp-fc uses Arduino + ESP-IDF framework via PlatformIO.
 # Since ESP32 uses Xtensa architecture, we use clang-tidy with host
@@ -149,3 +156,6 @@ print(f"[espfc] SARIF written: {output_sarif} ({len(findings)} findings)")
 PYEOF
 
 echo "[espfc] Done. SARIF at: ${SARIF_OUT}"
+
+echo "[espfc] Running LLM vulnerability discovery..."
+python3 /discover.py

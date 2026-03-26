@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering
+\small
+\caption{LLM-assisted reclassification of \textsc{unknown} findings across three projects.}
+\label{tab:unknown_reclassification}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcp{4.2cm}c}
+\toprule
+Project & Reclassified & Top Categories & Tier Changes \\
+\midrule
+FreeRTOS & 52  & logic\_error (52) & 0 \\
+Zephyr   & 205 & logic\_error (121), integer\_overflow (82), null\_deref (1) & 84 \\
+esp-fc   & 146 & integer\_overflow (117), logic\_error (28), uninitialized (1) & 117 \\
+\bottomrule
+\end{tabular}}
+\end{table}

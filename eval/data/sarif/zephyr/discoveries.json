@@ -1,0 +1,194 @@
+[
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The buffer's indices and flags are modified without proper synchronization in the functions `rd_idx_inc`, `tmp_wr_idx_inc`, and `add_skip_item`, which can lead to race conditions when accessed from multiple threads.",
+    "file_path": "src/zephyr/lib/os/mpsc_pbuf.c",
+    "start_line": 158,
+    "end_line": 172,
+    "evidence_citation": "Functions `rd_idx_inc` (lines 158-162), `tmp_wr_idx_inc` (lines 150-156), and `add_skip_item` (lines 164-173) modify shared state without synchronization."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function `mpsc_pbuf_alloc` calls `k_sem_take` which is a blocking operation and should not be called within an ISR context, potentially leading to deadlocks or unresponsive behavior.",
+    "file_path": "src/zephyr/lib/os/mpsc_pbuf.c",
+    "start_line": 380,
+    "end_line": 388,
+    "evidence_citation": "Line 385 calls `k_sem_take`, which is a blocking call and should not be used in an ISR."
+  },
+  {
+    "type": "toctou",
+    "severity_rationale": "The function `mpsc_pbuf_claim` checks the validity of an item and then modifies the buffer state based on that check, which could lead to a time-of-check to time-of-use vulnerability if the state changes between these operations.",
+    "file_path": "src/zephyr/lib/os/mpsc_pbuf.c",
+    "start_line": 552,
+    "end_line": 572,
+    "evidence_citation": "Lines 552-572 check the validity of `item` and then modify `buffer->tmp_rd_idx` and `item->hdr.busy`, which could lead to TOCTOU issues."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The function 'z_cbvprintf_impl' modifies the global variable 'count' without any synchronization mechanism, which could lead to race conditions if accessed from multiple threads.",
+    "file_path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "start_line": 1373,
+    "end_line": 1373,
+    "evidence_citation": "Line 1373: size_t count = 0;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'outs' is called within the 'z_cbvprintf_impl' function, which may be invoked from an ISR context. If 'out' is a blocking function, it could lead to deadlocks or unresponsive behavior.",
+    "file_path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "start_line": 1353,
+    "end_line": 1353,
+    "evidence_citation": "Line 1353: static int outs(cbprintf_cb __out, void *ctx, const char *sp, const char *ep)"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The function cbprintf_package_convert accesses and modifies global or static variables without any synchronization mechanisms, which could lead to data races in a multi-threaded environment.",
+    "file_path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "start_line": 913,
+    "end_line": 1170,
+    "evidence_citation": "The function cbprintf_package_convert modifies the shared state without any locking or critical section."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function cbprintf_via_va_list may be called from an interrupt context, and it contains potential blocking calls (e.g., memcpy) which can lead to unpredictable behavior or deadlocks.",
+    "file_path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "start_line": 179,
+    "end_line": 192,
+    "evidence_citation": "The function cbprintf_via_va_list is called in the context of an ISR and may lead to blocking behavior."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The 'waiting' variable in the 'pipe' structure is modified without any critical section protection, which can lead to race conditions if accessed from multiple threads.",
+    "file_path": "src/zephyr/kernel/pipe.c",
+    "start_line": 47,
+    "end_line": 56,
+    "evidence_citation": "Line 47: pipe->waiting++; Line 56: pipe->waiting--;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'wait_for' can potentially block if the timeout is not zero, which is not suitable for use in an interrupt context.",
+    "file_path": "src/zephyr/kernel/pipe.c",
+    "start_line": 202,
+    "end_line": 204,
+    "evidence_citation": "Line 202: rc = wait_for(&pipe->space, pipe, &key, end, &need_resched);"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global state (e.g., `pb->common.flags`, `wr_idx_loc`, `rd_idx_loc`) is modified without any critical section, which can lead to race conditions when accessed from multiple contexts (e.g., ISR and thread).",
+    "file_path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "start_line": 125,
+    "end_line": 125,
+    "evidence_citation": "pb->common.flags = SET_UTILIZATION(flags, bytes_stored);"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function `cache_inv` is called within the context of a potential ISR, which may block and lead to system instability.",
+    "file_path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "start_line": 153,
+    "end_line": 153,
+    "evidence_citation": "cache_inv(rd_idx_loc, sizeof(*rd_idx_loc), flags);"
+  },
+  {
+    "type": "race_condition",
+    "severity_rationale": "The shared state `wr_idx_loc` and `rd_idx_loc` are accessed and modified without synchronization mechanisms, which can lead to race conditions when accessed from multiple contexts.",
+    "file_path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "start_line": 256,
+    "end_line": 256,
+    "evidence_citation": "uint32_t *rd_idx_loc = get_rd_idx_loc(pb, flags);"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global fdtable array is accessed and modified without proper synchronization mechanisms in functions like zvfs_read, zvfs_write, and zvfs_close, which can lead to data races.",
+    "file_path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "start_line": 393,
+    "end_line": 428,
+    "evidence_citation": "Functions zvfs_read (line 393), zvfs_write (line 398), and zvfs_close (line 403) access fdtable without locking."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function zvfs_reserve_fd calls k_mutex_lock, which is a blocking operation and should not be used in an interrupt context.",
+    "file_path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "start_line": 256,
+    "end_line": 276,
+    "evidence_citation": "Function zvfs_reserve_fd (line 256) contains a blocking call to k_mutex_lock."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variable 'count' is modified in the OUTC macro without any protection, which could lead to race conditions if accessed from multiple contexts.",
+    "file_path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "start_line": 49,
+    "end_line": 51,
+    "evidence_citation": "OUTC macro modifies 'count' without synchronization"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The OUTC macro could potentially call a blocking function (e.g., out) within an interrupt context, which is not safe.",
+    "file_path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "start_line": 48,
+    "end_line": 53,
+    "evidence_citation": "OUTC macro calls out() which may block"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global variable 'efds' is modified in multiple functions without proper synchronization, which can lead to data races.",
+    "file_path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "start_line": 31,
+    "end_line": 31,
+    "evidence_citation": "The static struct zvfs_eventfd efds[CONFIG_ZVFS_EVENTFD_MAX]; is accessed in multiple functions without synchronization."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function zvfs_eventfd_rw_op can be called from an ISR context and may lead to blocking calls (e.g., k_condvar_wait) which is not safe.",
+    "file_path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "start_line": 335,
+    "end_line": 375,
+    "evidence_citation": "The call to k_condvar_wait(cond, lock, K_FOREVER) in zvfs_eventfd_rw_op may block if called from an ISR."
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The variable 'efd->cnt' is accessed in both ISR and thread contexts without being declared as volatile, which can lead to inconsistent reads.",
+    "file_path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "start_line": 23,
+    "end_line": 23,
+    "evidence_citation": "The variable 'efd->cnt' is modified in both zvfs_eventfd_read_locked and zvfs_eventfd_write_locked."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global variable '_thread_idx_map' is modified in the function 'thread_idx_alloc' without proper synchronization, which could lead to race conditions.",
+    "file_path": "src/zephyr/kernel/userspace.c",
+    "start_line": 268,
+    "end_line": 296,
+    "evidence_citation": "The function 'thread_idx_alloc' modifies '_thread_idx_map' without any locking mechanism."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'k_object_wordlist_foreach' is called within an interrupt context in 'k_thread_perms_inherit', which may lead to blocking behavior.",
+    "file_path": "src/zephyr/kernel/userspace.c",
+    "start_line": 622,
+    "end_line": 632,
+    "evidence_citation": "The call to 'k_object_wordlist_foreach' in 'k_thread_perms_inherit' could block if the callback function takes too long."
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The variable 'z_sys_post_kernel' is accessed in a potentially concurrent context without being declared as volatile, which may lead to stale reads.",
+    "file_path": "src/zephyr/kernel/userspace.c",
+    "start_line": 973,
+    "end_line": 973,
+    "evidence_citation": "The variable 'z_sys_post_kernel' is used without the volatile qualifier in the 'app_shmem_bss_zero' function."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variable 'z_sys_post_kernel' is modified in the function 'bg_thread_main' (line 297) without any synchronization mechanism, which could lead to race conditions if accessed from multiple threads.",
+    "file_path": "src/zephyr/kernel/init.c",
+    "start_line": 191,
+    "end_line": 191,
+    "evidence_citation": "Line 297: z_sys_post_kernel = true;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'entropy_get_entropy_isr' (line 504) is called within the 'z_early_rand_get' function, which could potentially be invoked from an ISR context, leading to blocking behavior.",
+    "file_path": "src/zephyr/kernel/init.c",
+    "start_line": 494,
+    "end_line": 504,
+    "evidence_citation": "Line 504: rc = entropy_get_entropy_isr(entropy, buf, length, ENTROPY_BUSYWAIT);"
+  }
+]

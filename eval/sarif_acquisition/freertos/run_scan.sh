@@ -3,8 +3,15 @@
 # This script runs inside Docker OR locally if you have the tools installed.
 #
 # Usage (Docker):
-#   docker build -t cg-scan-freertos eval/sarif_acquisition/freertos/
-#   docker run --rm -v "$(pwd)/eval/data/sarif/freertos:/output" cg-scan-freertos
+#   docker build -t cg-scan-freertos -f eval/sarif_acquisition/freertos/Dockerfile eval/sarif_acquisition/
+#   docker run --rm \
+#     -v "$(pwd)/eval/data/sarif/freertos:/output" \
+#     -e CONSTRAINTGUARD_LLM_API_KEY \
+#     -e CONSTRAINTGUARD_LLM_MODEL \
+#     -e CONSTRAINTGUARD_LLM_PROVIDER \
+#     cg-scan-freertos
+#
+# Without LLM env vars the scan still runs; discoveries.json will be empty.
 #
 # Usage (local, if clang + arm toolchain available):
 #   bash eval/sarif_acquisition/freertos/run_scan.sh
@@ -149,3 +156,6 @@ print(f"[freertos] SARIF written: {output_sarif} ({len(findings)} findings)")
 PYEOF
 
 echo "[freertos] Done. SARIF at: ${SARIF_OUT}"
+
+echo "[freertos] Running LLM vulnerability discovery..."
+python3 /discover.py

@@ -17,7 +17,10 @@ RUN git clone --depth=1 https://github.com/zephyrproject-rtos/zephyr.git /src/ze
 
 WORKDIR /src/zephyr
 
-COPY run_scan.sh /run_scan.sh
+RUN pip3 install --quiet openai anthropic
+
+COPY zephyr/run_scan.sh /run_scan.sh
+COPY discover.py /discover.py
 RUN chmod +x /run_scan.sh
 
 CMD ["/run_scan.sh"]

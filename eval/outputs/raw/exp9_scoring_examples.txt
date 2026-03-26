@@ -1,0 +1,72 @@
+LLM Scoring Decision Examples — ConstraintGuard Exp 9
+============================================================
+
+Finding: src/freertos/event_groups.c:313
+Project: freertos
+Original: category=unknown, base=35, final=45 (MEDIUM)
+
+LLM Analysis:
+  - Category: "logic_error"
+  - Base Score: 30
+  - Score Source: llm
+  - Reasoning: "Easily swappable parameters can lead to unintended behavior, which is classified as a logic error."
+
+New Score: base=30 + [R-TIME-ULTRA-TIGHT(+10)] = 40 (MEDIUM)
+Result: MEDIUM → MEDIUM
+------------------------------------------------------------
+
+Finding: src/freertos/event_groups.c:779
+Project: freertos
+Original: category=unknown, base=35, final=45 (MEDIUM)
+
+LLM Analysis:
+  - Category: "logic_error"
+  - Base Score: 30
+  - Score Source: llm
+  - Reasoning: "Easily swappable parameters can lead to unintended behavior, which is classified as a logic error."
+
+New Score: base=30 + [R-TIME-ULTRA-TIGHT(+10)] = 40 (MEDIUM)
+Result: MEDIUM → MEDIUM
+------------------------------------------------------------
+
+Finding: src/zephyr/lib/os/cbprintf_complete.c:1552
+Project: zephyr
+Original: category=unknown, base=35, final=35 (LOW)
+
+LLM Analysis:
+  - Category: "null_deref"
+  - Base Score: 45
+  - Score Source: llm
+  - Reasoning: "Improper casting can lead to undefined behavior or runtime errors."
+
+New Score: base=45 + [R-ISR-LATENCY-OVERFLOW(+15)] = 60 (MEDIUM)
+Result: LOW → MEDIUM
+------------------------------------------------------------
+
+Finding: src/zephyr/kernel/futex.c:56
+Project: zephyr
+Original: category=unknown, base=35, final=35 (LOW)
+
+LLM Analysis:
+  - Category: "integer_overflow"
+  - Base Score: 45
+  - Score Source: llm
+  - Reasoning: "Narrowing conversions can lead to unexpected behaviors, with potential integer issues."
+
+New Score: base=45 + [no rules fired] = 45 (MEDIUM)
+Result: LOW → MEDIUM
+------------------------------------------------------------
+
+Finding: src/espfc/lib/Espfc/src/Connect/Cli.cpp:210
+Project: espfc
+Original: category=unknown, base=35, final=50 (MEDIUM)
+
+LLM Analysis:
+  - Category: "integer_overflow"
+  - Base Score: 45
+  - Score Source: llm
+  - Reasoning: "Narrowing conversion is implementation-defined and can lead to unexpected behavior or integer overflows."
+
+New Score: base=45 + [R-SAFETY-FUNCTIONAL(+5) + R-TIME-ULTRA-TIGHT(+10) + R-SAFETY-INT-OVF(+12)] = 72 (HIGH)
+Result: MEDIUM → HIGH
+------------------------------------------------------------

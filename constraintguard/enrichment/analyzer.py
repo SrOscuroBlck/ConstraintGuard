@@ -1,8 +1,15 @@
 import json
 import logging
 
-from constraintguard.enrichment.prompts import SYSTEM_PROMPT, build_user_prompt
-from constraintguard.enrichment.schemas import LLMAnalysisSchema
+from pathlib import Path
+
+from constraintguard.enrichment.prompts import (
+    DISCOVERY_SYSTEM_PROMPT,
+    SYSTEM_PROMPT,
+    build_discovery_prompt,
+    build_user_prompt,
+)
+from constraintguard.enrichment.schemas import FileDiscoverySchema, LLMAnalysisSchema
 from constraintguard.evidence.models import EvidenceBundle
 from constraintguard.llm.client import LLMClient
 from constraintguard.llm.cost import CostTracker
@@ -77,6 +84,9 @@ def _parse_enrichment(
         model_used=response_model,
         tokens_used=response_tokens,
         cost=response_cost,
+        suggested_category=analysis.suggested_category,
+        suggested_base_score=analysis.suggested_base_score,
+        category_suggestion_reasoning=analysis.category_reasoning,
     )
 
 
@@ -207,6 +217,137 @@ def create_new_findings_from_discoveries(
         new_items.append(risk_item)
 
     return new_items
+
+
+def resolve_suggested_category(suggested: str | None) -> VulnerabilityCategory | None:
+    """Map an LLM-suggested category string to a VulnerabilityCategory enum value.
+
+    Returns None for novel categories that don't match any predefined category.
+    Returns VulnerabilityCategory.UNKNOWN if the LLM explicitly says "unknown".
+    """
+    if not suggested:
+        return None
+    normalized = suggested.lower().strip().replace("-", "_").replace(" ", "_")
+    if normalized == "unknown":
+        return VulnerabilityCategory.UNKNOWN
+    # Try direct enum value match
+    for cat in VulnerabilityCategory:
+        if cat.value == normalized:
+            return cat
+    # Try the existing _CATEGORY_MAP
+    if normalized in _CATEGORY_MAP:
+        mapped = _CATEGORY_MAP[normalized]
+        if mapped != VulnerabilityCategory.UNKNOWN:
+            return mapped
+    # Novel category — caller decides what to do
+    return None
+
+
+def _scan_single_file(
+    file_path: str,
+    all_items: list[RiskItem],
+    spec: HardwareSpec,
+    client: LLMClient,
+    tracker: CostTracker,
+    source_root: Path,
+    max_lines: int,
+) -> list[dict]:
+    """Send one file to the LLM for vulnerability discovery. Returns raw discovery dicts."""
+    source_file = source_root / file_path
+    try:
+        content = source_file.read_text(encoding="utf-8", errors="replace")
+    except (OSError, PermissionError) as exc:
+        logger.warning("Cannot read %s — %s", source_file, exc)
+        return []
+
+    file_findings = [
+        item for item in all_items
+        if item.vulnerability.path == file_path
+    ]
+
+    user_prompt = build_discovery_prompt(file_path, content, file_findings, spec)
+    request = LLMRequest(
+        system_prompt=DISCOVERY_SYSTEM_PROMPT,
+        user_prompt=user_prompt,
+        response_schema=FileDiscoverySchema,
+    )
+
+    try:
+        response = client.analyze(request)
+        tracker.record(response)
+    except Exception as exc:
+        logger.warning("LLM call failed for file %s — %s", file_path, exc)
+        return []
+
+    parsed = response.parsed_content
+    if not parsed and response.raw_content:
+        try:
+            parsed = json.loads(response.raw_content)
+        except (json.JSONDecodeError, ValueError):
+            logger.warning("Malformed JSON response for file %s", file_path)
+            return []
+
+    if not parsed:
+        return []
+
+    return parsed.get("discoveries", [])
+
+
+def discover_file_vulnerabilities(
+    seed_items: list[RiskItem],
+    all_items: list[RiskItem],
+    spec: HardwareSpec,
+    client: LLMClient,
+    tracker: CostTracker,
+    source_root: Path,
+    max_lines: int = 3000,
+    max_files: int = 15,
+    max_depth: int = 2,
+) -> list[RiskItem]:
+    """Scan source files for vulnerabilities the static analyzer missed.
+
+    Starts from files containing the top-K scored findings (seed files), then
+    follows references to additional files discovered by the LLM (escalation),
+    up to max_files total and max_depth levels deep.
+
+    Returns new RiskItem objects with source="llm".
+    """
+    # Build ordered seed file list (highest-scoring file first)
+    seen_paths: dict[str, int] = {}  # file_path -> depth
+    for item in seed_items:
+        p = item.vulnerability.path
+        if p and p not in seen_paths:
+            seen_paths[p] = 0
+
+    queue: list[tuple[str, int]] = [(p, 0) for p in seen_paths]
+    scanned: set[str] = set()
+    all_raw_discoveries: list[dict] = []
+
+    while queue and len(scanned) < max_files:
+        file_path, depth = queue.pop(0)
+        if file_path in scanned:
+            continue
+
+        logger.info("Scanning file (depth=%d): %s", depth, file_path)
+        print(f"    Scanning: {file_path}")
+
+        raw = _scan_single_file(
+            file_path, all_items, spec, client, tracker, source_root, max_lines
+        )
+        scanned.add(file_path)
+        all_raw_discoveries.extend(raw)
+
+        # Escalation: queue new files referenced in discoveries
+        if depth < max_depth:
+            for discovery in raw:
+                ref_path = discovery.get("file_path", "")
+                if ref_path and ref_path != file_path and ref_path not in scanned:
+                    if not any(ref_path == q[0] for q in queue):
+                        queue.append((ref_path, depth + 1))
+                        logger.info("Escalating to referenced file: %s", ref_path)
+
+    print(f"    Scanned {len(scanned)} file(s), found {len(all_raw_discoveries)} raw candidates")
+    return create_new_findings_from_discoveries(all_raw_discoveries, spec, all_items)
 
 
 def enrich_items(

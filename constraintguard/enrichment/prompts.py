@@ -1,6 +1,7 @@
 import json
 
 from constraintguard.evidence.models import CodeSnippet, EvidenceBundle
+from constraintguard.models.enums import VulnerabilityCategory
 from constraintguard.models.hardware_spec import HardwareSpec
 from constraintguard.models.risk_report import RiskItem
 
@@ -30,8 +31,13 @@ SYSTEM_PROMPT = (
     '"proposed_code": "string", "rationale": "string"}], '
     '"new_discoveries": [{"type": "string", "severity_rationale": "string", '
     '"file_path": "string", "start_line": int, "end_line": int, '
-    '"evidence_citation": "string"}]}\n'
-    "Use EXACTLY these field names. Do not rename or add fields."
+    '"evidence_citation": "string"}], '
+    '"suggested_category": "string or null", '
+    '"suggested_base_score": "int (0-65) or null", '
+    '"category_reasoning": "string or null"}\n'
+    "Use EXACTLY these field names. Do not rename or add fields. "
+    "The suggested_category, suggested_base_score, and category_reasoning fields "
+    "are only populated when the finding category is 'unknown' — otherwise set them to null."
 )
 
 _SNIPPET_TEMPLATE = "--- {label} ({path} L{start}-L{end}) ---\n{content}\n"
@@ -97,6 +103,94 @@ def _format_rule_firings(item: RiskItem) -> str:
     return "; ".join(parts)
 
 
+DISCOVERY_SYSTEM_PROMPT = (
+    "You are an expert embedded systems security auditor specializing in C/C++ code "
+    "running on resource-constrained devices (ARM Cortex-M, RISC-V, etc.).\n\n"
+    "TASK: Scan the provided source file for security vulnerabilities and bugs that a "
+    "static analyzer (Clang Static Analyzer) would NOT detect.\n\n"
+    "The static analyzer already covers these categories — DO NOT report them:\n"
+    "  buffer_overflow, null_deref, leak, use_after_free, integer_overflow,\n"
+    "  format_string, divide_by_zero, uninitialized, deadlock.\n\n"
+    "FOCUS on issues the static analyzer CANNOT detect:\n"
+    "  - race_condition: shared state accessed from multiple threads/ISRs without synchronization\n"
+    "  - toctou: time-of-check to time-of-use races\n"
+    "  - incorrect_volatile: shared variables between ISR and thread context missing volatile\n"
+    "  - blocking_call_in_isr: blocking API called inside interrupt handler\n"
+    "  - priority_inversion: lock ordering or ceiling protocol violations\n"
+    "  - unprotected_shared_state: global/static variables modified without critical section\n"
+    "  - stack_vla: variable-length arrays on stack in constrained environments\n"
+    "  - timing_side_channel: data-dependent timing leakage\n"
+    "  - logic_error: incorrect algorithm, wrong condition, swappable parameters\n\n"
+    "RULES:\n"
+    "1. Only report issues NOT already listed in the 'Known findings' section.\n"
+    "2. Cite exact line numbers from the numbered source listing.\n"
+    "3. Distinguish facts (what the code does) from inferences (what could happen).\n"
+    "4. Return ONLY valid JSON matching this schema exactly:\n"
+    '{"discoveries": [{"type": "string", "severity_rationale": "string", '
+    '"file_path": "string", "start_line": int, "end_line": int, '
+    '"evidence_citation": "string"}]}\n'
+    "5. If no new issues are found, return: {\"discoveries\": []}\n"
+    "6. Do not add any text outside the JSON object."
+)
+
+_DISCOVERY_USER_TEMPLATE = (
+    "## File Under Audit\n\n"
+    "**Path:** {file_path}\n\n"
+    "## Hardware Constraints\n\n"
+    "{constraint_context}\n\n"
+    "## Known Findings (already reported by static analyzer — DO NOT re-report)\n\n"
+    "{known_findings}\n\n"
+    "## Source Code (line-numbered)\n\n"
+    "```c\n"
+    "{numbered_source}\n"
+    "```\n\n"
+    "Audit the code above. Return JSON with any NEW vulnerabilities not listed above."
+)
+
+_MAX_DISCOVERY_LINES = 3000
+
+
+def build_discovery_prompt(
+    file_path: str,
+    file_content: str,
+    existing_findings: list,
+    spec: HardwareSpec,
+) -> str:
+    """Build a user prompt for file-level vulnerability discovery.
+
+    existing_findings: list of RiskItem objects with findings already in this file.
+    """
+    lines = file_content.splitlines()
+    if len(lines) > _MAX_DISCOVERY_LINES:
+        lines = lines[:_MAX_DISCOVERY_LINES]
+        truncation_note = f"\n[... truncated at {_MAX_DISCOVERY_LINES} lines ...]"
+    else:
+        truncation_note = ""
+
+    numbered_source = "\n".join(f"{i + 1:4d}: {line}" for i, line in enumerate(lines))
+    numbered_source += truncation_note
+
+    if existing_findings:
+        known_lines = []
+        for item in existing_findings:
+            v = item.vulnerability
+            known_lines.append(
+                f"- Line {v.start_line}: {v.category.value} ({v.rule_id}) — {v.message[:120]}"
+            )
+        known_findings = "\n".join(known_lines)
+    else:
+        known_findings = "(none — this file has no static analyzer findings)"
+
+    constraint_context = _format_constraint_context(spec)
+
+    return _DISCOVERY_USER_TEMPLATE.format(
+        file_path=file_path,
+        constraint_context=constraint_context,
+        known_findings=known_findings,
+        numbered_source=numbered_source,
+    )
+
+
 def build_user_prompt(
     item: RiskItem,
     bundle: EvidenceBundle,
@@ -114,7 +208,7 @@ def build_user_prompt(
         code_evidence = "No source code evidence available."
 
     vuln = item.vulnerability
-    return _USER_PROMPT_TEMPLATE.format(
+    base_prompt = _USER_PROMPT_TEMPLATE.format(
         file_path=vuln.path,
         line=vuln.start_line or "unknown",
         function=vuln.function or "unknown",
@@ -129,3 +223,26 @@ def build_user_prompt(
         constraint_context=_format_constraint_context(spec),
         code_evidence=code_evidence,
     )
+
+    if vuln.category == VulnerabilityCategory.UNKNOWN:
+        base_prompt += (
+            "\n\n## Category Classification Request\n\n"
+            "This finding is currently classified as **unknown**. Based on the code "
+            "evidence and finding details above, please also provide:\n\n"
+            "- `suggested_category`: One of the predefined categories "
+            "(buffer_overflow, null_deref, leak, use_after_free, integer_overflow, "
+            "format_string, divide_by_zero, uninitialized, deadlock) OR a novel "
+            "category name if none fit (e.g. race_condition, toctou, logic_error). "
+            'Use "unknown" only if you truly cannot determine the category.\n'
+            "- `suggested_base_score`: Integer 0-65 reflecting the inherent severity "
+            "of this vulnerability type. Reference scores: use_after_free=65, "
+            "buffer_overflow=60, format_string=55, null_deref=50, integer_overflow=50, "
+            "leak=45, deadlock=45, divide_by_zero=40, uninitialized=40. "
+            "Memory corruption is generally higher (55-65), logic errors lower (30-45). "
+            "Leave room for constraint-aware rules to add 0-35 points.\n"
+            "- `category_reasoning`: Brief explanation of why you chose this "
+            "category and base score.\n\n"
+            "Include these three fields in your JSON response."
+        )
+
+    return base_prompt

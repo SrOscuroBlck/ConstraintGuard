@@ -76,6 +76,10 @@ inputs:
     description: "Reasoning effort for supported models: 'low', 'medium', or 'high' (default: low)"
     required: false
     default: "low"
+  llm-discover:
+    description: "Run file-level LLM discovery to find vulnerabilities the static analyzer missed (true/false)"
+    required: false
+    default: "false"
 
 outputs:
   report-json:
@@ -129,6 +133,7 @@ runs:
         CG_MODE_ANALYSIS: ${{ inputs.analysis-mode }}
         CG_LLM_TOPK: ${{ inputs.llm-topk }}
         CG_LLM_CHANGED_FILES: ${{ inputs.llm-changed-files }}
+        CG_LLM_DISCOVER: ${{ inputs.llm-discover }}
         CONSTRAINTGUARD_LLM_PROVIDER: ${{ inputs.llm-provider }}
         CONSTRAINTGUARD_LLM_MODEL: ${{ inputs.llm-model }}
         CONSTRAINTGUARD_LLM_API_KEY: ${{ inputs.llm-api-key }}
@@ -162,6 +167,9 @@ runs:
           CMD_ARGS+=(--mode "$CG_MODE_ANALYSIS" --llm-topk "$CG_LLM_TOPK")
           if [[ "$CG_LLM_CHANGED_FILES" == "true" ]]; then
             CMD_ARGS+=(--llm-changed-files)
+          fi
+          if [[ "$CG_LLM_DISCOVER" == "true" ]]; then
+            CMD_ARGS+=(--llm-discover)
           fi
         fi
 

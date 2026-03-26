@@ -1,0 +1,250 @@
+[
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variable 'xSchedulerRunning' is modified in the function 'xPortStartScheduler' without any synchronization mechanism, which can lead to race conditions if accessed from an ISR.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "start_line": 274,
+    "end_line": 274,
+    "evidence_citation": "xSchedulerRunning = pdTRUE;"
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The variable 'uxCriticalNesting' is accessed in both interrupt context and task context without being declared as volatile, which can lead to optimization issues.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "start_line": 267,
+    "end_line": 267,
+    "evidence_citation": "static UBaseType_t uxCriticalNesting = 0xaaaaaaaa;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'xTaskIncrementTick' is called within the SysTick handler, which can lead to blocking behavior if it attempts to perform a context switch.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "start_line": 1069,
+    "end_line": 1070,
+    "evidence_citation": "if( xTaskIncrementTick() != pdFALSE )"
+  },
+  {
+    "type": "race_condition",
+    "severity_rationale": "Shared state accessed from both ISR and thread without proper synchronization mechanisms.",
+    "file_path": "src/freertos/tasks.c",
+    "start_line": 531,
+    "end_line": 531,
+    "evidence_citation": "Line 531: uxSchedulerSuspended is modified without proper synchronization."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "Global variables modified without critical section protection.",
+    "file_path": "src/freertos/tasks.c",
+    "start_line": 504,
+    "end_line": 504,
+    "evidence_citation": "Line 504: uxCurrentNumberOfTasks is modified without critical section."
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "Variables shared between ISR and tasks are not marked as volatile.",
+    "file_path": "src/freertos/tasks.c",
+    "start_line": 506,
+    "end_line": 506,
+    "evidence_citation": "Line 506: xSchedulerRunning should be volatile as it is accessed from both ISR and task context."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "Blocking API calls are made within an ISR context.",
+    "file_path": "src/freertos/tasks.c",
+    "start_line": 892,
+    "end_line": 892,
+    "evidence_citation": "Line 892: prvYieldForTask is called within an ISR context, which may block."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variables 'xTaskWaitingToReceive' and 'xTaskWaitingToSend' are accessed without proper synchronization mechanisms, which can lead to race conditions.",
+    "file_path": "src/freertos/stream_buffer.c",
+    "start_line": 619,
+    "end_line": 647,
+    "evidence_citation": "Lines 619-647: Accessing 'xTaskWaitingToReceive' and 'xTaskWaitingToSend' without critical section protection."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'xTaskNotifyWaitIndexed' is called within an ISR context, which can lead to blocking behavior and is not allowed in an ISR.",
+    "file_path": "src/freertos/stream_buffer.c",
+    "start_line": 897,
+    "end_line": 897,
+    "evidence_citation": "Line 897: Calling 'xTaskNotifyWaitIndexed' inside an ISR."
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The variables 'xTail' and 'xHead' are accessed in a non-volatile manner in a multi-threaded context, which can lead to stale reads.",
+    "file_path": "src/freertos/stream_buffer.c",
+    "start_line": 764,
+    "end_line": 772,
+    "evidence_citation": "Lines 764-772: Accessing 'xTail' and 'xHead' without volatile qualifier."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function MPU_xQueueReceive is called in an ISR context, which can block and lead to system instability.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1011,
+    "end_line": 1036,
+    "evidence_citation": "Line 1011: BaseType_t MPU_xQueueReceive( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function MPU_xQueuePeek is called in an ISR context, which can block and lead to system instability.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1039,
+    "end_line": 1064,
+    "evidence_citation": "Line 1039: BaseType_t MPU_xQueuePeek( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function MPU_xQueueSemaphoreTake is called in an ISR context, which can block and lead to system instability.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1067,
+    "end_line": 1090,
+    "evidence_citation": "Line 1067: BaseType_t MPU_xQueueSemaphoreTake( QueueHandle_t xQueue, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The function MPU_xQueueReceive modifies shared state without proper synchronization mechanisms.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1011,
+    "end_line": 1036,
+    "evidence_citation": "Line 1011: BaseType_t MPU_xQueueReceive( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The function MPU_xQueuePeek modifies shared state without proper synchronization mechanisms.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1039,
+    "end_line": 1064,
+    "evidence_citation": "Line 1039: BaseType_t MPU_xQueuePeek( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The function MPU_xQueueSemaphoreTake modifies shared state without proper synchronization mechanisms.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "start_line": 1067,
+    "end_line": 1090,
+    "evidence_citation": "Line 1067: BaseType_t MPU_xQueueSemaphoreTake( QueueHandle_t xQueue, TickType_t xTicksToWait ) __attribute__( ( naked ) ) FREERTOS_SYSTEM_CALL;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The queue's shared state (uxMessagesWaiting, cRxLock, cTxLock) is modified without proper synchronization in several functions, which could lead to race conditions.",
+    "file_path": "src/freertos/queue.c",
+    "start_line": 115,
+    "end_line": 115,
+    "evidence_citation": "pxQueue->uxMessagesWaiting = ( UBaseType_t ) ( uxMessagesWaiting - ( UBaseType_t ) 1 );"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function xQueueReceiveFromISR calls xTaskRemoveFromEventList, which can block if the task is not ready, violating ISR constraints.",
+    "file_path": "src/freertos/queue.c",
+    "start_line": 2040,
+    "end_line": 2040,
+    "evidence_citation": "if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )"
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The variable uxMessagesWaiting is accessed without the volatile qualifier in the context of an ISR, which may lead to stale reads.",
+    "file_path": "src/freertos/queue.c",
+    "start_line": 2073,
+    "end_line": 2073,
+    "evidence_citation": "const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;"
+  },
+  {
+    "type": "race_condition",
+    "severity_rationale": "The function xQueueReceive accesses shared state (uxMessagesWaiting) without proper synchronization, which can lead to race conditions when accessed from both ISR and task context.",
+    "file_path": "src/freertos/queue.c",
+    "start_line": 1519,
+    "end_line": 1519,
+    "evidence_citation": "if( uxMessagesWaiting > ( UBaseType_t ) 0 )"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global variable xFreeBytesRemaining is modified in both pvPortMalloc and vPortFree without any synchronization mechanism, which can lead to race conditions in a multi-threaded environment.",
+    "file_path": "src/freertos/portable/MemMang/heap_2.c",
+    "start_line": 114,
+    "end_line": 114,
+    "evidence_citation": "xFreeBytesRemaining is modified in both pvPortMalloc (line 263) and vPortFree (line 330)."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function vTaskSuspendAll is called in both pvPortMalloc and vPortFree, which can block the execution of other tasks and should not be called from an ISR context.",
+    "file_path": "src/freertos/portable/MemMang/heap_2.c",
+    "start_line": 204,
+    "end_line": 204,
+    "evidence_citation": "vTaskSuspendAll is called in pvPortMalloc (line 204) and vPortFree (line 326)."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variable xFreeBytesRemaining is modified in the vPortFree function without proper synchronization, which can lead to race conditions if accessed from multiple contexts (e.g., ISR and task).",
+    "file_path": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c",
+    "start_line": 456,
+    "end_line": 456,
+    "evidence_citation": "xFreeBytesRemaining += pxLink->xBlockSize;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function vPortFree is called within a critical section that disables interrupts, which can lead to blocking behavior in an ISR context.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c",
+    "start_line": 453,
+    "end_line": 460,
+    "evidence_citation": "secureportDISABLE_NON_SECURE_INTERRUPTS(); ... secureportENABLE_NON_SECURE_INTERRUPTS();"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The variable xFreeBytesRemaining is modified in the vPortFree function without proper synchronization, which can lead to race conditions if accessed from an ISR.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c",
+    "start_line": 456,
+    "end_line": 456,
+    "evidence_citation": "xFreeBytesRemaining += pxLink->xBlockSize;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function prvInsertBlockIntoFreeList is called within the vPortFree function, which is invoked with interrupts disabled. If this function contains any blocking calls, it can lead to deadlocks or unresponsive behavior.",
+    "file_path": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c",
+    "start_line": 458,
+    "end_line": 458,
+    "evidence_citation": "prvInsertBlockIntoFreeList( ( ( BlockLink_t * ) pxLink ) );"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global variables xFreeBytesRemaining, xMinimumEverFreeBytesRemaining, xNumberOfSuccessfulAllocations, and xNumberOfSuccessfulFrees are modified without any critical section protection, which can lead to data corruption in a multi-threaded environment.",
+    "file_path": "src/freertos/portable/MemMang/heap_4.c",
+    "start_line": 166,
+    "end_line": 170,
+    "evidence_citation": "Lines 393, 396 in vPortFree function modify xFreeBytesRemaining and xNumberOfSuccessfulFrees without protection."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function vTaskSuspendAll() is called in both pvPortMalloc and vPortFree, which can lead to blocking behavior if called from an ISR context, potentially causing system hangs.",
+    "file_path": "src/freertos/portable/MemMang/heap_4.c",
+    "start_line": 221,
+    "end_line": 221,
+    "evidence_citation": "Lines 221 and 390 call vTaskSuspendAll() which is a blocking call."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global variables xFreeBytesRemaining, xMinimumEverFreeBytesRemaining, xNumberOfSuccessfulAllocations, and xNumberOfSuccessfulFrees are modified without proper synchronization mechanisms, which can lead to race conditions when accessed from multiple tasks.",
+    "file_path": "src/freertos/portable/MemMang/heap_5.c",
+    "start_line": 197,
+    "end_line": 200,
+    "evidence_citation": "Lines 197-200: Global variables modified without synchronization."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function vTaskSuspendAll() is called within pvPortMalloc() and vPortFree(), which can potentially be called from an ISR context, leading to blocking behavior that is not allowed in an ISR.",
+    "file_path": "src/freertos/portable/MemMang/heap_5.c",
+    "start_line": 267,
+    "end_line": 268,
+    "evidence_citation": "Lines 267-268: vTaskSuspendAll() called, which may block."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function xTaskResumeAll() is called within pvPortMalloc() and vPortFree(), which can potentially be called from an ISR context, leading to blocking behavior that is not allowed in an ISR.",
+    "file_path": "src/freertos/portable/MemMang/heap_5.c",
+    "start_line": 369,
+    "end_line": 369,
+    "evidence_citation": "Line 369: xTaskResumeAll() called, which may block."
+  }
+]

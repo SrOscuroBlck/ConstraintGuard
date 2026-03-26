@@ -36,6 +36,10 @@ class EnrichmentOutput(BaseModel):
     model_used: str | None = None
     tokens_used: int = 0
     cost: float = 0.0
+    # Category and base score suggestion for UNKNOWN findings
+    suggested_category: str | None = None
+    suggested_base_score: int | None = None
+    category_suggestion_reasoning: str | None = None
 
 
 class RiskItem(BaseModel):

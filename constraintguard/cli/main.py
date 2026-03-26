@@ -60,6 +60,10 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument(
         "--llm-changed-files", action="store_true", default=False,
     )
+    run_parser.add_argument(
+        "--llm-discover", action="store_true", default=False,
+        help="Run file-level LLM vulnerability discovery on top-K files (requires --mode llm or hybrid)",
+    )
 
     score_parser = subparsers.add_parser(
         "score",
@@ -92,6 +96,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     score_parser.add_argument(
         "--llm-changed-files", action="store_true", default=False,
+    )
+    score_parser.add_argument(
+        "--llm-discover", action="store_true", default=False,
+        help="Run file-level LLM vulnerability discovery on top-K files (requires --mode llm or hybrid)",
     )
 
     return parser
@@ -173,6 +181,7 @@ def handle_run(args: argparse.Namespace) -> int:
         mode=args.mode,
         llm_topk=args.llm_topk,
         llm_changed_files=args.llm_changed_files,
+        llm_discover=args.llm_discover,
     )
     return _check_threshold(report, args.fail_on)
 
@@ -191,6 +200,7 @@ def handle_score(args: argparse.Namespace) -> int:
         mode=args.mode,
         llm_topk=args.llm_topk,
         llm_changed_files=args.llm_changed_files,
+        llm_discover=args.llm_discover,
     )
     return _check_threshold(report, args.fail_on)
 

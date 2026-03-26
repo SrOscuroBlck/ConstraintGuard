@@ -91,6 +91,7 @@ def _run_enrichment(
     source_path: str | None,
     llm_topk: int,
     llm_changed_files: bool,
+    llm_discover: bool = False,
 ) -> tuple[list[RiskItem], str | None, str | None, float | None, int | None]:
     from constraintguard.enrichment.policy import (
         SelectionMode,
@@ -154,10 +155,24 @@ def _run_enrichment(
     vulns = [item.vulnerability for item in selection_result.selected_items]
     evidence_bundles = extract_evidence_batch(vulns, source_dir, spec)
 
-    from constraintguard.enrichment.analyzer import enrich_items
+    from constraintguard.enrichment.analyzer import discover_file_vulnerabilities, enrich_items
 
     tracker = CostTracker()
     enrich_items(selection_result.selected_items, evidence_bundles, spec, client, tracker)
+
+    if llm_discover and source_path:
+        print("Running file-level vulnerability discovery...")
+        new_findings = discover_file_vulnerabilities(
+            seed_items=selection_result.selected_items,
+            all_items=items,
+            spec=spec,
+            client=client,
+            tracker=tracker,
+            source_root=source_dir,
+        )
+        if new_findings:
+            print(f"  LLM discovered {len(new_findings)} new candidate(s).")
+            items = items + new_findings
 
     summary = tracker.summarize()
     llm_total_cost = float(summary.total_cost)
@@ -177,6 +192,7 @@ def run_score_pipeline(
     mode: str = "expert",
     llm_topk: int = 10,
     llm_changed_files: bool = False,
+    llm_discover: bool = False,
 ) -> RiskReport:
     spec, provenance = load_constraints(config_path, linker_script_path)
 
@@ -201,6 +217,7 @@ def run_score_pipeline(
             source_path=source_path,
             llm_topk=llm_topk,
             llm_changed_files=llm_changed_files,
+            llm_discover=llm_discover,
         )
 
     config_label = str(config_path) if config_path else None

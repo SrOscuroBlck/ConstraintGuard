@@ -144,6 +144,28 @@ def main():
     elif should_run(3) and args.skip_llm:
         print("\n  [Exp 3] SKIPPED — requires LLM API (--skip-llm set)")
 
+    # ─── Exp 9: LLM Unknown Reclassification (needs LLM) ─────────────────────
+    if should_run(9) and available_projects and not args.skip_llm:
+        from eval.experiments.exp9_unknown_reclassification import run as run_exp9
+        _run_exp(
+            "Exp 9: LLM Unknown Finding Reclassification",
+            run_exp9,
+            projects=available_projects,
+        )
+    elif should_run(9) and args.skip_llm:
+        print("\n  [Exp 9] SKIPPED — requires LLM API (--skip-llm set)")
+
+    # ─── Exp 10: LLM New Discovery Candidates (needs LLM) ────────────────────
+    if should_run(10) and available_projects and not args.skip_llm:
+        from eval.experiments.exp10_new_discovery_candidates import run as run_exp10
+        _run_exp(
+            "Exp 10: LLM New Discovery Candidates",
+            run_exp10,
+            projects=available_projects,
+        )
+    elif should_run(10) and args.skip_llm:
+        print("\n  [Exp 10] SKIPPED — requires LLM API (--skip-llm set)")
+
     total_elapsed = time.perf_counter() - total_t0
     print(f"\n{'='*60}")
     print(f"  All experiments complete in {total_elapsed:.1f}s")

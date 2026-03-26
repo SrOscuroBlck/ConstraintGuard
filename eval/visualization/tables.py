@@ -162,6 +162,98 @@ def table_cicd_overhead(
     return _save_tex("\n".join(lines), filename)
 
 
+def table_unknown_reclassification(
+    summary_data: dict[str, dict],
+    detail_rows: list[dict],
+    filename: str = "exp9_reclassification_summary",
+) -> Path:
+    """LaTeX table: LLM-Assisted Category Reclassification (Exp 9).
+
+    Columns: Project | Findings Reclassified | Category Distribution | Tier Changes After Rescoring
+
+    summary_data: {project: {total_unknown, remained_unknown_count, tier_change_count}}
+    detail_rows: per-finding rows with project, suggested_category, category_type fields
+    """
+    from collections import Counter, defaultdict
+
+    # Build per-project category counts (exclude "unknown" / empty)
+    per_project_cats: dict[str, Counter] = defaultdict(Counter)
+    for r in detail_rows:
+        cat = (r.get("suggested_category") or "").strip().lower()
+        if cat and cat != "unknown" and r.get("category_type") != "unknown":
+            per_project_cats[r["project"]][cat] += 1
+
+    projects = list(summary_data.keys())
+    rows = []
+    for project in projects:
+        d = summary_data[project]
+        name = PROJECTS_DISPLAY.get(project, project)
+        reclassified = int(d.get("total_unknown", 0)) - int(d.get("remained_unknown_count", 0))
+        tier_changes = int(d.get("tier_change_count", 0))
+
+        top_cats = per_project_cats[project].most_common(3)
+        cat_str = ", ".join(
+            f"{cat.replace('_', r'\_')} ({cnt})" for cat, cnt in top_cats
+        ) or "---"
+
+        rows.append(f"{name} & {reclassified} & {cat_str} & {tier_changes} \\\\")
+
+    lines = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\small",
+        r"\caption{LLM-assisted reclassification of \textsc{unknown} findings. "
+        r"Findings Reclassified excludes those the LLM could not categorize. "
+        r"Category Distribution lists the top assigned categories (count). "
+        r"Tier Changes reports findings that crossed a severity boundary after rescoring.}",
+        r"\label{tab:unknown_reclassification}",
+        r"\begin{tabular}{llrr}",
+        r"\toprule",
+        r"Project & Findings Reclassified & Category Distribution & Tier Changes After Rescoring \\",
+        r"\midrule",
+        *rows,
+        r"\bottomrule",
+        r"\end{tabular}",
+        r"\end{table}",
+    ]
+    return _save_tex("\n".join(lines), filename)
+
+
+def table_new_discovery_candidates(
+    summary: dict[str, dict],
+    filename: str = "exp10_new_discovery_candidates",
+) -> Path:
+    """LaTeX table: LLM new discovery candidates (Exp 10).
+
+    summary: {project: {total_candidates, confirmed_new, duplicate, precision_pct}}
+    """
+    rows = []
+    for project, d in summary.items():
+        name = PROJECTS_DISPLAY.get(project, project)
+        rows.append(
+            f"{name} & {d['total_candidates']} & {d['confirmed_new']} "
+            f"& {d['duplicate']} & {d['precision_pct']:.1f} \\\\"
+        )
+
+    lines = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\small",
+        r"\caption{LLM new discovery candidates auto-classified against original SARIF findings. "
+        r"Precision = Confirmed / Total $\times$ 100.}",
+        r"\label{tab:new_discovery_candidates}",
+        r"\begin{tabular}{lrrrr}",
+        r"\toprule",
+        r"Project & Total Candidates & Confirmed New & Duplicate & Precision (\%) \\",
+        r"\midrule",
+        *rows,
+        r"\bottomrule",
+        r"\end{tabular}",
+        r"\end{table}",
+    ]
+    return _save_tex("\n".join(lines), filename)
+
+
 def table_constraint_sensitivity(
     data: list[dict],
     filename: str = "exp8_constraint_sensitivity",

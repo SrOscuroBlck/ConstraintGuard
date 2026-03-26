@@ -1,0 +1,2012 @@
+[
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/event_groups.c",
+    "line": 313,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, which is classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/event_groups.c",
+    "line": 779,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, which is classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM33/non_secure/port.c",
+    "line": 260,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c",
+    "line": 81,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c",
+    "line": 82,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM33/secure/secure_heap.c",
+    "line": 83,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM33_NTZ/non_secure/port.c",
+    "line": 260,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM35P/non_secure/port.c",
+    "line": 260,
+    "reasoning": "Missing parentheses in macro arguments can lead to incorrect evaluations, representing a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c",
+    "line": 81,
+    "reasoning": "Macro arguments not being enclosed in parentheses can lead to unintended behaviors, marking it as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c",
+    "line": 82,
+    "reasoning": "Macro arguments not being enclosed in parentheses can lead to unintended behaviors, marking it as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM35P/secure/secure_heap.c",
+    "line": 83,
+    "reasoning": "Macro arguments not being enclosed in parentheses can lead to unintended behaviors, marking it as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM35P_NTZ/non_secure/port.c",
+    "line": 260,
+    "reasoning": "Macro arguments not being enclosed in parentheses can lead to unintended behaviors, marking it as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "line": 845,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, indicating a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "line": 908,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, indicating a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "line": 1736,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, indicating a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "line": 1830,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, indicating a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/mpu_wrappers_v2_asm.c",
+    "line": 1865,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, indicating a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 135,
+    "reasoning": "Macro arguments not being enclosed in parentheses can lead to unintended behaviors, marking it as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 299,
+    "reasoning": "Identical branches in a conditional can indicate a logic error in the code."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 501,
+    "reasoning": "Using reserved identifiers can lead to unexpected behavior, thus categorized as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 502,
+    "reasoning": "Using reserved identifiers can lead to unexpected behavior, thus categorized as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 565,
+    "reasoning": "Identical branches in a conditional can indicate a logic error in the code."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 614,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 615,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1116,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1117,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1118,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1119,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1260,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1261,
+    "reasoning": "Use of reserved identifiers may lead to confusion or unintended behavior, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1379,
+    "reasoning": "Adjacent parameters of similar types can be easily swapped, leading to potential logic errors."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/portable/GCC/ARM_CM3_MPU/port.c",
+    "line": 1388,
+    "reasoning": "Repeated branches can confuse the flow of logic and may lead to unintended outcomes."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 336,
+    "reasoning": "Identical branches can lead to confusion in understanding the control flow, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 569,
+    "reasoning": "Adjacent parameters of similar types can be easily swapped, leading to potential logic errors."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 1049,
+    "reasoning": "Repeated branches can confuse the flow of logic and may lead to unintended outcomes."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 1063,
+    "reasoning": "Repeated branches can confuse the flow of logic and may lead to unintended outcomes."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 1553,
+    "reasoning": "Identical branches can lead to confusion in understanding the control flow, classified as a logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 1723,
+    "reasoning": "Identical branches in conditions indicate potential logic flaws, classified under logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/queue.c",
+    "line": 1931,
+    "reasoning": "Identical branches in conditions indicate potential logic flaws, classified under logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 332,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 810,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 1058,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 1281,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 1592,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/stream_buffer.c",
+    "line": 1595,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 2116,
+    "reasoning": "Identical branches in conditions indicate potential logic flaws, classified under logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 4137,
+    "reasoning": "Identical branches in conditions indicate potential logic flaws, classified under logic error."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 5337,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 7702,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 7805,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 7920,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "freertos",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/freertos/tasks.c",
+    "line": 8040,
+    "reasoning": "Easily swappable parameters can lead to logic errors that may cause unintended behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/kernel_structs.h",
+    "line": 209,
+    "reasoning": "Use of undeclared identifier indicates a logic error in the code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/sys/atomic.h",
+    "line": 42,
+    "reasoning": "Configuration constant not defined leading to a potential logical flaw."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/sys/atomic.h",
+    "line": 341,
+    "reasoning": "Conflicting types suggests a logic error due to incorrect function signatures."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/sys/atomic.h",
+    "line": 427,
+    "reasoning": "Conflicting types create a logical error affecting function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/sys/atomic.h",
+    "line": 457,
+    "reasoning": "Conflicting types indicate a logic error that could lead to unexpected behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/sys/errno_private.h",
+    "line": 54,
+    "reasoning": "'File not found' implies a configuration or setup error that leads to a logic flaw."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/syscall.h",
+    "line": 11,
+    "reasoning": "'File not found' indicates a potential setup issue which can lead to logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/include/zephyr/toolchain/gcc.h",
+    "line": 614,
+    "reasoning": "Processor architecture not supported represents a logic error regarding compatibility."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/atomic_c.c",
+    "line": 81,
+    "reasoning": "Parameters being easily swappable indicates potential logical issues in function calls."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/atomic_c.c",
+    "line": 118,
+    "reasoning": "Similar adjacent parameters create a risk of logical errors in function invocation."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/compiler_stack_protect.c",
+    "line": 36,
+    "reasoning": "Use of reserved identifiers indicates a misleading declaration which is a logical error."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/compiler_stack_protect.c",
+    "line": 55,
+    "reasoning": "Reserved identifier usage can lead to logical inconsistencies in the program."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/cpu_mask.c",
+    "line": 19,
+    "reasoning": "Easily swappable parameters may cause logical errors in function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/dynamic.c",
+    "line": 34,
+    "reasoning": "Parameter type conversion risk suggests potential logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/dynamic.c",
+    "line": 59,
+    "reasoning": "Swappable parameters denote a logical flaw in function design."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/dynamic_disabled.c",
+    "line": 12,
+    "reasoning": "The issue involves easily swappable parameters which can lead to logical errors, but it does not directly cause a vulnerability."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/errno.c",
+    "line": 23,
+    "reasoning": "Using reserved identifiers could lead to unexpected behaviors, classifying it as a logic error related to naming conventions."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/events.c",
+    "line": 95,
+    "reasoning": "Similar to finding 0, swappable parameters pose a risk for logical mistakes."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/events.c",
+    "line": 282,
+    "reasoning": "Same reasoning as finding 2 regarding swappable parameters."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/futex.c",
+    "line": 67,
+    "reasoning": "Suspicious inclusion of C files may not directly create a security risk, but it raises concerns about code quality and maintainability."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/futex.c",
+    "line": 105,
+    "reasoning": "Same reasoning as finding 5 regarding suspicious includes."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/include/offsets_short.h",
+    "line": 10,
+    "reasoning": "A missing file may lead to compilation errors or unexpected behaviors, but does not represent an immediate vulnerability."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 118,
+    "reasoning": "Use of reserved identifiers could lead to overlapping definitions, potentially causing logical issues."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 119,
+    "reasoning": "Similar reasoning as finding 8 regarding reserved identifiers."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 120,
+    "reasoning": "Continuing the pattern of using reserved identifiers leading to potential conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 121,
+    "reasoning": "Same reasoning as finding 10 about reserved identifiers."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 122,
+    "reasoning": "Follows the same pattern of using reserved identifier issues."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 123,
+    "reasoning": "Reserved identifier leading to potential issues is consistent with other findings."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/init.c",
+    "line": 124,
+    "reasoning": "Final instance of reserved identifier usage that may create logical problems."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mem_slab.c",
+    "line": 186,
+    "reasoning": "Easily swappable parameters can lead to logic errors when parameters of compatible types are misused."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mempool.c",
+    "line": 14,
+    "reasoning": "This finding also relates to swappable parameters that could introduce logic errors if misconfigured."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mempool.c",
+    "line": 19,
+    "reasoning": "Using reserved identifiers may confuse expectations and lead to unintended behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mempool.c",
+    "line": 172,
+    "reasoning": "The presence of reserved identifiers can lead to logic issues or undefined behavior in code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mmu.c",
+    "line": 202,
+    "reasoning": "Similar reasoning as above regarding easily swappable parameters leading to potential misuse."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mmu.c",
+    "line": 289,
+    "reasoning": "Adjacent parameters that could be swapped introduce a risk of incorrect behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mmu.c",
+    "line": 878,
+    "reasoning": "The risk of misusing parameters persists with adjacent swappable parameters."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mmu.c",
+    "line": 1008,
+    "reasoning": "Misordering of parameters can lead to logic flaws in code execution."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/mmu.c",
+    "line": 1009,
+    "reasoning": "Similar risks of misconfiguration from swappable parameters apply here."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/msg_q.c",
+    "line": 142,
+    "reasoning": "Identical branches in conditionals typically indicate redundant or erroneous logic."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/msg_q.c",
+    "line": 195,
+    "reasoning": "Again, identical conditions raise questions about the intended flow of the program."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/msg_q.c",
+    "line": 206,
+    "reasoning": "Repeated identical branches imply logical flaws or unnecessary complexity in the code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/msg_q.c",
+    "line": 215,
+    "reasoning": "Logical redundancy inferred by identical branches hints at potential misdesign."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/obj_core.c",
+    "line": 15,
+    "reasoning": "Easily swappable parameters again imply a risk for logical errors in how methods are called."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/pipe.c",
+    "line": 49,
+    "reasoning": "Identical branches in a conditional statement indicate a potential logic error, but the impact is not severe."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/poll.c",
+    "line": 43,
+    "reasoning": "Easily swappable parameters indicate a potential logic fault but don't pose immediate security threats."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/poll.c",
+    "line": 179,
+    "reasoning": "Identical branches in a switch case signify a logic error but are less severe than other issues."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/priority_queues.c",
+    "line": 12,
+    "reasoning": "Swappable parameters can lead to incorrect function behavior indicative of a logic error."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/thread.c",
+    "line": 73,
+    "reasoning": "Usage of reserved identifiers indicates a logic issue that could lead to unpredictable behavior or conflicts in the code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/thread.c",
+    "line": 876,
+    "reasoning": "Easily swappable parameters can lead to incorrect function behavior, indicating a logic issue."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/timer.c",
+    "line": 166,
+    "reasoning": "Easily swappable parameters can lead to incorrect function behavior, indicating a logic issue."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/timer.c",
+    "line": 193,
+    "reasoning": "Easily swappable parameters can lead to incorrect function behavior, indicating a logic issue."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/timeslicing.c",
+    "line": 97,
+    "reasoning": "Easily swappable parameters can lead to incorrect function behavior, indicating a logic issue."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace.c",
+    "line": 957,
+    "reasoning": "Usage of reserved identifiers can lead to confusion and unexpected behavior in the application logic."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace.c",
+    "line": 958,
+    "reasoning": "Same reasoning as finding 1; reserved identifiers can cause logical errors in the code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace.c",
+    "line": 1012,
+    "reasoning": "Swappable parameters in function definitions can lead to subtle bugs and undefined behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace.c",
+    "line": 1044,
+    "reasoning": "Suspicious inclusion of a .c file may lead to unintended consequences in the behavior of the compiled binary."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace_handler.c",
+    "line": 67,
+    "reasoning": "Same reasoning as finding 4."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace_handler.c",
+    "line": 77,
+    "reasoning": "Same reasoning as finding 4."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace_handler.c",
+    "line": 87,
+    "reasoning": "Same reasoning as finding 4."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace_handler.c",
+    "line": 93,
+    "reasoning": "Same reasoning as finding 4."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/userspace_handler.c",
+    "line": 99,
+    "reasoning": "Same reasoning as finding 4."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/version.c",
+    "line": 8,
+    "reasoning": "The missing header file can lead to logic errors or compile-time failures."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/work.c",
+    "line": 281,
+    "reasoning": "Repeated branches in conditional chains can indicate faulty logic and result in unexpected program behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/kernel/work.c",
+    "line": 655,
+    "reasoning": "Swappable parameters in function definitions can lead to subtle bugs and undefined behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 704,
+    "reasoning": "Using a reserved identifier can lead to undefined behavior in certain contexts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 738,
+    "reasoning": "Using a reserved identifier can lead to undefined behavior in certain contexts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 747,
+    "reasoning": "Using a reserved identifier can lead to undefined behavior in certain contexts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 872,
+    "reasoning": "'Easily swappable parameters' can lead to unexpected behavior if parameters are misused."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 1348,
+    "reasoning": "Using a reserved identifier can lead to undefined behavior in certain contexts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 1369,
+    "reasoning": "Using a reserved identifier can lead to undefined behavior in certain contexts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 1530,
+    "reasoning": "Consecutive identical branches can indicate overlooked logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_complete.c",
+    "line": 1573,
+    "reasoning": "Consecutive identical branches can indicate overlooked logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 31,
+    "reasoning": "'Easily swappable parameters' can lead to unexpected behavior if parameters are misused."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 62,
+    "reasoning": "Macro arguments should be enclosed in parentheses to avoid unexpected behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 76,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 194,
+    "reasoning": "Repeated branches in conditionals may indicate poorly structured logic."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 195,
+    "reasoning": "Identical branches can lead to confusion and ineffective code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_nano.c",
+    "line": 201,
+    "reasoning": "Identical branches can lead to confusion and ineffective code."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 64,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 65,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 66,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 67,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 68,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 69,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 82,
+    "reasoning": "Using reserved identifiers can lead to undefined behavior or conflicts."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 233,
+    "reasoning": "Easily swappable parameters can cause logical errors, but do not directly lead to severe vulnerability."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/cbprintf_packaged.c",
+    "line": 833,
+    "reasoning": "Similar to finding 1, the ease of swapping parameters relates to logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/clock.c",
+    "line": 156,
+    "reasoning": "Easily swappable parameters pose a risk of logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/mpsc_pbuf.c",
+    "line": 634,
+    "reasoning": "This finding indicates a potential logic error where adjacent parameters could be easily swapped. While it could lead to incorrect behavior, it's not classified under more severe categories."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "line": 47,
+    "reasoning": "Similar to finding 0, it points to easily swappable parameters but doesn\u2019t directly indicate a security risk."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "line": 55,
+    "reasoning": "This finding is akin to others that suggest potential confusion in parameter ordering."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "line": 88,
+    "reasoning": "Another instance of easily swappable parameters which could lead to logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "line": 102,
+    "reasoning": "Identical true and false branches in a conditional point to a possible logic error, which may not directly pose a security risk."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/spsc_pbuf.c",
+    "line": 104,
+    "reasoning": "Highlights redundancy in code that could indicate a logic flaw."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/user_work.c",
+    "line": 10,
+    "reasoning": "Adjacent parameters of similar types can lead to logical mistakes, which might cause unexpected behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "line": 293,
+    "reasoning": "Easily swappable parameters of similar types can lead to logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "line": 396,
+    "reasoning": "Parameters of convertible types being adjacent increases the risk of logical mistakes."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_eventfd.c",
+    "line": 471,
+    "reasoning": "Swappable parameters of similar types can lead to logical issues."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 151,
+    "reasoning": "Use of reserved identifiers can lead to conflicts in naming, causing logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 165,
+    "reasoning": "Reserved identifiers can lead to namespace clashes and unexpected behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 364,
+    "reasoning": "Identical 'if' branches can indicate a logic error and indicate code that is potentially misleading."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 414,
+    "reasoning": "Identical branches in a condition indicate a logic error that does not lead to immediate security issues but could result in incorrect program behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 469,
+    "reasoning": "Easily swappable parameters can lead to incorrect function calls, which is indicative of potential logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 497,
+    "reasoning": "Easily swappable parameters are a classic logic error that could lead to wrong outcomes in function execution."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 506,
+    "reasoning": "Similar to previous findings, swappable parameters indicate potential for confusion and incorrect logic."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 520,
+    "reasoning": "The presence of easily swappable parameters suggests a risk of incorrect function invocation due to user error or oversight."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_fdtable.c",
+    "line": 545,
+    "reasoning": "Easily mistaken parameter types can lead to incorrect logic in application flow."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c",
+    "line": 113,
+    "reasoning": "Easily swappable parameters in a method call indicate a logic error that could compromise functionality."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_file_vmethods.c",
+    "line": 132,
+    "reasoning": "Swappable parameters can generate errors in data processing and are indicative of a potential logical flaw."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_poll.c",
+    "line": 172,
+    "reasoning": "Again, similar types of parameters can create situations where functions are not invoked correctly, indicating a logic issue."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_select.c",
+    "line": 20,
+    "reasoning": "Improper use of macros suggests a logic issue that could lead to unexpected behavior but does not necessarily imply security risks."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_select.c",
+    "line": 21,
+    "reasoning": "Bug-prone macro use can lead to unexpected behaviors, classified under logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_select.c",
+    "line": 21,
+    "reasoning": "Bug-prone macro use can lead to unexpected behaviors, classified under logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/lib/os/zvfs/zvfs_select.c",
+    "line": 22,
+    "reasoning": "Bug-prone macro use can lead to unexpected behaviors, classified under logic errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/dfu_srv.c",
+    "line": 106,
+    "reasoning": "Easily swappable parameters can lead to logical errors in function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/heartbeat.c",
+    "line": 154,
+    "reasoning": "Easily swappable parameters can lead to logical errors in function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/heartbeat.c",
+    "line": 296,
+    "reasoning": "Easily swappable parameters can lead to logical errors in function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/od_priv_proxy_cli.c",
+    "line": 73,
+    "reasoning": "Easily swappable parameters can lead to logical errors in function behavior."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/proxy_cli.c",
+    "line": 218,
+    "reasoning": "Comparing strings without checking the result can lead to logical errors."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/proxy_cli.c",
+    "line": 291,
+    "reasoning": "Identical branches in switch statements can lead to logic errors or unnecessary complexity."
+  },
+  {
+    "project": "zephyr",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/zephyr/subsys/bluetooth/mesh/sol_pdu_rpl_srv.c",
+    "line": 19,
+    "reasoning": "Easily swappable parameters can lead to logical errors in function behavior."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Blackbox/BlackboxBridge.cpp",
+    "line": 3,
+    "reasoning": "The use of a reserved identifier does not directly cause a security vulnerability, but it indicates potential for logical errors."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Blackbox/BlackboxFlashfs.cpp",
+    "line": 1,
+    "reasoning": "'File not found' suggests an issue with dependencies that can lead to build failures, although not directly a security vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "line": 36,
+    "reasoning": "Identical branches in a switch statement may indicate poor design or redundancy, which could lead to unexpected behavior."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "line": 890,
+    "reasoning": "Repeated branches can indicate overlooked logic in conditionals which might lead to errors in execution."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "line": 1070,
+    "reasoning": "Similar reasoning as finding 7 regarding repeated logic in conditionals that may yield unintended outcomes."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "line": 1214,
+    "reasoning": "Identical branches in conditionals can lead to unexpected or confusing code paths."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "line": 1344,
+    "reasoning": "Identical branches can indicate flawed conditions, making it likely to cause confusion or errors."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Connect/StatusLed.cpp",
+    "line": 105,
+    "reasoning": "Easily swappable parameters may indicate a logic error but are less severe as they generally rely on developer oversight."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Debug_Espfc.h",
+    "line": 4,
+    "reasoning": "'Arduino.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/BusI2C.cpp",
+    "line": 15,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, though not directly a security vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/BusSPI.cpp",
+    "line": 16,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, though not directly a security vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/BusSlave.cpp",
+    "line": 1,
+    "reasoning": "'Arduino.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/BusSlave.cpp",
+    "line": 26,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, though not directly a security vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/GyroDevice.h",
+    "line": 3,
+    "reasoning": "'helper_3dmath.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/InputEspNow.h",
+    "line": 6,
+    "reasoning": "'EspNowRcLink/Receiver.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/InputPPM.cpp",
+    "line": 2,
+    "reasoning": "'Arduino.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/InputPPM.cpp",
+    "line": 9,
+    "reasoning": "Easily swappable parameters can lead to unintended behavior, though not directly a security vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/MagDevice.h",
+    "line": 3,
+    "reasoning": "'helper_3dmath.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Device/SerialDevice.h",
+    "line": 5,
+    "reasoning": "'Arduino.h' file not found indicates a potential configuration or setup issue, rather than a direct vulnerability."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Hardware.cpp",
+    "line": 35,
+    "reasoning": "The message indicates a potential logic error that may lead to unhandled exceptions."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Sensor/GpsSensor.cpp",
+    "line": 309,
+    "reasoning": "Easily swappable parameters indicate a potential logic error."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Sensor/VoltageSensor.cpp",
+    "line": 95,
+    "reasoning": "Narrowing conversion can lead to loss of precision and potential logic issues."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/SerialManager.cpp",
+    "line": 7,
+    "reasoning": "Using reserved identifiers may cause conflicts that can lead to unpredictable behavior."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/SerialManager.cpp",
+    "line": 11,
+    "reasoning": "Using reserved identifiers may cause conflicts that can lead to unpredictable behavior."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/SerialManager.cpp",
+    "line": 15,
+    "reasoning": "Using reserved identifiers may cause conflicts that can lead to unpredictable behavior."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Utils/Filter.cpp",
+    "line": 8,
+    "reasoning": "Easily swappable parameters can lead to unexpected behavior and logic errors."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Utils/Filter.cpp",
+    "line": 10,
+    "reasoning": "The initialization potentially throwing an exception indicates a logic issue that may not directly cause a serious vulnerability, but it represents a risk in control flow."
+  },
+  {
+    "project": "espfc",
+    "category": "logic_error",
+    "category_type": "novel_llm",
+    "base_score": 30,
+    "score_source": "llm",
+    "path": "src/espfc/lib/Espfc/src/Wireless.cpp",
+    "line": 58,
+    "reasoning": "Parameter swapping issue indicates a logic flaw that may lead to unexpected behavior."
+  }
+]

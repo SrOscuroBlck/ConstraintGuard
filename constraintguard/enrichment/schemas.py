@@ -22,6 +22,19 @@ class LLMAnalysisSchema(BaseModel):
     explanation: str = ""
     fix_suggestions: list[FixSuggestionSchema] = Field(default_factory=list)
     new_discoveries: list[NewDiscoverySchema] = Field(default_factory=list)
+    # Category and base score suggestion for UNKNOWN findings (optional)
+    suggested_category: str | None = None
+    suggested_base_score: int | None = Field(default=None, ge=0, le=65)
+    category_reasoning: str | None = None
 
 
 LLM_OUTPUT_JSON_SCHEMA: dict = LLMAnalysisSchema.model_json_schema()
+
+
+class FileDiscoverySchema(BaseModel):
+    """LLM response for file-level vulnerability discovery.
+
+    The LLM scans an entire source file and reports vulnerabilities not
+    already detected by the static analyzer.
+    """
+    discoveries: list[NewDiscoverySchema] = Field(default_factory=list)

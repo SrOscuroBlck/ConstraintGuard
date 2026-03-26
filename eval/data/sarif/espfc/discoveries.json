@@ -1,0 +1,122 @@
+[
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies global or static variables without any synchronization mechanisms, which can lead to race conditions in a multi-threaded environment.",
+    "file_path": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp",
+    "start_line": 175,
+    "end_line": 175,
+    "evidence_citation": "r.cmd = m.cmd;"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The function 'processEsc4way' may be called from an interrupt context and contains a call to 'esc4wayProcess' which could potentially block, leading to system instability.",
+    "file_path": "src/espfc/lib/Espfc/src/Connect/MspProcessor.cpp",
+    "start_line": 1583,
+    "end_line": 1583,
+    "evidence_citation": "esc4wayProcess(getSerialPort());"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The 'state' and 'config' objects are modified without any synchronization mechanisms, which could lead to race conditions if accessed from multiple threads or ISRs.",
+    "file_path": "src/espfc/lib/Espfc/src/Model.h",
+    "start_line": 545,
+    "end_line": 546,
+    "evidence_citation": "state and config are modified in multiple methods without synchronization."
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "The 'state' object is likely shared between ISRs and threads but lacks the 'volatile' qualifier, which can lead to inconsistent reads/writes.",
+    "file_path": "src/espfc/lib/Espfc/src/Model.h",
+    "start_line": 545,
+    "end_line": 546,
+    "evidence_citation": "state is accessed in methods that may be called from ISRs."
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code accesses and modifies shared state variables (e.g., `_active`, `_ignore`) without any synchronization mechanisms, which could lead to race conditions in a multi-threaded environment.",
+    "file_path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "start_line": 316,
+    "end_line": 316,
+    "evidence_citation": "Line 316: _active(false), _ignore(false)"
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The code may call blocking functions (e.g., `stream.print()`) within interrupt service routines (ISRs), which can lead to unpredictable behavior and system hangs.",
+    "file_path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "start_line": 27,
+    "end_line": 27,
+    "evidence_citation": "Line 27: void Cli::Param::print(Stream& stream) const"
+  },
+  {
+    "type": "incorrect_volatile",
+    "severity_rationale": "Shared variables accessed in both ISRs and main code (e.g., `_active`, `_ignore`) are not declared as `volatile`, which can lead to optimization issues and stale data being read.",
+    "file_path": "src/espfc/lib/Espfc/src/Connect/Cli.cpp",
+    "start_line": 316,
+    "end_line": 316,
+    "evidence_citation": "Line 316: _active(false), _ignore(false)"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 10,
+    "end_line": 10,
+    "evidence_citation": "_model.state.mode.mask = 0;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 21,
+    "end_line": 21,
+    "evidence_citation": "_model.state.mode.airmodeAllowed = false;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 22,
+    "end_line": 22,
+    "evidence_citation": "_model.state.mode.rescueConfigMode = RESCUE_CONFIG_PENDING;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 42,
+    "end_line": 42,
+    "evidence_citation": "_model.state.debug[4] = micros() - startTime;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 90,
+    "end_line": 90,
+    "evidence_citation": "_model.state.i2cErrorDelta = 0;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The code modifies shared state variables in the Actuator class without any synchronization mechanisms, which could lead to race conditions if accessed from multiple contexts (e.g., ISR and main thread).",
+    "file_path": "src/espfc/lib/Espfc/src/Control/Actuator.cpp",
+    "start_line": 191,
+    "end_line": 191,
+    "evidence_citation": "_model.state.mode.airmodeAllowed = true;"
+  },
+  {
+    "type": "unprotected_shared_state",
+    "severity_rationale": "The global state of SerialManager is modified without any synchronization mechanism, which could lead to race conditions if accessed from multiple threads or ISRs.",
+    "file_path": "src/espfc/lib/Espfc/src/SerialManager.cpp",
+    "start_line": 24,
+    "end_line": 24,
+    "evidence_citation": "The member variables of SerialManager are accessed and modified without any critical section or mutex."
+  },
+  {
+    "type": "blocking_call_in_isr",
+    "severity_rationale": "The method SerialManager::update() may be called from an ISR context, and it contains potential blocking calls such as _ibus.update() and _vtx.update() which can lead to unpredictable behavior.",
+    "file_path": "src/espfc/lib/Espfc/src/SerialManager.cpp",
+    "start_line": 144,
+    "end_line": 184,
+    "evidence_citation": "The update method is likely to be called from an ISR, and it contains calls to potentially blocking functions."
+  }
+]

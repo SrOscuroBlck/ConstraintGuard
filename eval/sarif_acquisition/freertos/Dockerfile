@@ -22,9 +22,12 @@ RUN git clone --depth=1 https://github.com/FreeRTOS/FreeRTOS-Kernel.git /src/fre
 WORKDIR /src/freertos
 
 # Provide a minimal FreeRTOSConfig.h so clang-analyzer-* can process core kernel files
-COPY FreeRTOSConfig.h /src/freertos/include/FreeRTOSConfig.h
+COPY freertos/FreeRTOSConfig.h /src/freertos/include/FreeRTOSConfig.h
 
-COPY run_scan.sh /run_scan.sh
+RUN pip3 install --quiet openai anthropic
+
+COPY freertos/run_scan.sh /run_scan.sh
+COPY discover.py /discover.py
 RUN chmod +x /run_scan.sh
 
 CMD ["/run_scan.sh"]

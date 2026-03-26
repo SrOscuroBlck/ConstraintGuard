@@ -44,6 +44,53 @@ def score_vulnerability(vuln: Vulnerability, spec: HardwareSpec) -> RiskItem:
     )
 
 
+def score_vulnerability_with_override(
+    vuln: Vulnerability,
+    spec: HardwareSpec,
+    base_score_override: int | None = None,
+    category_override=None,
+) -> RiskItem:
+    """Score a vulnerability with optional base score and/or category overrides.
+
+    Used by LLM reclassification to rescore UNKNOWN findings with LLM-suggested
+    category and base score. The original Vulnerability object is preserved on
+    the returned RiskItem; only the scoring inputs are overridden.
+
+    Args:
+        vuln: Original vulnerability (category unchanged on returned RiskItem).
+        spec: Hardware spec for rule evaluation.
+        base_score_override: If set, replaces the category-derived base score.
+        category_override: VulnerabilityCategory to use for rule evaluation.
+    """
+    from constraintguard.models.enums import VulnerabilityCategory as _VCat
+
+    effective_category = category_override if category_override is not None else vuln.category
+    if base_score_override is not None:
+        base_score = _clip_score(base_score_override)
+    else:
+        base_score = base_score_for_category(effective_category)
+
+    # Use a shallow copy with the overridden category so category-gated rules fire
+    effective_vuln = vuln.model_copy(update={"category": effective_category})
+
+    firings = _apply_rules(effective_vuln, spec)
+    raw_final = base_score + sum(f.delta for f in firings)
+    final_score = _clip_score(raw_final)
+    tier = score_to_tier(final_score)
+    explanation = build_explanation(effective_vuln, spec, base_score, final_score, firings)
+    remediation = build_remediation(effective_category, spec)
+
+    return RiskItem(
+        vulnerability=vuln,
+        base_score=base_score,
+        final_score=final_score,
+        tier=tier,
+        rule_firings=firings,
+        explanation=explanation,
+        remediation=remediation,
+    )
+
+
 def score_all(vulns: list[Vulnerability], spec: HardwareSpec) -> list[RiskItem]:
     items = [score_vulnerability(vuln, spec) for vuln in vulns]
     return sorted(

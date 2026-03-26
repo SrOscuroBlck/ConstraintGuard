@@ -2,8 +2,15 @@
 # Scan Zephyr RTOS kernel with clang-tidy (no build system needed).
 #
 # Usage (Docker):
-#   docker build -t cg-scan-zephyr eval/sarif_acquisition/zephyr/
-#   docker run --rm -v "$(pwd)/eval/data/sarif/zephyr:/output" cg-scan-zephyr
+#   docker build -t cg-scan-zephyr -f eval/sarif_acquisition/zephyr/Dockerfile eval/sarif_acquisition/
+#   docker run --rm \
+#     -v "$(pwd)/eval/data/sarif/zephyr:/output" \
+#     -e CONSTRAINTGUARD_LLM_API_KEY \
+#     -e CONSTRAINTGUARD_LLM_MODEL \
+#     -e CONSTRAINTGUARD_LLM_PROVIDER \
+#     cg-scan-zephyr
+#
+# Without LLM env vars the scan still runs; discoveries.json will be empty.
 
 set -euo pipefail
 
@@ -115,3 +122,6 @@ print(f"[zephyr] SARIF written: {output_sarif} ({len(findings)} findings)")
 PYEOF
 
 echo "[zephyr] Done. SARIF at: ${SARIF_OUT}"
+
+echo "[zephyr] Running LLM vulnerability discovery..."
+python3 /discover.py

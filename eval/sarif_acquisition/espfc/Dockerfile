@@ -30,7 +30,10 @@ WORKDIR /src/espfc
 RUN pio pkg install --environment esp32dev 2>&1 | tail -20 || \
     pio platform install espressif32 2>&1 | tail -10 || true
 
-COPY run_scan.sh /run_scan.sh
+RUN pip3 install --quiet openai anthropic
+
+COPY espfc/run_scan.sh /run_scan.sh
+COPY discover.py /discover.py
 RUN chmod +x /run_scan.sh
 
 CMD ["/run_scan.sh"]
